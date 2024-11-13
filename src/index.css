@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.signup-form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.to-right-line {
+  background: linear-gradient(to right, transparent, #A9A9CA);
+  height: 1px;
+  flex: 1;
+}
+.to-left-line {
+  background: linear-gradient(to left, transparent , #A9A9CA);
+  height: 1px;
+  flex: 1;
 }
