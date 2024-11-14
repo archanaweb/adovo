@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import netflix from "../../assest/images/netflixx.png";
+import Footer from "../../components/Footer";
 
 const Home = () => {
     const [email, setEmail] = useState('')
@@ -91,6 +92,7 @@ const Home = () => {
             </div>
             </div>
         </div>
+        <Footer />
     </div>
   );
 }
