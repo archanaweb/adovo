@@ -3,7 +3,12 @@ import Header from "../../components/Header";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import netflix from "../../assest/images/netflixx.png";
-import Footer from "../../components/Footer";
+import Howitwork from "../../components/Howitwork";
+import Footer from "../../components/Footer"
+import Waystoearn from "../../components/Waystoearn";
+import Features from "../../components/Features";
+import Usercashedout from "../../components/Usercashedout";
+import trustpilot from "../../assest/images/trustpilot.png"
 
 const Home = () => {
     const [email, setEmail] = useState('')
@@ -15,13 +20,17 @@ const Home = () => {
   return (
     <div>
         <Header />
-        <div className="bg-slate-800">
+        <div className="bg-slate-800 main-banner">
             <div className="container mx-auto flex p-4 items-center py-8 pb-20 pt-14">
             <div className="w-1/2">
-                <h1 className="text-5xl font-bold text-white p-2 py-6"><span className="text-[#d13d5e]">Get paid </span> for testing apps,<br/> games & surveys</h1>
+                <h1 className="text-5xl font-bold text-white p-2 py-6"><span className="text-[#d13d5e]">Earn Rewards </span> By <br/>Sharing Your Opinion &<br/> Exploring New Apps</h1>  
                 <p className="text-indigo-300 text-lg font-medium">Earn money by testing apps, games and taking surveys. Earn up to <span className="text-white">$50.40 </span>per offer 494 available offers now. Get started today!</p>
             </div>
             <div className="w-1/2">
+            <div className="reviews">
+              <p className="text-white">See our reviews on</p>
+              <img src={trustpilot} alt="reviewsIcon" />
+              </div>
             <div className="p-4 sm:p-6 md:p-6 bg-gray-700 rounded-lg shadow-md signup-form">
       <h2 className="text-3xl font-bold mb-4 text-center text-gray-100">Sign up for free</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -59,40 +68,52 @@ const Home = () => {
             </div>
             </div>
             </div>
-            <div className="container mx-auto flex p-4 items-center justify-between py-8 bg-slate-900 rounded-md gap-14">
-            <div className="w-1/3 border border-gray-700 rounded-md p-4 flex justify-between items-center">
-               <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
-               <div className="text-left">
-                <h5 className="text-xl font-bold text-white">Netflix</h5>
-                <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
-                <div>
-                <p className="text-xl font-bold text-white pb-2">$5.00</p>
+            <div className="offer-demo">
+              <div className="container mx-auto flex p-4 items-center justify-between py-8 bg-slate-900 rounded-md gap-14">
+              <div className="w-1/3 border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
+              <div className="offer-img">
+                <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
                 </div>
-                </div>
-            </div>
-            <div className="w-1/3 bg-[#d93156] rounded-md p-4 p-4 flex justify-between items-center">
-            <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
-               <div className="text-left">
-                <h5 className="text-xl font-bold text-white">Netflix</h5>
-                <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
-                <div>
-                <p className="text-xl font-bold text-white pb-2">$5.00</p>
-                </div>
-                </div>
-            </div>
-            <div className="w-1/3 border border-gray-700 rounded-md p-4 p-4 flex justify-between items-center">
-            <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
-               <div className="text-left">
-                <h5 className="text-xl font-bold text-white">Netflix</h5>
-                <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
-                <div>
-                <p className="text-xl font-bold text-white pb-2">$5.00</p>
-                </div>
-                </div>
-            </div>
+                <div className="text-left">
+                  <h5 className="text-2xl font-bold text-white">Netflix</h5>
+                  <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
+                  <div>
+                  <p className="text-xl font-bold text-white pb-2">$5.00</p>
+                  </div>
+                  </div>
+              </div>
+              <div className="w-1/3 bg-[#d93156] rounded-md p-4 flex justify-start items-center gap-5">
+              <div className="offer-img">
+              <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
+              </div>
+                <div className="text-left">
+                  <h5 className="text-xl font-bold text-white">Netflix</h5>
+                  <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
+                  <div>
+                  <p className="text-xl font-bold text-white pb-2">$5.00</p>
+                  </div>
+                  </div>
+              </div>
+              <div className="w-1/3 border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
+              <div className="offer-img">
+              <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
+              </div>
+                <div className="text-left">
+                  <h5 className="text-xl font-bold text-white">Netflix</h5>
+                  <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
+                  <div>
+                  <p className="text-xl font-bold text-white pb-2">$5.00</p>
+                  </div>
+                  </div>
+              </div>
+              </div>
             </div>
         </div>
-        <Footer />
+        <Howitwork />
+        <Waystoearn />
+        <Features />
+        <Usercashedout />
+        <Footer/>
     </div>
   );
 }

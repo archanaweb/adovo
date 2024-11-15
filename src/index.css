@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,6 +16,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.main-banner h1 {
+  font-size: 55px;
+  line-height: 1.2;
+}
+.main-banner p {
+  color: #8e97a6;
+}
+.reviews {text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  padding-bottom: 20px;}
+  .reviews p {color: #ffca71;}
+  .reviews img {width: 160px;}
+
 .signup-form {
   width: 400px;
   margin: 0 auto;
@@ -25,8 +43,331 @@ code {
   height: 1px;
   flex: 1;
 }
+
 .to-left-line {
-  background: linear-gradient(to left, transparent , #A9A9CA);
+  background: linear-gradient(to left, transparent, #A9A9CA);
   height: 1px;
   flex: 1;
+}
+
+.offer-demo {
+  width: 80%;
+  margin: auto;
+}
+
+.offer-demo p {
+  color: #ffca71;
+}
+
+.offer-demo .offer-img {
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+/* how it work */
+.steps-sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 23px;
+}
+
+.how-it-works {
+  padding: 60px 40px;
+  background: #1e293b;
+  padding-bottom: 80px;
+}
+
+.sec-heading {
+  text-align: center;
+  padding-bottom: 32px;
+}
+
+.sec-heading h5 {
+  font-size: 34px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.sec-heading h5 span {color: #ffca71;}
+
+.sec-heading p {
+  font-size: 32px;
+  font-weight: 600;
+  /* color: #d13d5e; */
+  color: #e24c6e;
+}
+
+.steps-sec .items {
+  padding: 20px;
+  border-radius: 12px;
+  /* background: #364863; */
+  background: #374151;
+}
+
+.steps-sec .items .img {
+  width: 100%;
+  position: relative;
+  margin-bottom: 19px;
+}
+
+.steps-sec .items .img img {
+  width: 100%;
+  border-radius: 12px;
+  position: relative;
+}
+
+.steps-sec .items .img span {
+  position: absolute;
+    left: 12px;
+    bottom: 8px;
+    z-index: 9;
+    content: "";
+    color: #1e293bb5;
+    font-size: 87px;
+    font-weight: 600;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dedede;
+}
+
+.steps-sec .items h5 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.steps-sec .items p {
+  color: #f1f1f1;
+  line-height: 1.7;
+}
+
+.steps-sec .items .img img::before {
+  content: '';
+  background: #000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 9;
+}
+
+.explore-btn {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.explore-btn button {
+  background-color: #d93156 !important;
+    padding: 12px 30px;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 17px;
+    width: 320px;
+}
+
+/* wats to earn */
+
+/* ways to earn css */
+.ways-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 65%;
+    margin: auto;
+}
+
+.ways-to-earn {
+    padding: 0px 40px;
+    padding-bottom: 60px;
+}
+
+.ways-items .item {
+    border: 1px solid #40444e;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ways-items .item img {
+    height: 165px;
+    width: auto;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+}
+
+.ways-items .item h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ways-items .item p {
+    color: #cfcfcf;
+    line-height: 1.5;
+    margin-bottom: 17px;
+}
+
+.d-flex {
+    border-top: 1px solid #575760;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    width: 100%;
+}
+
+.d-flex span {
+    font-weight: 700;
+    font-size: 19px;
+    color: #d22f76;
+}
+
+.d-flex p {
+    margin-bottom: 0 !important;
+}
+
+/* why choose us css */
+
+.choose-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 65%;
+    margin: auto;
+}
+
+.why-choose-us {
+    padding: 20px 40px;
+}
+.choose-icon {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    border-radius: 20px;
+}
+
+.choose-items .item {
+    border: 1px solid #40444e;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.choose-items .item img {
+    width: auto;
+    padding-bottom: 4px;
+}
+
+.choose-items .item h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffca71;
+    font-weight: 600;
+}
+
+.choose-items .item p {
+   color: #cfcfcf;
+    line-height: 1.5;
+    margin-bottom: 17px;
+}
+
+.choose-items .d-flex {
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.choose-items .d-flex span {
+    font-weight: 700;
+    font-size: 19px;
+    color: #d22f76;
+}
+
+.choose-items .d-flex p {
+    margin-bottom: 0 !important;
+}
+/* user cashedout */ 
+
+.user-cashedout {
+    padding: 40px 100px;
+}
+
+.box-wrapper {
+    background-image: url(./website/assest/images/bg-dark.jpg);
+    background-size: cover;
+    height: auto;
+    border: 1px solid #706c6c;
+    border-radius: 12px;
+    width: 90%;
+    margin: auto;
+}
+.box-wrapper h5{color: #fff;font-size: 34px;font-weight: 700; margin-bottom: 15px;text-transform: capitalize;}
+.box-wrapper h5 span {color: #ffca71;}
+.user-item {
+    background: #344654;
+    border-radius: 7px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.user-item {
+    background: #344654;
+    border-radius: 7px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.user-icon {
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+    /* font-weight: 500; */
+    color: #d93156;
+}
+
+p.user-name {
+    color: #fff;
+    font-weight: 500;
+}
+
+span.earn-points {
+    color: #fff;
+}
+
+span.cashout-time {
+    background: #b98835;
+    padding: 5px 12px;
+    color: #fff;
+    border-radius: 5px;
+}
+.cashout-img img {
+  width: auto;
+  height: 380px;
 }

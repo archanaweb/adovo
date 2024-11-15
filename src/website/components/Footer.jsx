@@ -3,7 +3,7 @@ import logo from '../assest/images/freecash-logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#09266e] text-gray-300 py-12 px-6 md:px-12">
+    <footer className="bg-slate-800 text-gray-300 py-12 px-6 md:px-12 border-t border-outline-variant px-4 py-8 text-center sm:px-6 lg:px-8 xl:px-10 border-gray-700">
     <div className="container mx-auto max-w-7xl text-center md:text-left">
       <div className="flex flex-col md:flex-row md:justify-between md:items-start lg:items-start gap-8">
         {/* Logo and Ratings Section */}
