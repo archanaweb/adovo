@@ -2,7 +2,7 @@ import cardImg from '../assest/images/lite-game-bg.jpg'
 
 const Waystoearn = ()=> {
     return (
-        <div class="bg-slate-800 ways-to-earn">
+        <div class="ways-to-earn">
         <div class="sec-heading">
             <h5>Best ways to <span>earn</span></h5>
         </div>

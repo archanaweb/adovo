@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* html {
+  font-size: 62.5%;
+} */
 
 body {
   margin: 0;
@@ -73,7 +76,7 @@ code {
 }
 
 .how-it-works {
-  padding: 60px 40px;
+  /* padding: 60px 40px; */
   background: #1e293b;
   padding-bottom: 80px;
 }
@@ -101,8 +104,8 @@ code {
 .steps-sec .items {
   padding: 20px;
   border-radius: 12px;
-  /* background: #364863; */
-  background: #374151;
+  background: #253248;
+  background: #232f44;
 }
 
 .steps-sec .items .img {
@@ -174,7 +177,7 @@ code {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    width: 65%;
+    width: 80%;
     margin: auto;
 }
 
@@ -239,12 +242,12 @@ code {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    width: 65%;
+    width: 80%;
     margin: auto;
 }
 
 .why-choose-us {
-    padding: 20px 40px;
+    /* padding: 20px 40px; */
 }
 .choose-icon {
     text-align: center;
@@ -307,7 +310,7 @@ code {
 /* user cashedout */ 
 
 .user-cashedout {
-    padding: 40px 100px;
+    /* padding: 40px 100px; */
 }
 
 .box-wrapper {
@@ -316,7 +319,7 @@ code {
     height: auto;
     border: 1px solid #706c6c;
     border-radius: 12px;
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 .box-wrapper h5{color: #fff;font-size: 34px;font-weight: 700; margin-bottom: 15px;text-transform: capitalize;}
@@ -328,15 +331,8 @@ code {
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.user-item {
-    background: #344654;
-    border-radius: 7px;
-    padding: 12px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
+    width: 90%;
+    background-color: #3a404a;
 }
 
 .user-icon {
@@ -370,4 +366,160 @@ span.cashout-time {
 .cashout-img img {
   width: auto;
   height: 380px;
+}
+.social-icons {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+.social-icons svg {
+  font-size: 25px;
+  color: #d13d5e;
+}
+
+.social-icons li {
+  background: #2d3c54;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* mobile view css */
+
+@media (max-width: 768px) {
+  .logo img {
+    width: 100px;
+  }
+  .main-banner h1 {
+    font-size: 32px;
+  }
+  .main-banner p {
+    font-size: 16px;
+  }
+  .reviews img {
+    width: 120px;
+  }
+  .signup-form {
+    width: 100%;
+  }
+  .offer-demo {
+    width: 100%;
+  }
+  .offer-demo .offer-img img {
+    width: 75px;
+}
+  .offer-demo p {
+    font-size: 16px;
+  }
+  .sec-heading {
+    padding-bottom: 20px;
+  }
+  .sec-heading h5 {
+    font-size: 24px;
+  }
+  .sec-heading p {
+    font-size: 24px;
+  }
+  .how-it-works {
+    padding-bottom: 30px;
+  }
+  .explore-btn button {
+    width: 220px;
+  }
+  .steps-sec {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .steps-sec .items {
+    padding: 20px 10px;
+  }
+  .steps-sec .items h5 {
+    font-size: 20px;
+  }
+  .steps-sec .items p {
+    font-size: 15px;
+  }
+  .ways-items {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  .ways-to-earn {
+    padding: 0px 20px;
+    padding-bottom: 30px;
+  }
+  .ways-items .item {
+    padding: 20px 10px;
+  }
+  .ways-items .item h5 {
+    font-size: 20px;
+  }
+  .ways-items .item p {
+    font-size: 16px;
+  }
+  .choose-items {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .choose-items .item {
+    padding: 20px 10px;
+  }
+  .choose-items .item h5 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  .choose-items .item p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  .user-cashedout {
+    padding: 20px 10px;
+  }
+  .box-wrapper {
+    width: 100%;
+  }
+  .box-wrapper h5 {
+    font-size: 24px;
+  }
+  .user-item {
+    padding: 6px;
+    width: 98%;
+  }
+  .user-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+  .user-item p {
+    font-size: 15px;
+  }
+  .cashout-img img {
+    height: 252px;
+  }
+  span.earn-points {
+    color: #dbdbdb;
+    font-size: 14px;
+}
+  span.cashout-time {
+    padding: 3px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  .social-icons {
+    gap: 10px;
+  }
+  .social-icons svg {
+    font-size: 20px;
+  }
+  .social-icons li {
+    width: 35px;
+    height: 35px;
+  }
 }

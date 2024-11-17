@@ -6,9 +6,10 @@ const Header  = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   return (
-    <header className="header bg-gray-900 p-4">
+    <header className="header bg-gray-900 md:py-4 p-2">
+     <div className="header-wrapper"> 
     <div className="container mx-auto flex justify-between items-center">
-    <div className="wrapper flex gap-8 justify-between items-center">
+    <div className="wrapper flex md:gap-8 gap-4 justify-between items-center">
         <div className="logo">
             <img src={logo} alt="Website Logo" width={200} />
         </div>
@@ -19,13 +20,14 @@ const Header  = () => {
         </ul>
         </nav>
     </div>
-        <div className="account flex gap-3">
-                <button className="btn text-white bg-gray-700 p-2 rounded-full px-4 text-sm"><Link to='/'>Log in</Link></button>
-                <button className="btn text-white border rounded-full px-3 text-sm"><Link to='/'>Sign up</Link></button>
+        <div className="account flex md:gap-3 gap-2">
+                <button className="btn text-white bg-gray-700 p-2 rounded-full md:px-4 px-3 text-sm"><Link to='/'>Log in</Link></button>
+                <button className="btn text-white border rounded-full md:px-3 text-sm p-2"><Link to='/'>Sign up</Link></button>
         </div>
     {/* <div className="hamburger" onClick={toggleMenu}>
       <span>&#9776;</span>
     </div> */}
+    </div>
     </div>
   </header>
   );

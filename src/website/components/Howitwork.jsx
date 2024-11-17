@@ -4,7 +4,8 @@ const Howitwork = ()=> {
 
     return (
         <>
-        <div class="how-it-works pt-5">
+        <div class="how-it-works py-5 md:pt-14 px-2">
+        <div class="container mx-auto">
         <div class="sec-heading">
             <h5>How to earn within minutes?</h5>
             <p>Follow these steps</p>
@@ -46,6 +47,7 @@ const Howitwork = ()=> {
         </div>
         <div class="explore-btn">
             <button>Start earning now</button>
+        </div>
         </div>
    </div>
         </>

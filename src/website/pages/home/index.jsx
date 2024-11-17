@@ -9,6 +9,7 @@ import Waystoearn from "../../components/Waystoearn";
 import Features from "../../components/Features";
 import Usercashedout from "../../components/Usercashedout";
 import trustpilot from "../../assest/images/trustpilot.png"
+import Faq from "../../components/Faq";
 
 const Home = () => {
     const [email, setEmail] = useState('')
@@ -18,15 +19,14 @@ const Home = () => {
     }
 
   return (
-    <div>
-        <Header />
-        <div className="bg-slate-800 main-banner">
-            <div className="container mx-auto flex p-4 items-center py-8 pb-20 pt-14">
-            <div className="w-1/2">
-                <h1 className="text-5xl font-bold text-white p-2 py-6"><span className="text-[#d13d5e]">Earn Rewards </span> By <br/>Sharing Your Opinion &<br/> Exploring New Apps</h1>  
-                <p className="text-indigo-300 text-lg font-medium">Earn money by testing apps, games and taking surveys. Earn up to <span className="text-white">$50.40 </span>per offer 494 available offers now. Get started today!</p>
+    <div className="bg-slate-800">
+        <div className="main-banner">
+            <div className="container mx-auto md:flex items-center md:pb-20 md:pt-14 pb-8 pt-6 px-2">
+            <div className="md:w-1/2 w-full">
+                <h1 className="md:text-5xl text-3xl font-bold text-white p-2 md:py-6 pb-4"><span className="text-[#d13d5e]">Earn Rewards </span> By <br/>Sharing Your Opinion &<br/> Exploring New Apps</h1>  
+                <p className="text-indigo-300 text-lg font-medium pb-4">Earn money by testing apps, games and taking surveys. Earn up to <span className="text-white">$50.40 </span>per offer 494 available offers now. Get started today!</p>
             </div>
-            <div className="w-1/2">
+            <div className="md:w-1/2 w-full">
             <div className="reviews">
               <p className="text-white">See our reviews on</p>
               <img src={trustpilot} alt="reviewsIcon" />
@@ -69,20 +69,20 @@ const Home = () => {
             </div>
             </div>
             <div className="offer-demo">
-              <div className="container mx-auto flex p-4 items-center justify-between py-8 bg-slate-900 rounded-md gap-14">
-              <div className="w-1/3 border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
+              <div className="container mx-auto flex md:flex-row flex-col p-4 items-center justify-between py-8 bg-slate-900 rounded-md md:gap-14 gap-4">
+              <div className="md:w-1/3 w-full border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
               <div className="offer-img">
                 <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
                 </div>
                 <div className="text-left">
-                  <h5 className="text-2xl font-bold text-white">Netflix</h5>
+                  <h5 className="text-xl font-bold text-white">Netflix</h5>
                   <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
                   <div>
                   <p className="text-xl font-bold text-white pb-2">$5.00</p>
                   </div>
                   </div>
               </div>
-              <div className="w-1/3 bg-[#d93156] rounded-md p-4 flex justify-start items-center gap-5">
+              <div className="md:w-1/3 w-full bg-[#192642] rounded-md p-4 flex justify-start items-center gap-5">
               <div className="offer-img">
               <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
               </div>
@@ -94,7 +94,7 @@ const Home = () => {
                   </div>
                   </div>
               </div>
-              <div className="w-1/3 border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
+              <div className="md:w-1/3 w-full border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
               <div className="offer-img">
               <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
               </div>
@@ -113,7 +113,8 @@ const Home = () => {
         <Waystoearn />
         <Features />
         <Usercashedout />
-        <Footer/>
+        {/* <Faq /> */}
+       
     </div>
   );
 }
