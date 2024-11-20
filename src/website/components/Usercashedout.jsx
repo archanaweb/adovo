@@ -4,7 +4,7 @@ const Usercashedout = ()=> {
     return (
         <>
         <div className="user-cashedout pb-14 pt-2">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-2">
             <div className="box-wrapper">
                     <h5 className="p-4">This month users <span> cashed out </span></h5>
                 <div className="flex md:flex-row flex-col md:p-4 md:pt-4 pb-6 gap-2">

@@ -523,3 +523,33 @@ span.cashout-time {
     height: 35px;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1200px){
+  .main-banner h1 {
+    font-size: 40px;
+}
+.offer-demo .offer-img img {
+  width: 70px;
+}
+.sec-heading h5 {
+  font-size: 30px;
+}
+.sec-heading p {
+  font-size: 30px;
+}
+.ways-items{
+  width: 90%;
+}
+.choose-items {
+  width: 90%;
+}
+.box-wrapper {
+  width: 100%;
+}
+.choose-items .item h5 {
+  margin-bottom: 0;
+}
+.choose-items .item p {
+  margin-bottom: 0;
+}
+}

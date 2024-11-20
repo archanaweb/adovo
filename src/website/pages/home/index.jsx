@@ -69,7 +69,7 @@ const Home = () => {
             </div>
             </div>
             <div className="offer-demo">
-              <div className="container mx-auto flex md:flex-row flex-col p-4 items-center justify-between py-8 bg-slate-900 rounded-md md:gap-14 gap-4">
+              <div className="container mx-auto flex md:flex-row flex-col p-4 items-center justify-between py-8 bg-slate-900 rounded-md xl:gap-14 lg:gap-4 gap-4">
               <div className="md:w-1/3 w-full border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
               <div className="offer-img">
                 <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
