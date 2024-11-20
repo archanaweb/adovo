@@ -39,16 +39,16 @@ const VerifyOtp = ()=> {
         <>
         <div className="bg-slate-800">
     <div className="py-10 md:px-10 px-4 container mx-auto">
-    <div className="contant text-center">
+    <div className="verify-otp text-center">
         <img src={verifyicon} alt="verificationimg"/>
-                <h2 className="font-bold md:text-4xl text-2xl pb-4 text-gray-200 md:pt-4 gradient-text">Verification</h2>
+                <h2 className="font-bold md:text-4xl text-2xl text-gray-200 gradient-text">Verification</h2>
                 <p className="text-gray-200">Please enter the OTP sent to your email address</p>
             </div>
-    <div className="md:w-3/4 w-full mx-auto">
-    <div className="registration-form py-8 px-8 mx-auto bg-white rounded shadow text-left">
+    <div className="md:w-2/4 w-full mx-auto pt-4">
+    <div className="registration-form py-8 px-8 mx-auto bg-slate-700 rounded shadow text-left">
       <form onSubmit={handleOtp} className="mb-3">
         <div className="form-group">
-        <input className="form-control"
+        <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white"
           type="number"
           placeholder="otp"
           onChange={(e) =>
@@ -56,8 +56,8 @@ const VerifyOtp = ()=> {
           }
         />
         </div>
-        <div className="forgetPass flex justify-between">
-          <button  className="btn btn-primary" type="submit">Verify OTP</button>
+        <div className="forgetPass flex justify-center pt-4">
+          <button className="btn btn-primary bg-[#d13d5e] p-3 rounded-md text-white w-1/5" type="submit">Verify OTP</button>
        </div>
         <div className="forgetPass flex justify-between">
         <p className="text-gray-200">Did't receive the verification OTP? <span onClick={handleResend}>Resend again</span></p>

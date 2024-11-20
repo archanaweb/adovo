@@ -390,7 +390,14 @@ span.cashout-time {
   justify-content: center;
   align-items: center;
 }
-
+.verify-otp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  gap: 10px;
+  margin-top: 20px;
+}
 /* mobile view css */
 
 @media (max-width: 768px) {
