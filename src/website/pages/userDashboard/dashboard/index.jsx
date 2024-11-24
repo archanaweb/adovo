@@ -16,7 +16,16 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Navigation } from 'swiper/modules';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 const UserDashboard = () => {
+    const navigate = useNavigate()
+    const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
+    useEffect(()=> {
+       if(!auth){
+        navigate('/')
+       }
+    },[])
     return (
         <>
             <DashboardHeader />
