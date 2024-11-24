@@ -10,13 +10,35 @@ import Features from "../../components/Features";
 import Usercashedout from "../../components/Usercashedout";
 import trustpilot from "../../assest/images/trustpilot.png"
 import Faq from "../../components/Faq";
+import BaseUrl from "../../../Api/BaseUrl";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-    const [email, setEmail] = useState('')
+  const navigate = useNavigate()
+    const [formData, setFormData] = useState({
+      userName: ''
+    })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault()
+      const response = await fetch(`${BaseUrl}user/login`, {
+        method: 'POST',
+        headers: {
+            'accept': 'application/json'
+        },
+        body: new URLSearchParams(formData)
     }
+  )
+  const resData = await response.json()
+  if(resData.responseCode === 200){
+    toast.success(resData.responseMessage)
+    localStorage.setItem("opinionUser", JSON.stringify(resData.responsResult))
+    navigate('/dashboard')
+  }else{
+    toast.error(resData.responseMessage)
+  }
+}
 
   return (
     <div className="bg-slate-800">
@@ -32,15 +54,32 @@ const Home = () => {
               <img src={trustpilot} alt="reviewsIcon" />
               </div>
             <div className="p-4 sm:p-6 md:p-6 bg-gray-700 rounded-lg shadow-md signup-form">
-      <h2 className="text-3xl font-bold mb-4 text-center text-gray-100">Sign up for free</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center text-gray-100">Sign in for free</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
+
       <div className="text-left">
-        <input 
+         {/* <input 
           type="email" 
           placeholder="Email address" 
           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={formData?.email}
+          onChange={(e) => setFormData({...formData, email: [e.target.value]})}
+        />  */}
+        <input 
+          type="text" 
+          name="userName"
+          placeholder="Username" 
+          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white" 
+          value={formData?.userName}
+          onChange={(e) => setFormData({...formData, userName: [e.target.value]})}
+        />
+        <input 
+          type="password" 
+          name="password "
+          placeholder="Password" 
+          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white" 
+          value={formData?.password}
+          onChange={(e) => setFormData({...formData, password: [e.target.value]})}
         />
         </div>
         <button type="submit" className="w-full bg-[#d13d5e] hover:bg-[#00b368] text-white px-3 py-2 rounded-md">

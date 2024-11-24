@@ -5,14 +5,16 @@ import BaseUrl from "../../../Api/BaseUrl";
 import verifyicon from '../../assest/images/password.png'
 
 const VerifyOtp = ()=> {
-  const authOtp = localStorage.getItem("varifyotp")
-  const authEmail = localStorage.getItem("email")
+  const authOtp = JSON.parse(localStorage.getItem("verifyotp"))
+  const authEmail = JSON.parse(localStorage.getItem("email"))
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({});
 
       const handleOtp = (e)=> {
         e.preventDefault()
-        if(formData.otp === authOtp) {
+        const otp = parseInt(formData.otp)
+        if(otp === authOtp) {
           navigate('/')
           toast.success('Otp varified')
         }else{
@@ -50,7 +52,7 @@ const VerifyOtp = ()=> {
         <div className="form-group">
         <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white"
           type="number"
-          placeholder="otp"
+          placeholder="otp" 
           onChange={(e) =>
             setFormData({ ...formData, otp: e.target.value })
           }
@@ -59,8 +61,8 @@ const VerifyOtp = ()=> {
         <div className="forgetPass flex justify-center pt-4">
           <button className="btn btn-primary bg-[#d13d5e] p-3 rounded-md text-white w-1/5" type="submit">Verify OTP</button>
        </div>
-        <div className="forgetPass flex justify-between">
-        <p className="text-gray-200">Did't receive the verification OTP? <span onClick={handleResend}>Resend again</span></p>
+        <div className="forgetPass flex justify-center pt-2 items-center">
+        <p className="text-gray-200 text-center">Did't receive the verification OTP? <span onClick={handleResend} className="text-[#d13d5e] hover:underline cursor-pointer">Resend again</span></p>
         {/* <button type="button" className="btn btn-outline-secondary" ><i className="fa-solid fa-rotate-right"></i> </button> */}
        </div>
       </form>

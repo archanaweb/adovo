@@ -28,6 +28,8 @@ const Signup = ()=> {
         const responseData = await contactRes.json();
         if(responseData.responseCode === 200){
             localStorage.setItem('verifyotp', responseData.responseResult.otp)
+            console.log("otp", responseData.responseResult.otp)
+            console.log("email", responseData.responseResult.email)
             localStorage.setItem('email', responseData.responseResult.email)
             toast.success('User register successfully')
             setSuccessfullMsg('Thank you for contact!! Your message have been send sucessfully. Our team contact you soon')
