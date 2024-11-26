@@ -398,6 +398,17 @@ span.cashout-time {
   gap: 10px;
   margin-top: 20px;
 }
+.account-btn p {
+    border: 1px solid #555e6c;
+    padding: 6px 4px;
+    border-radius: 5px;
+}
+.account-btn p a {
+  color: #5381cd;
+  text-decoration: underline;
+  transition: all .2s ease;
+}
+.account-btn p a:hover {color: #6da3fd;}
 /* mobile view css */
 
 @media (max-width: 768px) {
