@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <div className="bg-slate-800">
         <div className="main-banner">
-            <div className="container mx-auto md:flex items-center md:pb-20 md:pt-14 pb-8 pt-6 px-2">
+            <div className="container mx-auto md:flex items-center md:pb-14 md:pt-8 pb-8 pt-6 px-2">
             <div className="md:w-1/2 w-full">
                 <h1 className="md:text-5xl text-3xl font-bold text-white p-2 md:py-6 pb-4"><span className="text-[#d13d5e]">Earn Rewards </span> By <br/>Sharing Your Opinion &<br/> Exploring New Apps</h1>  
                 <p className="text-indigo-300 text-lg font-medium pb-4">Earn money by testing apps, games and taking surveys. Earn up to <span className="text-white">$50.40 </span>per offer 494 available offers now. Get started today!</p>
