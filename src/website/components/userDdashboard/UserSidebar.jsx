@@ -27,8 +27,8 @@ const UserSidebar = ()=> {
                 <ul>
                     <li onClick={()=> handleMenuClick('earn')} className={activeMenu === 'earn' ? 'active' : ''}><Link to='/dashboard'><button><span className="menu-icon"><RiMoneyDollarCircleFill /></span>Earn</button></Link></li>
                     <li onClick={()=> handleMenuClick('offers')} className={activeMenu === 'offers' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><MdVideogameAsset /></span>Offers</button></Link></li>
-                    <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></li>
-                    <li onClick={()=> handleMenuClick('cashout')} className={activeMenu === 'cashout' ? 'active' : ''}><button> <span className="menu-icon"><PiHandWithdrawFill /></span>Cashout</button></li>
+                    <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></Link></li>
+                    <li onClick={()=> handleMenuClick('cashout')} className={activeMenu === 'cashout' ? 'active' : ''}><Link to='/cashout'><button> <span className="menu-icon"><PiHandWithdrawFill /></span>Cashout</button></Link></li>
                     <li onClick={()=> handleMenuClick('leaderboard')} className={activeMenu === 'leaderboard' ? 'active' : ''}><button> <span className="menu-icon"><FaAward /></span>Leaderboard</button></li>
                     <li onClick={()=> handleMenuClick('rewards')} className={activeMenu === 'rewards' ? 'active' : ''}><button> <span className="menu-icon"><FaAward /></span>Rewards</button></li>
                     <li onClick={()=> handleMenuClick('affiliates')} className={activeMenu === 'affiliates' ? 'active' : ''}><button> <span className="menu-icon"><FaUsers /></span>Affiliates</button></li>

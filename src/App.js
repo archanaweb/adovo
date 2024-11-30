@@ -17,6 +17,8 @@ import UserDashboard from './website/pages/userDashboard/dashboard/index.jsx';
 import ForgotPassword from './website/pages/passwordForget/index.jsx';
 import ResetPassword from './website/pages/passwordForget/ResetPassword.jsx';
 import AllOffers from './website/pages/userDashboard/offers/AllOffer.jsx';
+import UserProfile from './website/pages/userDashboard/profile/index.jsx';
+import Cashout from './website/pages/userDashboard/cashout/index.jsx';
 
 function App() {
   const authUser = JSON.parse(localStorage.getItem('opinionUser'))
@@ -34,6 +36,8 @@ function App() {
           <Route path="/resetpassword" element={<ResetPassword />}> </Route>
           <Route path="/dashboard" element={<UserDashboard/>}> </Route>
           <Route path="/alloffers" element={<AllOffers/>}> </Route>
+          <Route path="/userprofile" element={<UserProfile/>}> </Route>
+          <Route path="/cashout" element={<Cashout/>}> </Route>
         </Routes>
         {!authUser && <Footer/>}
     </div>

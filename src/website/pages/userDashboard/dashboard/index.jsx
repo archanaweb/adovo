@@ -17,11 +17,17 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Navigation } from 'swiper/modules';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import OfferModal from '../../../components/userDdashboard/OfferModal';
 const UserDashboard = () => {
     const navigate = useNavigate()
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
+    const [isOpenModal, setIsOpenModal] = useState(false)
+    const handleClick = (e)=> {
+        setIsOpenModal(!isOpenModal)
+    }
+
     useEffect(()=> {
        if(!auth){
         navigate('/')
@@ -32,47 +38,47 @@ const UserDashboard = () => {
             <DashboardHeader />
             <div className="main flex">
                 <UserSidebar />
-                <div className='dashboard-wrapper p-6'>
+                <div className='dashboard-wrapper MD:p-6 p-4'>
                 {/* <p className="text-xl text-white text-left">dashboard</p> */}
 
                 <div className='total-earning mb-6'>
-                <h5 className='text-2xl text-white text-left pb-6 font-bold'>Earnings</h5>
-                    <div className='flex gap-6'>
-                        <div className='earning-wrapper flex justify-between gap-4 flex-col w-1/2'>
+                <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Earnings</h5>
+                    <div className='flex gap-6 md:flex-row flex-col'>
+                        <div className='earning-wrapper flex justify-between gap-4 flex-col md:w-1/2 w-full'>
                             <div className='flex gap-4 justify-between'>
-                                <div className='item flex justify-start items-center gap-4'>
+                                <div className='item flex justify-start items-center md:gap-4 gap-2'>
                                     <div className='icon'><IoWallet /></div>
                                     <div className='content text-gray-200 text-left'>
-                                        <h5 className='text-2xl font-bold text-white'>$0.05</h5>
+                                        <h5 className='md:text-2xl text-xl font-bold text-white'>$0.05</h5>
                                         <p className='text-sm text-gray-300'>Total Earnings</p>
                                     </div>
                                 </div>
-                                <div className='item flex justify-start items-center gap-4'>
+                                <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                     <div className='icon'><MdFactCheck /></div>
                                     <div className='content text-gray-200 text-left'>
-                                        <h5 className='text-2xl font-bold text-white'>0</h5>
+                                        <h5 className='md:text-2xl text-xl font-bold text-white'>0</h5>
                                         <p className='text-sm text-gray-300'>Completed Offers</p>
                                     </div>
                                 </div>
                             </div>
                             <div className='flex gap-4'>
-                            <div className='item flex justify-start items-center gap-4'>
+                            <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                 <div className='icon'><FaUserFriends /></div>
                                 <div className='content text-gray-200 text-left'>
-                                    <h5 className='text-2xl font-bold text-white'>0</h5>
+                                    <h5 className='md:text-2xl text-xl font-bold text-white'>0</h5>
                                     <p className='text-sm text-gray-300'>Users referred</p>
                                 </div>
                             </div>
-                            <div className='item flex justify-start items-center gap-4'>
+                            <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                 <div className='icon'><FaUserFriends /></div>
                                 <div className='content text-gray-200 text-left'>
-                                    <h5 className='text-2xl font-bold text-white'>0</h5>
+                                    <h5 className='md:text-2xl text-xl font-bold text-white'>0</h5>
                                     <p className='text-sm text-gray-300'>Referred earning</p>
                                 </div>
                             </div>
                             </div>
                         </div>
-                        <div className='w-1/2'>
+                        <div className='md:w-1/2 w-full'>
                             <div className='refer-user bg-white rounded-md p-4 text-left'>
                                 <img src={referimg} alt='referimg' />
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
@@ -83,14 +89,44 @@ const UserDashboard = () => {
                     </div>
                 </div>
               
-                <div className='offers-box mb-12'>
-                    <h5 className='text-2xl text-white text-left pb-6 font-bold'>Featured Offers</h5>
+                <div className='offers-box md:mb-12 mb-6'>
+                    <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Offers</h5>
                     <Swiper 
+                        breakpoints={{
+                            576: {
+                            width: 576,
+                            slidesPerView: 4,
+                            },
+                            768: {
+                            width: 768,
+                            slidesPerView: 4,
+                            },
+                        }}
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item sb' onClick={handleClick}>
+                            <div className='offer-hover'>
+                                <div className='offer-start-icon'>
+                                    <IoPlay />       
+                                </div>
+                                <p>Start Offer</p>
+                            </div>
+                            <img src={gameimg} alt='offerimg' />
+                            <div className='offer-content flex justify-between items-end'>
+                                <div className='text-left'>
+                                <p>Battle Night</p>
+                                <span>game</span>
+                                </div>
+                                <p className='offer-price'>
+                                    $32.14
+                                </p>
+                            </div>
+                        </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -110,7 +146,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -130,7 +166,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -150,7 +186,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -170,7 +206,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -190,7 +226,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -210,7 +246,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -230,7 +266,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -250,7 +286,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -270,7 +306,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -290,27 +326,7 @@ const UserDashboard = () => {
                         </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className='item'>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -333,9 +349,9 @@ const UserDashboard = () => {
                     
                 </div>
 
-                <div className='survey-partner-box mb-12'>
-                <h5 className='text-2xl text-white text-left pb-6 font-bold'>Offer Partners</h5>
-                    <div className='spItem-wrapper flex justify-between gap-4'>
+                <div className='survey-partner-box md:mb-12 mb-6'>
+                <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
+                    <div className='spItem-wrapper'>
                         <div className='spItem flex justify-between items-center gap-4 flex-col'>
                             <div>
                                 <img src={partnerimg} alt='partnerimg'/>
@@ -387,9 +403,9 @@ const UserDashboard = () => {
                     </div>
                 </div>
 
-                <div className='survey-partner-box mb-12'>
-                <h5 className='text-2xl text-white text-left pb-6 font-bold'>Survey Partners</h5>
-                    <div className='spItem-wrapper flex justify-between gap-4'>
+                <div className='survey-partner-box md:mb-12 mb-6'>
+                <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Survey Partners</h5>
+                    <div className='spItem-wrapper'>
                         <div className='spItem flex justify-between items-center gap-4 flex-col'>
                             <div>
                                 <img src={partnerimg} alt='partnerimg'/>
@@ -443,6 +459,7 @@ const UserDashboard = () => {
 
                 </div>
             </div>
+            <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
         </>
     )
 }
