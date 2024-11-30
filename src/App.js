@@ -14,6 +14,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import VerifyOtp from './website/pages/varifyOtp/index.jsx';
 import { useEffect } from 'react';
 import UserDashboard from './website/pages/userDashboard/dashboard/index.jsx';
+import ForgotPassword from './website/pages/passwordForget/index.jsx';
+import ResetPassword from './website/pages/passwordForget/ResetPassword.jsx';
+import AllOffers from './website/pages/userDashboard/offers/AllOffer.jsx';
 
 function App() {
   const authUser = JSON.parse(localStorage.getItem('opinionUser'))
@@ -27,7 +30,10 @@ function App() {
           <Route path="/" element={<Home />} /> 
           <Route path="/signup" element={<Signup />}> </Route>
           <Route path="/verifyotp" element={<VerifyOtp />}> </Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}> </Route>
+          <Route path="/resetpassword" element={<ResetPassword />}> </Route>
           <Route path="/dashboard" element={<UserDashboard/>}> </Route>
+          <Route path="/alloffers" element={<AllOffers/>}> </Route>
         </Routes>
         {!authUser && <Footer/>}
     </div>

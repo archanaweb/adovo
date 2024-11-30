@@ -175,9 +175,9 @@ font-size: 18px !important;
 
 
 .items-wrapper .item {
-    height: 220px;
+    height: 198px;
     overflow: hidden;
-    width: 152px;
+    width: 146px;
     border: 1px solid #686868;
     border-radius: 14px;
     position: relative;
@@ -204,7 +204,6 @@ font-size: 18px !important;
     position: absolute;
     height: 100%;
     width: 100%;
-    background: #242424a3;
     position: absolute;
     bottom: 0; /* Hidden below the item initially */
     left: 0;
@@ -217,6 +216,7 @@ font-size: 18px !important;
     align-items: center;
     flex-direction: column;
     gap: 4px;
+    background: linear-gradient(86deg, rgb(0 0 0 / 71%) -16.9%, rgb(0 0 0 / 69%) 119.9%);
 }
 .offer-hover p {
     font-weight: 600;
@@ -315,11 +315,12 @@ p.offer-price {
 
 .earning-wrapper .item {
     background: #3b354e;
-    padding: 8px 15px;
+    padding: 16px;
     border-radius: 7px;
     color: white;
     background: #1c273e;
-    width: 232px;
+    background: #192336;
+    width: 100%;
 }
 .earning-wrapper .item .icon {background: #e5e5e5;width: 45px;height: 45px;border-radius: 50%;display: flex;justify-content: center;align-items: center;
     /* background-color: #505050; */
@@ -332,7 +333,7 @@ p.offer-price {
     color: #d13d5e;
 }
 .user-balance p {
-    color: #ffca71;
+    color: #24a947;
     /* font-weight: 600; */
     font-size: 18px;
     border: 1px solid #646464;
@@ -342,4 +343,34 @@ p.offer-price {
 
 .user-balance p span {
     margin-left: 10px;
+}
+.refer-user{
+    height: 190px;
+    overflow: hidden;
+    background: linear-gradient(86deg, rgb(12 20 69 / 50%) -16.9%, rgb(71 30 84 / 50%) 119.9%);
+    border: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid #242e40;
+}
+.refer-user img{
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: .9;
+}
+.refer-user p {color: #c3c3c3;font-size: 15px;}
+.refer-user input {
+    background: transparent;
+    border: 1px solid #525252;
+    padding: 6px 7px;
+    border-radius: 4px;
+    color: #a1a1a1;
+    width: 65%;
+    margin-top: 10px;
 }

@@ -6,7 +6,7 @@ import { FaAward } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
 import { useState } from "react";
 import { TbLogout } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 const UserSidebar = ()=> {
     const [activeMenu, setActiveMenu] = useState('earn')
@@ -25,8 +25,8 @@ const UserSidebar = ()=> {
             <p className="text-ls text-gray-400 text-left">Menus</p>
             <div className="menu-items">
                 <ul>
-                    <li onClick={()=> handleMenuClick('earn')} className={activeMenu === 'earn' ? 'active' : ''}><button><span className="menu-icon"><RiMoneyDollarCircleFill /></span>Earn</button></li>
-                    <li onClick={()=> handleMenuClick('offers')} className={activeMenu === 'offers' ? 'active' : ''}><button> <span className="menu-icon"><MdVideogameAsset /></span>Offers</button></li>
+                    <li onClick={()=> handleMenuClick('earn')} className={activeMenu === 'earn' ? 'active' : ''}><Link to='/dashboard'><button><span className="menu-icon"><RiMoneyDollarCircleFill /></span>Earn</button></Link></li>
+                    <li onClick={()=> handleMenuClick('offers')} className={activeMenu === 'offers' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><MdVideogameAsset /></span>Offers</button></Link></li>
                     <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></li>
                     <li onClick={()=> handleMenuClick('cashout')} className={activeMenu === 'cashout' ? 'active' : ''}><button> <span className="menu-icon"><PiHandWithdrawFill /></span>Cashout</button></li>
                     <li onClick={()=> handleMenuClick('leaderboard')} className={activeMenu === 'leaderboard' ? 'active' : ''}><button> <span className="menu-icon"><FaAward /></span>Leaderboard</button></li>

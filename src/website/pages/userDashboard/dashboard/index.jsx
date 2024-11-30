@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoWallet } from "react-icons/io5";
 import { MdFactCheck } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
+import referimg from '../../../assest/images/referalimg2.png'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -35,33 +36,48 @@ const UserDashboard = () => {
                 {/* <p className="text-xl text-white text-left">dashboard</p> */}
 
                 <div className='total-earning mb-6'>
-                    <div className='earning-wrapper flex justify-start items-center gap-4'>
-                        <div className='item flex justify-start items-center gap-4'>
-                            <div className='icon'><IoWallet /></div>
-                            <div className='content text-gray-200 text-left'>
-                                <h5 className='text-2xl font-bold text-white'>$0.05</h5>
-                                <p className='text-sm text-gray-300'>Total Earnings</p>
+                <h5 className='text-2xl text-white text-left pb-6 font-bold'>Earnings</h5>
+                    <div className='flex gap-6'>
+                        <div className='earning-wrapper flex justify-between gap-4 flex-col w-1/2'>
+                            <div className='flex gap-4 justify-between'>
+                                <div className='item flex justify-start items-center gap-4'>
+                                    <div className='icon'><IoWallet /></div>
+                                    <div className='content text-gray-200 text-left'>
+                                        <h5 className='text-2xl font-bold text-white'>$0.05</h5>
+                                        <p className='text-sm text-gray-300'>Total Earnings</p>
+                                    </div>
+                                </div>
+                                <div className='item flex justify-start items-center gap-4'>
+                                    <div className='icon'><MdFactCheck /></div>
+                                    <div className='content text-gray-200 text-left'>
+                                        <h5 className='text-2xl font-bold text-white'>0</h5>
+                                        <p className='text-sm text-gray-300'>Completed Offers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex gap-4'>
+                            <div className='item flex justify-start items-center gap-4'>
+                                <div className='icon'><FaUserFriends /></div>
+                                <div className='content text-gray-200 text-left'>
+                                    <h5 className='text-2xl font-bold text-white'>0</h5>
+                                    <p className='text-sm text-gray-300'>Users referred</p>
+                                </div>
+                            </div>
+                            <div className='item flex justify-start items-center gap-4'>
+                                <div className='icon'><FaUserFriends /></div>
+                                <div className='content text-gray-200 text-left'>
+                                    <h5 className='text-2xl font-bold text-white'>0</h5>
+                                    <p className='text-sm text-gray-300'>Referred earning</p>
+                                </div>
+                            </div>
                             </div>
                         </div>
-                        <div className='item flex justify-start items-center gap-4'>
-                            <div className='icon'><MdFactCheck /></div>
-                            <div className='content text-gray-200 text-left'>
-                                <h5 className='text-2xl font-bold text-white'>0</h5>
-                                <p className='text-sm text-gray-300'>Completed Offers</p>
-                            </div>
-                        </div>
-                        <div className='item flex justify-start items-center gap-4'>
-                            <div className='icon'><FaUserFriends /></div>
-                            <div className='content text-gray-200 text-left'>
-                                <h5 className='text-2xl font-bold text-white'>0</h5>
-                                <p className='text-sm text-gray-300'>Users referred</p>
-                            </div>
-                        </div>
-                        <div className='item flex justify-start items-center gap-4'>
-                            <div className='icon'><FaUserFriends /></div>
-                            <div className='content text-gray-200 text-left'>
-                                <h5 className='text-2xl font-bold text-white'>0</h5>
-                                <p className='text-sm text-gray-300'>Users referred</p>
+                        <div className='w-1/2'>
+                            <div className='refer-user bg-white rounded-md p-4 text-left'>
+                                <img src={referimg} alt='referimg' />
+                                <h5 className='text-xl text-gray-100'>Your referral link</h5>
+                                <p className='text-gray-200'>Share your referral link to your friends, and <br />    get 10 points.</p>
+                                <input value='https://opiniontrue.com/r/37b8562dd17d4f2f34c8' readOnly />
                             </div>
                         </div>
                     </div>

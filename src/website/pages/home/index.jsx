@@ -89,7 +89,7 @@ const Home = () => {
       <div className="flex justify-between items-center pt-1">
         <div className="flex justify-start items-center gap-1"> <input type="checkbox" id="rembPass" name="rembPass" />
           <label for="rembPass" className="text-gray-400">Remember me</label></div>
-        <Link to='/' className="text-gray-400">Forgot password?</Link>
+        <Link to='/forgotpassword' className="text-gray-400">Forgot password?</Link>
       </div>
       <div className="my-4 text-center text-gray-300 text-sm flex justify-between items-center gap-2"><div className="to-right-line"></div><span>OR SIGN IN WITH</span><div className="to-left-line"></div></div>
       <div className="flex gap-2 justify-center">

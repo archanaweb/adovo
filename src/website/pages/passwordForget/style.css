@@ -1,0 +1,9 @@
+.icon-bg {
+    background: #e2ecf4;
+    width: 95px;
+    height: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
