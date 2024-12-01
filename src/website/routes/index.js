@@ -15,7 +15,7 @@ import Footer from "../components/Footer"
 
 const Layout = () => {
     const location = useLocation()
-    const excludedPaths = ['/dashboard', '/alloffers', '/cashout', '/profile'];
+    const excludedPaths = ['/dashboard', '/alloffers', '/cashout', '/userprofile'];
     const isExcluded = excludedPaths.includes(location.pathname);
     return (
         <>
