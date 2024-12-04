@@ -12,10 +12,13 @@ import Protected from "./protected"
 import { isAuthenticated } from "./helpers"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import LeaderBoard from "../pages/userDashboard/leaderboard"
+import Rewards from "../pages/userDashboard/rewards"
+import Affiliates from "../pages/userDashboard/affiliates"
 
 const Layout = () => {
     const location = useLocation()
-    const excludedPaths = ['/dashboard', '/alloffers', '/cashout', '/userprofile'];
+    const excludedPaths = ['/dashboard', '/alloffers', '/cashout', '/userprofile', '/leaderboard', '/rewards','/affiliates'];
     const isExcluded = excludedPaths.includes(location.pathname);
     return (
         <>
@@ -40,6 +43,9 @@ const router = createBrowserRouter(
                 <Route path="alloffers" element={<AllOffers/>}> </Route>
                 <Route path="userprofile" element={<UserProfile/>}> </Route>
                 <Route path="cashout" element={<Cashout/>}> </Route>
+                <Route path="leaderboard" element={<LeaderBoard/>}> </Route>
+                <Route path="rewards" element={<Rewards/>}> </Route>
+                <Route path="affiliates" element={<Affiliates/>}> </Route>
             </Route>
             <Route path="*" element={<h1 className="text-3xl">Page not found</h1>} />
         </Route>
