@@ -393,7 +393,7 @@ p.offer-price {
 }
 /* MODAL CSS */
 
-.offermodal.modal {
+.modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -405,9 +405,9 @@ p.offer-price {
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
     z-index: 999;
-    overflow: scroll;
+    overflow: auto;
 }
-.offermodal .modal-content {
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -418,7 +418,7 @@ p.offer-price {
     border-radius: 0.5rem;
     width: 60%;
 }
-.offermodal .close-button {
+.close-button {
     float: right;
     width: 1.5rem;
     line-height: 1.5rem;
@@ -431,11 +431,11 @@ p.offer-price {
     border: 1px solid #5e5e5e;
     transition: all .2s ease;
 }
-.offermodal .close-button:hover {
+.close-button:hover {
     background-color: transparent;
     color: #fff;
 }
-.offermodal.modal.show-modal {
+.modal.show-modal {
     opacity: 1;
     visibility: visible;
     transform: scale(1.0);
@@ -453,8 +453,8 @@ p.offer-price {
     .survey-partner-box{
         padding: 15PX;
     }
-    .offermodal .modal-content {width: 90%;}
-        .modal-content img {
+    .modal-content {width: 90%;}
+    .modal-content img {
             width: 100%;
             height: 234px;
             object-fit: cover;
@@ -462,7 +462,7 @@ p.offer-price {
     
 }
 @media (max-width: 768px) {
-    .offermodal .modal-content {
+    .modal-content {
         width: 100%;
         top: 0;
         left: 0;

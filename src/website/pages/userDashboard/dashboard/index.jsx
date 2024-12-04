@@ -40,7 +40,6 @@ const UserDashboard = () => {
                 <UserSidebar />
                 <div className='dashboard-wrapper MD:p-6 p-4'>
                 {/* <p className="text-xl text-white text-left">dashboard</p> */}
-
                 <div className='total-earning mb-6'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Earnings</h5>
                     <div className='flex gap-6 md:flex-row flex-col'>
@@ -106,7 +105,7 @@ const UserDashboard = () => {
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
                 <SwiperSlide>
-                <div className='item sb' onClick={handleClick}>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />       
