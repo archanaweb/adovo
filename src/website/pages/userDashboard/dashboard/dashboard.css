@@ -442,6 +442,10 @@ p.offer-price {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+.chnagepass-modal.modal-content {
+    width: 40%;
+}
+
 @media (max-width: 1200px) {
     .user-sidebar {
         display: none;
@@ -468,6 +472,9 @@ p.offer-price {
         left: 0;
         transform: translate(0);
         padding: .5rem;
+    }
+    .chnagepass-modal.modal-content {
+        width: 100%;
     }
    .modal-content h5 {
         font-size: 21px;

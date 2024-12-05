@@ -1,7 +1,6 @@
 
-import { Link } from 'react-router-dom'
-
 const ChangePasswordModal = ({isOpenModal,setIsOpenModal})=> {
+    const auth = JSON.parse(localStorage.getItem('opinionUser'))
 
     const haldleCloseModal = (e)=> {
         setIsOpenModal(false)
@@ -9,37 +8,28 @@ const ChangePasswordModal = ({isOpenModal,setIsOpenModal})=> {
     return (
         <>
         <div className={`offermodal modal ${isOpenModal ? 'show-modal' : ''}`}>
-            <div className="modal-content">
+            <div className="chnagepass-modal modal-content">
             <div className='flex justify-between items-center border-b border-[#28354c] pb-3'>
-                <h5 className='text-xl text-white'>Change Password</h5>
+                <h5 className='text-2xl text-white'>Change Password</h5>
                     <span className="close-button" onClick={haldleCloseModal}>×</span>
                 </div>
-        <div className="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
-          <h2 className="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Change Password
-          </h2>
+        <div className="w-full p-2">
           <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
-              <div>
-                  <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                  <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+              <div className='text-left'>
+                  <label for="password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">Password</label>
+                  <input type="password" name="password" id="password" className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="" />
               </div>
-              <div>
-                  <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+              <div className='text-left'>
+                  <label for="password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">New Password</label>
+                  <input type="password" name="newPassword" id="newPassword" placeholder="••••••••" className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
               </div>
-              <div>
-                  <label for="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                  <input type="confirm-password" name="confirm-password" id="confirm-password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
+              <div className='text-left'>
+                  <label for="confirm-password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">Confirm password</label>
+                  <input type="confirm-password" name="confirm_password" id="confirm_password" placeholder="••••••••" className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
               </div>
-              <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input id="newsletter" aria-describedby="newsletter" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label for="newsletter" className="font-light text-gray-500 dark:text-gray-300">I accept the <Link className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</Link></label>
-                  </div>
-              </div>
-              <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Reset passwod</button>
+              <div className="forgetPass flex justify-center pt-4">
+          <button className="btn btn-primary bg-[#d13d5e] p-3 rounded-md text-white w-full" type="submit">Change Password </button>
+       </div>
           </form>
       </div>
             </div>
