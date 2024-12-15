@@ -7,6 +7,7 @@
     width: 100%;
     min-height: 100vh;
     margin-top: 62px;
+    position: relative;
 }
 header.user-header {
     position: fixed;
@@ -113,15 +114,26 @@ header.user-header {
     color: #ef476c;
     /* color: #544224; */
 }
+.userProfile img {
+    width: 40px;
+    height: 40px;
+    background: #4e4e4e;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    object-fit: cover;
+}
 
 .userProfile h5 {
     font-weight: 600;
-    color: #787878;
+    color: #9ea7bb;
     font-size: 17px;
 }
 
 .userProfile span {
-    color: #646464;
+    color: #858585;
     font-size: 14px;
     font-weight: 600;
 }
@@ -147,12 +159,17 @@ header.user-header {
 
 .menu-items ul li {
     text-align: left;
-    padding: 10px 11px;
+    /* padding: 10px 11px; */
     background: transparent;
     margin-bottom: 15px;
     border-radius: 4px;
     transition: all .2s ease;
     cursor: pointer;
+}
+.menu-items ul li a {
+    padding: 10px 11px;
+    display: inline-block;
+    width: 100%;
 }
 .menu-items ul li.active {
     background: linear-gradient(86deg, rgb(12 20 69 / 50%) -16.9%, rgb(71 30 84 / 50%) 119.9%);
@@ -171,6 +188,13 @@ header.user-header {
     gap: 12px;
 }
 .menu-items ul li button svg{font-size: 21px;}
+.footer-menu{display: none;}
+.footer-menu .menu-items {padding-top: 0; }
+.footer-menu .menu-items ul {display: flex; justify-content: space-around; align-items: center; gap: 2px;}
+.footer-menu .menu-items li{margin-bottom: 0;}
+.footer-menu .menu-items li a{padding: 10px 20px;}
+.footer-menu .menu-items button {display: flex; flex-direction: column; gap: 2px; font-size: 13px;}
+.footer-menu .menu-items button span{font-size: 25px;}
 
 /* main content css */
 
@@ -248,6 +272,15 @@ font-size: 18px !important;
 }
 .offers-box {
     position: relative;
+}
+.offers-box .items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+}
+.offers-box .items-wrapper .item{
+    width: auto;
 }
 .offer-hover {
     position: absolute;
@@ -515,6 +548,12 @@ p.offer-price {
     
 }
 @media (max-width: 768px) {
+    .footer-menu {display: block;position: fixed;
+        bottom: 0;
+        left: 0;
+        border-top: 1px solid #182030;
+        z-index: 999;
+        width: 100%;}
     .modal-content {
         width: 100%;
         top: 0;

@@ -15,6 +15,9 @@ import Footer from "../components/Footer"
 import LeaderBoard from "../pages/userDashboard/leaderboard"
 import Rewards from "../pages/userDashboard/rewards"
 import Affiliates from "../pages/userDashboard/affiliates"
+import DashboardHeader from "../components/userDdashboard/DashboardHeader"
+import UserSidebar from "../components/userDdashboard/UserSidebar"
+import FooterMenu from "../components/userDdashboard/FooterMenu"
 
 const Layout = () => {
     const location = useLocation()
@@ -26,8 +29,25 @@ const Layout = () => {
                 <Outlet /> {/* This renders the nested route content */}
             {!isExcluded && <Footer />}
         </>
-    );
-    
+    );  
+}
+
+const LayoutDashboard = () => {
+    // const location = useLocation()
+    // const excludedPaths = ['/dashboard', '/alloffers', '/cashout', '/userprofile', '/leaderboard', '/rewards','/affiliates'];
+    // const isExcluded = excludedPaths.includes(location.pathname);
+    return (
+        <>
+           <DashboardHeader />
+            <div className="main flex">
+                <UserSidebar />
+                <div className='dashboard-wrapper MD:p-6 p-4'>
+                    <Outlet />
+            <FooterMenu />
+                </div>
+            </div>
+        </>
+    );  
 }
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -38,6 +58,9 @@ const router = createBrowserRouter(
             <Route path="verifyotp" element={<VerifyOtp />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="forgotpassword" element={<ForgotPassword />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="resetpassword" element={<ResetPassword />} loader={async () => await isAuthenticated()}> </Route>
+            <Route path="*" element={<h1 className="text-3xl">Page not found</h1>} />
+            </Route>
+            <Route path="/" element={<LayoutDashboard />}>
             <Route element={<Protected />}>
                 <Route path="dashboard" element={<UserDashboard/>}> </Route>
                 <Route path="alloffers" element={<AllOffers/>}> </Route>
@@ -47,8 +70,8 @@ const router = createBrowserRouter(
                 <Route path="rewards" element={<Rewards/>}> </Route>
                 <Route path="affiliates" element={<Affiliates/>}> </Route>
             </Route>
-            <Route path="*" element={<h1 className="text-3xl">Page not found</h1>} />
-        </Route>
+            </Route>
+        
         </>
     )
 )

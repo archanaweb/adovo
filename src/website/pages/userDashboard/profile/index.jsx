@@ -60,10 +60,6 @@ const UserProfile = ()=> {
     },[])
     return (
         <>
-        <DashboardHeader />
-         <div className="main flex">
-         <UserSidebar />
-         <div className='dashboard-wrapper p-6'>
             <div className="profilesec">
                 <div className="secTop flex justify-between items-center"> 
                 <h5 className='text-2xl text-white text-left pb-6 font-bold'>My Profile</h5>
@@ -90,8 +86,6 @@ const UserProfile = ()=> {
                     </div>
                 </div>
             </div>
-         </div>
-         </div>
          <ChangePasswordModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
          <UploadProfileModal isOpenModal={isOpenUploadModal} setIsOpenModal={setIsOpenUploadModal}/>
         </>
