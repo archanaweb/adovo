@@ -20,18 +20,38 @@ import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OfferModal from '../../../components/userDdashboard/OfferModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
+import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice';
 const UserDashboard = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
+    const totalReferal = useSelector((state)=> state?.referal?.totalRef)
+    const totalPoint= useSelector((state)=> state?.wallet?.totalPoint)
+    const totalAmount= useSelector((state)=> state?.wallet?.totalAmount)
     const [isOpenModal, setIsOpenModal] = useState(false)
+    const [referralCode, setReferralCode] = useState(false)
     const handleClick = (e)=> {
         setIsOpenModal(!isOpenModal)
+    }
+    const generateCode = async()=> {
+        const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
+        const resData = res.payload;
+        if(resData?.responseCode === 200){
+            setReferralCode(resData?.referralCode)
+        }
     }
 
     useEffect(()=> {
        if(!auth){
         navigate('/')
        }
+       generateCode()
+       dispatch(fetchTotalReferl(auth.id))
+       dispatch(fetchTotalPoint(auth.id))
+       dispatch(fetchTotalAmount(auth.id))
+       console.log('Dispatched fetchTotalAmount action', totalAmount);
     },[])
     return (
         <>
@@ -48,7 +68,7 @@ const UserDashboard = () => {
                                 <div className='item flex justify-start items-center md:gap-4 gap-2'>
                                     <div className='icon'><IoWallet /></div>
                                     <div className='content text-gray-200 text-left'>
-                                        <h5 className='md:text-2xl text-xl font-bold text-white'>$0.05</h5>
+                                        <h5 className='md:text-2xl text-xl font-bold text-white'>${totalAmount}</h5>
                                         <p className='text-sm text-gray-300'>Total Earnings</p>
                                     </div>
                                 </div>
@@ -64,7 +84,7 @@ const UserDashboard = () => {
                             <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                 <div className='icon'><FaUserFriends /></div>
                                 <div className='content text-gray-200 text-left'>
-                                    <h5 className='md:text-2xl text-xl font-bold text-white'>0</h5>
+                                    <h5 className='md:text-2xl text-xl font-bold text-white'>{totalReferal}</h5>
                                     <p className='text-sm text-gray-300'>Users referred</p>
                                 </div>
                             </div>
@@ -81,8 +101,8 @@ const UserDashboard = () => {
                             <div className='refer-user bg-white rounded-md p-4 text-left'>
                                 <img src={referimg} alt='referimg' />
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
-                                <p className='text-gray-200'>Share your referral link to your friends, and <br />    get 10 points.</p>
-                                <input value='https://opiniontrue.com/r/37b8562dd17d4f2f34c8' readOnly />
+                                <p className='text-gray-200'>Share your referral link to your friends, and <br />    get {totalPoint} points.</p>
+                                <input value={`https://opiniontrue.com/${referralCode}`} readOnly />
                             </div>
                         </div>
                     </div>

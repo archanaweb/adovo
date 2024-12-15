@@ -3,8 +3,20 @@ import logo from '../../assest/images/freecash-logo.png';
 import { GoBellFill } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import { fetchTotalAmount } from '../../../redux/user/walletSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const DashboardHeader = ()=> {
+    const dispatch = useDispatch()
+    const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
+    const totalAmount= useSelector((state)=> state?.wallet?.totalAmount)
+
+    useEffect(()=> {
+           dispatch(fetchTotalAmount(auth.id))
+           console.log('Dispatched fetchTotalAmount action', totalAmount);
+        },[])
+
     return (
         <>
         <header className="user-header bg-gray-900 md:py-2 p-2">
@@ -15,7 +27,7 @@ const DashboardHeader = ()=> {
         </div>
         <div className='header-right'>
             <div className='user-balance'>
-                <p>Balance:<span>$0.05</span></p>
+                <p>Balance:<span>${totalAmount}</span></p>
             </div>
             <button className='iconbtn'><GoBellFill /></button>
             <Link to='/userprofile'>
