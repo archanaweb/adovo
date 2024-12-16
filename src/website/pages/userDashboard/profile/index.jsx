@@ -61,16 +61,22 @@ const UserProfile = ()=> {
     return (
         <>
             <div className="profilesec">
-                <div className="secTop flex justify-between items-center"> 
-                <h5 className='text-2xl text-white text-left pb-6 font-bold'>My Profile</h5>
-                    <div className="flex gap-3">
+                <div className="secTop md:flex justify-between items-center md:pb-6 pb-2"> 
+                <h5 className='text-2xl text-white text-left font-bold'>My Profile</h5>
+                    <div className="flex justify-end gap-3 mb-2 mb:mb-0">
                         {!isEditable ? <button className="text-gray-300 border rounded-md p-1 px-3" onClick={()=> setIsEditable(true)}>Edit</button> : 
-                        <button className="text-gray-300 border rounded-md p-1 px-3" onClick={handleUpdate}>Save</button>}
+                        <button className="text-gray-300 border rounded-md p-1 px-3 " onClick={handleUpdate}>Save</button>}
                         <button onClick={handleClick} className="text-gray-300 border rounded-md p-1 px-3">Change Password</button>
                      </div>
                      </div>
-                <div className="userprofile py-8 px-8 mx-auto bg-slate-700 rounded shadow text-left flex justify-between items-start">
-                    <div className="flex gap-4">
+                <div className="userprofile md:py-4 md:px-4 py-2 px-2 bg-slate-700 rounded shadow text-left ">
+                {/* <div className="secTop flex justify-end gap-3 mb-2 mb:mb-0">
+                        {!isEditable ? <button className="text-gray-300 border rounded-md p-1 px-3" onClick={()=> setIsEditable(true)}>Edit</button> : 
+                        <button className="text-gray-300 border rounded-md p-1 px-3 " onClick={handleUpdate}>Save</button>}
+                        <button onClick={handleClick} className="text-gray-300 border rounded-md p-1 px-3">Change Password</button>
+                     </div> */}
+                     <div className="flex justify-between items-start">
+                    <div className="flex gap-4 md:flex-row flex-col sm:w-full">
                         <div className="profile-img flex items-center justify-center flex-col">
                            {userDetails?.image ? <img src={userDetails?.image} alt="userImg" width={100}/> :
                             <div className="" onClick={handleUploadModal}><MdPhotoCameraBack />
@@ -83,6 +89,7 @@ const UserProfile = ()=> {
                         {!isEditable ? <p>{userDetails?.email}</p> : <input className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2" type="email" name="email" value={formData?.email} onChange={(e)=>handleInput(e)} placeholder="Email address" />}
                         <span className="text-gray-300 text-xs">{userDetails?.education}</span>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
