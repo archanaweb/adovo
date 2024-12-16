@@ -444,14 +444,14 @@ p.offer-price {
 }
 .refer-user img{
     width: auto;
-    height: 100%;
+    height: 90%;
     object-fit: cover;
     position: absolute;
     right: 0;
     top: 0;
     opacity: .9;
 }
-.refer-user p {color: #c3c3c3;font-size: 15px;}
+.refer-user p {color: #c3c3c3;font-size: 15px; width: 70%;}
 .refer-user input {
     background: transparent;
     border: 1px solid #525252;
@@ -548,6 +548,9 @@ p.offer-price {
     
 }
 @media (max-width: 768px) {
+    .refer-user p{width: 76%;}
+    .refer-user img{height: 65%;}
+    .refer-user input{width: 95%; margin-top: 25px;}
     .footer-menu {display: block;position: fixed;
         bottom: 0;
         left: 0;

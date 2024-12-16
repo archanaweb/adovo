@@ -53,7 +53,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
        <>
         <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} /> 
+            <Route index element={<Home />} loader={async () => await isAuthenticated()} /> 
             <Route path="signup" element={<Signup />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="verifyotp" element={<VerifyOtp />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="forgotpassword" element={<ForgotPassword />} loader={async () => await isAuthenticated()}> </Route>

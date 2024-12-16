@@ -94,9 +94,12 @@ const UserDashboard = () => {
                         </div>
                         <div className='md:w-1/2 w-full'>
                             <div className='refer-user bg-white rounded-md p-4 text-left'>
-                                <img src={referimg} alt='referimg' />
+                               
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
-                                <p className='text-gray-200'>Share your referral link to your friends, and <br />    get {totalPoint} points.</p>
+                                <div>
+                                    <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p>
+                                    <img src={referimg} alt='referimg' />
+                                </div>
                                 <input value={`https://opiniontrue.com/${referralCode}`} readOnly />
                             </div>
                         </div>
