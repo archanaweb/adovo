@@ -34,6 +34,7 @@ const Home = () => {
   if(resData.responseCode === 200){
     toast.success(resData.responseMessage)
     localStorage.setItem("opinionUser", JSON.stringify(resData.responsResult))
+    console.log('user',resData.responsResult)
     navigate('/dashboard')
   }else{
     toast.error(resData.responseMessage)
@@ -56,7 +57,6 @@ const Home = () => {
             <div className="p-4 sm:p-6 md:p-6 bg-gray-700 rounded-lg shadow-md signup-form">
       <h2 className="text-2xl font-bold mb-4 text-center text-gray-100">Sign in for free</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-
       <div className="text-left">
          {/* <input 
           type="email" 

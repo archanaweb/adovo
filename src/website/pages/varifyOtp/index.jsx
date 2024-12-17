@@ -5,20 +5,25 @@ import BaseUrl from "../../../Api/BaseUrl";
 import verifyicon from '../../assest/images/password.png'
 
 const VerifyOtp = ()=> {
-  const authOtp = JSON.parse(localStorage.getItem("verifyotp"))
-  const authEmail = JSON.parse(localStorage.getItem("email"))
+  const authOtp = localStorage.getItem("verifyotp")
+  const authEmail = localStorage.getItem("email")
 
     const navigate = useNavigate();
     const [formData, setFormData] = useState({});
 
-      const handleOtp = (e)=> {
+      const handleVarifyOtp = async(e)=> {
         e.preventDefault()
-        const otp = parseInt(formData.otp)
-        if(otp === authOtp) {
-          navigate('/')
-          toast.success('Otp varified')
-        }else{
-          toast.error('Otp did not match')
+        const response = await fetch(BaseUrl + `user/verifyOtp`, {
+          method: 'PUT',
+          headers: {
+            'accept': 'application/json'
+          },
+          body: new URLSearchParams(formData)
+        })
+        const resData = await response.json()
+        if(resData.responseCode === 200){
+            toast.success(resData.responseMesage);
+            navigate('/')
         }
       }
       const handleResend = async()=> {
@@ -48,7 +53,7 @@ const VerifyOtp = ()=> {
             </div>
     <div className="md:w-2/4 w-full mx-auto pt-6">
     <div className="registration-form py-8 px-8 mx-auto bg-slate-700 rounded shadow text-left">
-      <form onSubmit={handleOtp} className="mb-3">
+      <form onSubmit={handleVarifyOtp} className="mb-3">
         <div className="form-group">
         <input className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white"
           type="number"
