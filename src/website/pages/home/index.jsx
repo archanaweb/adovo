@@ -33,8 +33,7 @@ const Home = () => {
   const resData = await response.json()
   if(resData.responseCode === 200){
     toast.success(resData.responseMessage)
-    localStorage.setItem("opinionUser", JSON.stringify(resData.responsResult))
-    console.log('user',resData.responsResult)
+    localStorage.setItem("opinionUser", JSON.stringify(resData.userDetails))
     navigate('/dashboard')
   }else{
     toast.error(resData.responseMessage)

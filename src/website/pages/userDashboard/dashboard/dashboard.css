@@ -7,6 +7,7 @@
     width: 100%;
     min-height: 100vh;
     margin-top: 62px;
+    position: relative;
 }
 header.user-header {
     position: fixed;
@@ -21,6 +22,55 @@ header.user-header {
     justify-content: center;
     align-items: center;
     gap: 8px;
+}
+.secTop button {
+    background: #4e4e4e;
+    border: none;
+    color: rgb(168, 170, 201);
+    background: rgb(37, 37, 57);
+}
+.user-prof {
+    width: 350px;
+}
+.user-prof input {
+    width: 100%;
+}
+.profile-img {
+    width: 100px;
+    height: 100px;
+    /* overflow: hidden; */
+    border-radius: 50%;
+    padding: 6px;
+    background: #484f5e;
+    position: relative;
+}
+.profile-img:hover {
+    cursor: pointer;
+}
+.profile-img svg{
+    font-size: 30px;
+    color: #b5c2db;
+} 
+.profile-img img {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+.profile-img span {
+    display: block;
+    position: absolute;
+    font-size: 14px;
+    bottom: -30px;
+    left: -5px;
+    background: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+} 
+.profile-img:hover span {
+    opacity: 1;
+    bottom: -5px;
 }
 
 .top-wrapper {
@@ -64,15 +114,26 @@ header.user-header {
     color: #ef476c;
     /* color: #544224; */
 }
+.userProfile img {
+    width: 40px;
+    height: 40px;
+    background: #4e4e4e;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    object-fit: cover;
+}
 
 .userProfile h5 {
     font-weight: 600;
-    color: #787878;
+    color: #9ea7bb;
     font-size: 17px;
 }
 
 .userProfile span {
-    color: #646464;
+    color: #858585;
     font-size: 14px;
     font-weight: 600;
 }
@@ -85,7 +146,24 @@ header.user-header {
     padding: 20px 10px;
     position: fixed;
     height: 100vh;
+    /* overflow-y: scroll; */
 
+}
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 200px;
+    background: #192336;
+    z-index: 9999;
+    box-shadow: 0 1px 2px #333;
+    padding: 25px 20px;
+    transition: all .5s;
+    transform: translateX(100%);
+}
+.sidebar_opened .mobile-sidebar.open {
+     transform: translateX(0);
 }
 
 .dashboard-wrapper {
@@ -98,12 +176,17 @@ header.user-header {
 
 .menu-items ul li {
     text-align: left;
-    padding: 10px 11px;
+    /* padding: 10px 11px; */
     background: transparent;
     margin-bottom: 15px;
     border-radius: 4px;
     transition: all .2s ease;
     cursor: pointer;
+}
+.menu-items ul li a {
+    padding: 10px 11px;
+    display: inline-block;
+    width: 100%;
 }
 .menu-items ul li.active {
     background: linear-gradient(86deg, rgb(12 20 69 / 50%) -16.9%, rgb(71 30 84 / 50%) 119.9%);
@@ -122,6 +205,13 @@ header.user-header {
     gap: 12px;
 }
 .menu-items ul li button svg{font-size: 21px;}
+.footer-menu{display: none;}
+.footer-menu .menu-items {padding-top: 0; }
+.footer-menu .menu-items ul {display: flex; justify-content: space-around; align-items: center; gap: 2px;}
+.footer-menu .menu-items li{margin-bottom: 0;}
+.footer-menu .menu-items li a{padding: 10px 20px;}
+.footer-menu .menu-items button {display: flex; flex-direction: column; gap: 2px; font-size: 13px;}
+.footer-menu .menu-items button span{font-size: 25px;}
 
 /* main content css */
 
@@ -200,6 +290,15 @@ font-size: 18px !important;
 .offers-box {
     position: relative;
 }
+.offers-box .items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+}
+.offers-box .items-wrapper .item{
+    width: auto;
+}
 .offer-hover {
     position: absolute;
     height: 100%;
@@ -244,7 +343,6 @@ font-size: 18px !important;
 .items-wrapper .item:hover .offer-hover p{
     opacity: 1;
 }
-
 .offer-content {
     position: absolute;
     bottom: 0;
@@ -255,13 +353,11 @@ font-size: 18px !important;
     transition: all .2s ease-in-out;
     z-index: 3;
 }
-
 .offer-content p {
     font-weight: 500;
     font-size: 15px;
     line-height: 1.2;
 }
-
 .offer-content span {
     font-size: 14px;
     color: #d9d9d9;
@@ -281,13 +377,11 @@ p.offer-price {
 .spItem span svg {
     color: #fcba06;
 }
-
 .spItem p {
     color: #d3d3d3;
     font-size: 15px;
     color: #9ea7bb;
 }
-
 .spItem img {
     width: 120px;
 }
@@ -296,7 +390,6 @@ p.offer-price {
     padding: 20px 20px;
     border-radius: 14px;
 }
-
 .spItem {
     padding: 15px;
     background: #2D3449;
@@ -308,7 +401,6 @@ p.offer-price {
 .spItem:hover {
     background: #192036;
 }
-
 .spItem button{
     background: linear-gradient(86deg, rgb(12 20 69) -16.9%, rgb(71 30 84) 119.9%);
     transition: all .2s ease-in-out;
@@ -317,7 +409,6 @@ p.offer-price {
 .spItem:hover button {
     background: #d13d5e;
 }
-
 .earning-wrapper .item {
     background: #3b354e;
     padding: 16px;
@@ -362,14 +453,14 @@ p.offer-price {
 }
 .refer-user img{
     width: auto;
-    height: 100%;
+    height: 90%;
     object-fit: cover;
     position: absolute;
     right: 0;
     top: 0;
     opacity: .9;
 }
-.refer-user p {color: #c3c3c3;font-size: 15px;}
+.refer-user p {color: #c3c3c3;font-size: 15px; width: 70%;}
 .refer-user input {
     background: transparent;
     border: 1px solid #525252;
@@ -382,6 +473,7 @@ p.offer-price {
 
 .userprofile {
     background: #192336;
+    width: 700px;
 }
 .userprofile p {
     color: #fff;
@@ -466,6 +558,34 @@ p.offer-price {
     
 }
 @media (max-width: 768px) {
+    .sidebar_opened .sidebar-backdrop {
+        opacity: 1;
+        pointer-events: all;
+    }
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000a8;
+        transition: .5s;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 999;
+    }
+    .userprofile {width: 100%;}
+    .user-prof {width: 100%;}
+    .refer-user p{width: 76%;}
+    .refer-user img{height: 65%;}
+    .refer-user input{width: 95%; margin-top: 25px;}
+    .dashboard-wrapper{margin-bottom: 78px;}
+    .footer-menu {display: block;position: fixed;
+        bottom: 0;
+        left: 0;
+        border-top: 1px solid #182030;
+        z-index: 999;
+        width: 100%;}
     .modal-content {
         width: 100%;
         top: 0;
@@ -487,7 +607,8 @@ p.offer-price {
         padding: 3px 7px;
         font-size: 15px;
     }
-    .main {margin-top: 55px;}
+    .main {margin-top: 0;
+        padding-top: 55px;}
     .swiper-slide {width: 105px !important;}
     .items-wrapper .item {width: 102px; height: 187px;}
 }

@@ -4,10 +4,6 @@ import UserSidebar from "../../../components/userDdashboard/UserSidebar"
 const Affiliates = ()=> {
     return (
         <>
-          <DashboardHeader />
-         <div className="main flex">
-         <UserSidebar />
-         <div className='dashboard-wrapper p-6'>
             <div className="cashoutsec text-left">
                 <div className="flex gap-6">
                     <div className="w-1/2">
@@ -16,8 +12,6 @@ const Affiliates = ()=> {
                     </div>
                 </div>
             </div>
-         </div>
-         </div>
         </>
     )
 }

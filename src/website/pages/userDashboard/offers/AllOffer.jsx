@@ -10,17 +10,19 @@ import { MdFactCheck } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import referimg from '../../../assest/images/referalimg2.png'
 import DashboardHeader from '../../../components/userDdashboard/DashboardHeader';
+import OfferModal from '../../../components/userDdashboard/OfferModal';
+import { useState } from 'react';
 const AllOffers = () => {
+    const [isOpenModal, setIsOpenModal] = useState(false)
+    const handleClick = (e)=> {
+        setIsOpenModal(!isOpenModal)
+    }
     return (
         <>
-         <DashboardHeader />
-         <div className="main flex">
-         <UserSidebar />
-         <div className='dashboard-wrapper p-6'>
         <div className='offers-box mb-12'>
                     <h5 className='text-2xl text-white text-left pb-6 font-bold'>All Offers</h5>
                    <div className="flex gap-4 items-wrapper flex-wrap">
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -39,7 +41,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                 
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -58,7 +60,7 @@ const AllOffers = () => {
                             </div>
                         </div>
               
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -77,7 +79,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                 
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -96,7 +98,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -115,7 +117,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -134,7 +136,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                 
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -153,7 +155,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                 
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -172,7 +174,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -191,7 +193,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                 
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -210,7 +212,7 @@ const AllOffers = () => {
                             </div>
                         </div>
                
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -229,7 +231,7 @@ const AllOffers = () => {
                             </div>
                         </div>
               
-                <div className='item'>
+                <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />
@@ -250,8 +252,7 @@ const AllOffers = () => {
                         </div>
                     
                 </div>
-                </div>
-                </div>
+                <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
         </>
     )
 }
