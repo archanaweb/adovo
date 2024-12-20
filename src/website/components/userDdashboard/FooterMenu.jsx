@@ -22,15 +22,18 @@ const FooterMenu = ()=> {
         navigate('/')
       }
       const handleOpenSidebar = () => {
-          setIsOpenSidebar(!isOpenSidebar);
+          setIsOpenSidebar(true);
+          console.log('sidebar',isOpenSidebar)
+        }
+        const handleCloseSidebar = () => {
+            setIsOpenSidebar(false);
+            console.log('sidebar',isOpenSidebar)
       }
-      const handleCloseSidebar = () => {
-          setIsOpenSidebar(false);
-      }
-      useEffect(()=> { if (!isOpenSidebar) {
-            document.body.classList.remove("sidebar_opened");
-          } else {
+      useEffect(()=> { 
+        if (isOpenSidebar) {
             document.body.classList.add("sidebar_opened");
+        } else {
+            document.body.classList.remove("sidebar_opened");
           }},[isOpenSidebar])
 
     return (
@@ -42,7 +45,7 @@ const FooterMenu = ()=> {
                     <li onClick={()=> handleMenuClick('offers')} className={activeMenu === 'offers' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><MdVideogameAsset /></span>Offers</button></Link></li>
                     <li onClick={()=> handleMenuClick('cashout')} className={activeMenu === 'cashout' ? 'active' : ''}><Link to='/cashout'><button> <span className="menu-icon"><PiHandWithdrawFill /></span>Cashout</button></Link></li>
                     <li onClick={()=> handleMenuClick('rewards')} className={activeMenu === 'rewards' ? 'active' : ''}><Link to='/rewards'><button> <span className="menu-icon"><FaAward /></span>Rewards</button></Link></li>
-                    <li onClick={()=> handleOpenSidebar()} className=''><button> <span className="menu-icon"><BsThreeDots /></span>More</button></li>
+                    <li onClick={handleOpenSidebar} className=''><button> <span className="menu-icon"><BsThreeDots /></span>More</button></li>
                 </ul>
             </div>
 
@@ -59,7 +62,7 @@ const FooterMenu = ()=> {
             </div> */}
 
         </div>
-        <div className={isOpenSidebar ? 'mobile-sidebar' : 'mobile-sidebar open'}>
+        <div className={!isOpenSidebar ? 'mobile-sidebar' : 'mobile-sidebar open'}>
             <div className="menu-items">
             <ul>
                     <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></Link></li>
