@@ -108,9 +108,9 @@ const Home = () => {
       <div className="pt-2 account-btn">
         <p>Don't have an acount yet? <Link to='/signup'>Register Now</Link></p>
       </div>
-      <p className="text-gray-400 text-sm mt-2 font-bold">
+      {/* <p className="text-gray-400 text-sm mt-2 font-bold">
         1264+ sign ups in the past 24 hours
-      </p>
+      </p> */}
             </div>
             </div>
             </div>

@@ -23,7 +23,14 @@ export const fetchTotalAmount = createAsyncThunk(
     async (userId) => {
       const response = await fetch(`${BaseUrl}user/totalAmount?userId=${userId}`);
       const responseData = await response.json();
-      console.log('total amount', responseData)
+      return responseData
+    }
+  )
+export const fetchTopUserEarned = createAsyncThunk(
+    'user/topUserEarned',
+    async () => {
+      const response = await fetch(`${BaseUrl}user/topUserEarned`);
+      const responseData = await response.json();
       return responseData
     }
   )
@@ -31,6 +38,7 @@ export const fetchTotalAmount = createAsyncThunk(
 const WalletSlice = createSlice({
   name: 'wallet',
   initialState: {
+    topUserEarnedList : [],
     viewWallet : null,
     totalPoint: null,
     totalAmount: null,
@@ -79,6 +87,18 @@ const WalletSlice = createSlice({
         state.totalAmount =  action.payload?.responseResult 
     });
     builder.addCase(fetchTotalAmount.rejected, (state, action) => {
+        state.error =  action.payload;
+        state.loading =  false;
+      });
+      builder.addCase(fetchTopUserEarned.pending, (state, action) => {
+        state.loading =  true;
+      });
+    builder.addCase(fetchTopUserEarned.fulfilled, (state, action) => {
+        state.loading =  false;
+        state.error = null;
+        state.topUserEarnedList =  action.payload?.responseResult 
+    });
+    builder.addCase(fetchTopUserEarned.rejected, (state, action) => {
         state.error =  action.payload;
         state.loading =  false;
       });
