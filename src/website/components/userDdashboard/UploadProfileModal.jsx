@@ -22,7 +22,7 @@ const UploadProfileModal = ({isOpenModal,setIsOpenModal}) => {
         const uploadRes = await dispatch(uploadProfileImage({userId: auth.id, form }))
         const res = uploadRes.payload;
         console.log('upload res', res)
-        if(res?.responceCode === 200){
+        if(res?.responseCode === 200){
             toast.success(res?.resposneMessage);
             setIsOpenModal(false)
         }else{

@@ -21,7 +21,7 @@ export const fetchWithdrawRequestList = createAsyncThunk(
 
 export const userSubmitDocument = createAsyncThunk(
     'user/submitDocument',
-    async ({userId, form}) => {
+    async (form) => {
       const response = await fetch(`${BaseUrl}user/submitDocument`, {
         method: 'PUT',
         headers: {
