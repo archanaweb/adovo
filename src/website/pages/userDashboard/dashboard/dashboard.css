@@ -537,6 +537,22 @@ p.offer-price {
 .chnagepass-modal.modal-content {
     width: 40%;
 }
+.withdrw-bg {
+    background: #192336;
+    width: 700px;
+}
+.withdrw-bg input, .withdrw-bg select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #3e4655;
+    margin-top: 5px;
+    background-color: #1d293e;
+    border-radius: 5px;
+    color: #ddd;
+}
+.withdrw-bg input:focus, .withdrw-bg select:focus {
+    outline: 1px solid #d13d5e;
+}
 
 @media (max-width: 1200px) {
     .user-sidebar {
