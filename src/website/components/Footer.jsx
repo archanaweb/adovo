@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from '../assest/images/freecash-logo.png';
+import logo from '../assest/images/logo.png';
 import trustpilot from "../assest/images/trustpilot.png";
 import { BiLogoFacebook } from "react-icons/bi";
 import { FiInstagram } from "react-icons/fi";
