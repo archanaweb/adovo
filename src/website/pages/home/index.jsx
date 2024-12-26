@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";

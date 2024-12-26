@@ -267,7 +267,7 @@ font-size: 18px !important;
 .items-wrapper .item {
     height: 198px;
     overflow: hidden;
-    width: 146px;
+    width: 145px;
     border: 1px solid #686868;
     border-radius: 14px;
     position: relative;
@@ -296,9 +296,9 @@ font-size: 18px !important;
     gap: 15px;
     grid-auto-rows: minmax(100px, auto);
 }
-.offers-box .items-wrapper .item{
+/* .offers-box .items-wrapper .item{
     width: auto;
-}
+} */
 .offer-hover {
     position: absolute;
     height: 100%;
@@ -346,7 +346,7 @@ font-size: 18px !important;
 .offer-content {
     position: absolute;
     bottom: 0;
-    background: #404040d1;
+    background: #404040de;
     width: 100%;
     padding: 6px;
     color: #fff;
@@ -357,6 +357,7 @@ font-size: 18px !important;
     font-weight: 500;
     font-size: 15px;
     line-height: 1.2;
+    text-align: left;
 }
 .offer-content span {
     font-size: 14px;

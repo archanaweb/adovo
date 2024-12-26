@@ -1,5 +1,4 @@
-import DashboardHeader from '../../../components/userDdashboard/DashboardHeader'
-import UserSidebar from '../../../components/userDdashboard/UserSidebar'
+
 import './dashboard.css'
 import gameimg from '../../../assest/images/userdashboardimg/game1.jpg'
 import { IoPlay } from "react-icons/io5";
@@ -23,7 +22,10 @@ import OfferModal from '../../../components/userDdashboard/OfferModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
 import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice';
+import { fetchOfferDetail, fetchOfferList } from '../../../../redux/user/offerSlice';
 const UserDashboard = () => {
+    const offerList = useSelector(state => state.offer.offerList)
+    const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
@@ -32,8 +34,9 @@ const UserDashboard = () => {
     const totalAmount= useSelector((state)=> state?.wallet?.totalAmount)
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [referralCode, setReferralCode] = useState(false)
-    const handleClick = (e)=> {
+    const handleClick = (id)=> {
         setIsOpenModal(!isOpenModal)
+        setOfferId(id)
     }
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
@@ -53,6 +56,14 @@ const UserDashboard = () => {
        dispatch(fetchTotalAmount(auth.id))
        console.log('Dispatched fetchTotalAmount action', totalAmount);
     },[])
+
+    const handleOfferClck = (id)=> {
+        dispatch(fetchOfferDetail(id))
+    }
+    
+    useEffect(() => {
+        dispatch(fetchOfferList ())
+    }, [offerList])
     return (
         <>
                 <div className='total-earning mb-6'>
@@ -122,27 +133,29 @@ const UserDashboard = () => {
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
+                        {offerList?.map((item, index)=> <SwiperSlide key={item?.id}>
+                <div className='item' onClick={()=> handleClick(item?.id)}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />       
                                 </div>
                                 <p>Start Offer</p>
                             </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
+                            <img src={item?.offer_image} alt='offerimg' />
+                            <div className='offer-content'>
+                                <p>{item?.offer}</p>
+                                <div className='text-left flex justify-between items-center'>
+                                <span>{item?.categories}</span>
                                 <p className='offer-price'>
-                                    $32.14
+                                    ${item?.payout}
                                 </p>
+                                </div>
+                                
                             </div>
                         </div>
-                </SwiperSlide>
-                <SwiperSlide>
+                </SwiperSlide>)}
+                
+                {/* <SwiperSlide>
                 <div className='item' onClick={handleClick}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
@@ -361,7 +374,7 @@ const UserDashboard = () => {
                                 </p>
                             </div>
                         </div>
-                </SwiperSlide>
+                </SwiperSlide> */}
                 </Swiper>
                     
                 </div>
@@ -473,7 +486,7 @@ const UserDashboard = () => {
                         </div>
                     </div>
                 </div>
-            <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
+            <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} id={offerId}/>
         </>
     )
 }
