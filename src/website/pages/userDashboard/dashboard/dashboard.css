@@ -244,9 +244,9 @@ header.user-header {
     position: absolute;
     width: 28px !important;
     height: 28px !important;
-    background: #ebebebd1;
+    background: #192336;
     border-radius: 50%;
-    box-shadow: 0 2px 6px #26143a;
+    box-shadow: 0 2px 6px #26143a;  
     color: #d13d5e !important;
     bottom: 35% !important;
     top: auto !important;
@@ -256,7 +256,7 @@ header.user-header {
     background: #fff;
 }
 .swiper-button-prev:after, .swiper-button-next:after {
-font-size: 18px !important;
+font-size: 9px !important;
     font-weight: 600 !important;}
 .swiper-button-prev, .swiper-rtl .swiper-button-next {
     left: var(--swiper-navigation-sides-offset, -11px) !important;
@@ -462,6 +462,12 @@ p.offer-price {
     opacity: .9;
 }
 .refer-user p {color: #c3c3c3;font-size: 15px; width: 70%;}
+.refer-user svg {
+    font-size: 24px;
+    color: #d13d5e;
+    color: #ffffffc7;
+    cursor: pointer;
+}
 .refer-user input {
     background: transparent;
     border: 1px solid #525252;
@@ -469,7 +475,7 @@ p.offer-price {
     border-radius: 4px;
     color: #a1a1a1;
     width: 65%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .userprofile {
@@ -538,6 +544,11 @@ p.offer-price {
 .chnagepass-modal.modal-content {
     width: 40%;
 }
+.withdraw-amount {
+    background: #192336;
+    padding: 10px 20px;
+    margin: 30px 0;
+}
 .withdrw-bg {
     background: #192336;
     width: 700px;
@@ -551,8 +562,72 @@ p.offer-price {
     border-radius: 5px;
     color: #ddd;
 }
+.walletImg {
+    width: 40px;
+}
 .withdrw-bg input:focus, .withdrw-bg select:focus {
     outline: 1px solid #d13d5e;
+}
+
+.leaderboard-table table th {
+    background: #151d2e !important;
+    border: none;
+    border-bottom: 1px solid #3a1d5b !important;
+    color: #9ea7bb !important;
+}
+.leaderboard-table table td {
+    background: #111827 !important;
+    border-bottom: 1px solid #1f283b !important;
+}
+.leaderboard-table table td span {
+    color: #fff ;
+}
+.leaderboard-table table p {
+    color: #fff;
+}
+.statics-box {
+    background: #192336;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.statics-box .item{
+    padding: 15px;
+    position: relative;
+    
+}
+.statics-box .item h4{
+    font-size: 62px;
+    font-weight: 600;
+    color: #cfd0d1;
+}
+.statics-box .item p{
+    color: #ffca71;
+}
+.statics-box .saperater {
+    position: absolute;
+    width: 1px;
+    height: 66%;
+    color: #cfd0d1;
+    top: 20%;
+    right: -67%;
+    background: #cfd0d114;
+}
+.tabs {
+    padding: 20px 0;
+    display: flex;
+    gap: 15px;
+}
+.tabs button {
+    padding: 4px 10px;
+    background: #3333;
+    color: #ffffffa1;
+}
+.tabs button.active {
+    padding: 4px 10px;
+    background: #3333;
+    color: #d13d5e;
 }
 
 @media (max-width: 1200px) {

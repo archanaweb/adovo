@@ -46,48 +46,52 @@ const Cashout = ()=> {
                     </div>
                     <div className="dashboard-bg md:w-1/2 w-full flex justify-between items-center">
                         <div className="flex gap-2 items-center">
-                            <img src={wallet} alt="waaletimg" />
+                            <img src={wallet} alt="waaletimg" className='walletImg' />
                             <h5 className="text-xl text-white">Balance</h5>
                         </div>
                         <p className="wallet-balance text-[#24a947] text-xl">${totalAmount}</p>
                     </div>
                 </div>
-                <div className='text-left mt-12'>
-                    <p className="text-gray-400">If you haven't submitted your document yet, submit the document here for the varification:</p>
-                    <button className="bg-[#24a947] text-white p-2 rounded px-4 mt-2" onClick={hableDocumentModal}>Submit Document</button>
-                </div>
-                <div className="py-4 px-4 rounded shadow text-left mt-6 withdrw-bg">
-                    <h5 className="text-xl text-white text-left pb-4 font-bold">Withdraw Cash</h5>
-                    <div className=" gap-4">
-                        <div className="w-full mb-3">
-                            <label className="text-gray-200">Amount</label>
-                            <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Amount" name='amount' onChange={handleChange}/>
-                        </div>
-                        <div className="w-full mb-3">
-                            <label className="text-gray-200">Select Payment Method</label>
-                            <select className="w-full bg-gray-800 rounded p-2" onChange={(e)=> handlePaymentMethod(e)}>
-                                <option value=''>Select</option>
-                                <option value='paypal'>Paypal</option>
-                                <option value='paytm'>Paytm</option>
-                                <option value='upi'>UPI</option>
-                                <option value='bankAccount'>Bank Account</option>
-                            </select>
-                        </div>
-                        <div className="w-full mb-6">
-                           {paymentMethod === 'paypal' && <><label className="text-gray-200">Paypal Account</label>
-                            <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='paypal' onChange={handleChange}/> </>}
-                            {paymentMethod === 'paytm' && <><label className="text-gray-200">Paytm Number</label>
-                            <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='paytm' onChange={handleChange}/> </>}
-                            {paymentMethod === 'upi' && <><label className="text-gray-200">UPI ID</label>
-                            <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='upi' onChange={handleChange}/> </>}
-                            {paymentMethod === 'bankAccount' && <><label className="text-gray-200">Bank Account Number</label>
-                            <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='bankAccount' onChange={handleChange}/> </>}
-                        </div>
-                        <button className="bg-[#d13d5e] text-white p-2 rounded w-full" type='button' onClick={handleSubmit}>Submit</button>
+                
+            </div>
+            <div className='withdraw-amount'>
+                    <div className='text-left mt-4
+                    '>
+                        <p className="text-gray-400">If you haven't submitted your document yet, submit the document here for the varification:</p>
+                        <button className="bg-[#24a947] text-white p-2 rounded px-4 mt-2" onClick={hableDocumentModal}>Submit Document</button>
+                    </div>
+                    <div className="py-4 px-4 rounded shadow text-left mt-6 withdrw-bg">
+                        <h5 className="text-xl text-white text-left pb-4 font-bold">Withdraw Cash</h5>
+                        <div className=" gap-4">
+                            <div className="w-full mb-3">
+                                <label className="text-gray-200">Amount</label>
+                                <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Amount" name='amount' onChange={handleChange}/>
+                            </div>
+                            <div className="w-full mb-3">
+                                <label className="text-gray-200">Select Payment Method</label>
+                                <select className="w-full bg-gray-800 rounded p-2" onChange={(e)=> handlePaymentMethod(e)}>
+                                    <option value=''>Select</option>
+                                    <option value='paypal'>Paypal</option>
+                                    <option value='paytm'>Paytm</option>
+                                    <option value='upi'>UPI</option>
+                                    <option value='bankAccount'>Bank Account</option>
+                                </select>
+                            </div>
+                            <div className="w-full mb-6">
+                            {paymentMethod === 'paypal' && <><label className="text-gray-200">Paypal Account</label>
+                                <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='paypal' onChange={handleChange}/> </>}
+                                {paymentMethod === 'paytm' && <><label className="text-gray-200">Paytm Number</label>
+                                <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='paytm' onChange={handleChange}/> </>}
+                                {paymentMethod === 'upi' && <><label className="text-gray-200">UPI ID</label>
+                                <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='upi' onChange={handleChange}/> </>}
+                                {paymentMethod === 'bankAccount' && <><label className="text-gray-200">Bank Account Number</label>
+                                <input type="text" className="w-full bg-gray-800 rounded p-2" placeholder="Enter Payment Details" name='bankAccount' onChange={handleChange}/> </>}
+                            </div>
+                            <button className="bg-[#d13d5e] text-white p-2 rounded w-full" type='button' onClick={handleSubmit}>Submit</button>
 
+                    </div>
+                    </div>
                 </div>
-            </div>
-            </div>
 
             <SubmitDocumentModal isOpenModal={isOpenDocumentModal} setIsOpenModal={setIsOpenDocumentModal}/>
         </>
