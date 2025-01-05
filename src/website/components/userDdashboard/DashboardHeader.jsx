@@ -1,5 +1,5 @@
 
-import logo from '../../assest/images/freecash-logo.png';
+import logo from '../../assest/images/logo.png';
 import { GoBellFill } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from 'react-router-dom';

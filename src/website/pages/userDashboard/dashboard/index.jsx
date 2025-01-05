@@ -23,7 +23,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
 import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice';
 import { fetchOfferDetail, fetchOfferList } from '../../../../redux/user/offerSlice';
+import { GiTakeMyMoney } from "react-icons/gi";
 const UserDashboard = () => {
+
+    const surveyColors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
     const offerList = useSelector(state => state.offer.offerList)
     const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
@@ -154,227 +157,50 @@ const UserDashboard = () => {
                             </div>
                         </div>
                 </SwiperSlide>)}
-                
-                {/* <SwiperSlide>
-                <div className='item' onClick={handleClick}>
+                </Swiper>
+                    
+                </div>
+
+                <div className='survey-box md:mb-12 mb-6'>
+                    <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Survey</h5>
+                    <Swiper 
+                        breakpoints={{
+                            576: {
+                            width: 576,
+                            slidesPerView: 4,
+                            },
+                            768: {
+                            width: 768,
+                            slidesPerView: 4,
+                            },
+                        }}
+                    spaceBetween={10}
+                    slidesPerView={'auto'}
+                    navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
+                        {offerList?.map((item, index)=> <SwiperSlide key={item?.id}>
+                <div className='item' onClick={()=> handleClick(item?.id)}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
-                                    <IoPlay />
+                                    <IoPlay />       
                                 </div>
-                                <p>Start Offer</p>
+                                <p>Start Survey</p>
                             </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
+                            <div className='survey-img' style={{backgroundColor: surveyColors[index]}}>
+                                {/* <img src={item?.offer_image} alt='offerimg' /> */}
+                                <GiTakeMyMoney />
+                            </div>
+                            <div className='offer-content'>
+                                <p>{item?.offer}</p>
+                                <div className='text-left flex justify-between items-center'>
+                                <span>{item?.categories}</span>
                                 <p className='offer-price'>
-                                    $32.14
+                                    ${item?.payout}
                                 </p>
+                                </div>
+                                
                             </div>
                         </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                <div className='item' onClick={handleClick}>
-                            <div className='offer-hover'>
-                                <div className='offer-start-icon'>
-                                    <IoPlay />
-                                </div>
-                                <p>Start Offer</p>
-                            </div>
-                            <img src={gameimg} alt='offerimg' />
-                            <div className='offer-content flex justify-between items-end'>
-                                <div className='text-left'>
-                                <p>Battle Night</p>
-                                <span>game</span>
-                                </div>
-                                <p className='offer-price'>
-                                    $32.14
-                                </p>
-                            </div>
-                        </div>
-                </SwiperSlide> */}
+                </SwiperSlide>)}
                 </Swiper>
                     
                 </div>

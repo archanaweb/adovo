@@ -227,7 +227,7 @@ header.user-header {
     text-align: center;
     font-size: 18px;
     background: transparent;
-  
+    width: 130px !important;
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
@@ -244,7 +244,7 @@ header.user-header {
     position: absolute;
     width: 28px !important;
     height: 28px !important;
-    background: #192336;
+    background: #3f4757;
     border-radius: 50%;
     box-shadow: 0 2px 6px #26143a;  
     color: #d13d5e !important;
@@ -268,6 +268,7 @@ font-size: 9px !important;
     height: 198px;
     overflow: hidden;
     width: 145px;
+    width: 120px;
     border: 1px solid #686868;
     border-radius: 14px;
     position: relative;
@@ -319,7 +320,7 @@ font-size: 9px !important;
 }
 .offer-hover p {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     color: #fff;
     opacity: 0;
     transition: opacity .5s ease;
@@ -352,12 +353,16 @@ font-size: 9px !important;
     color: #fff;
     transition: all .2s ease-in-out;
     z-index: 3;
+    background-color: #222339cc;
 }
 .offer-content p {
     font-weight: 500;
     font-size: 15px;
     line-height: 1.2;
     text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .offer-content span {
     font-size: 14px;
@@ -628,6 +633,29 @@ p.offer-price {
     padding: 4px 10px;
     background: #3333;
     color: #d13d5e;
+}
+.survey-box {
+    position: relative;
+}
+.survey-box .items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+}
+.survey-img {
+    height: 80px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.survey-img svg {
+    color: #fff;
+    font-size: 35px;
 }
 
 @media (max-width: 1200px) {

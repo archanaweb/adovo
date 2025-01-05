@@ -4,6 +4,7 @@ import ReferralReducer from './user/referralSlice'
 import WalletReducer from './user/walletSlice'
 import WithdrawReducer from './user/withdrawSlice'
 import OfferReducer from './user/offerSlice'
+import SurveyReducer from './user/surveySlice'
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     referal: ReferralReducer,
     wallet: WalletReducer,
     withdraw: WithdrawReducer,
-    offer: OfferReducer
+    offer: OfferReducer,
+    survey: SurveyReducer
   },
 })
