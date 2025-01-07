@@ -24,10 +24,12 @@ import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/r
 import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice';
 import { fetchOfferDetail, fetchOfferList } from '../../../../redux/user/offerSlice';
 import { GiTakeMyMoney } from "react-icons/gi";
+import { fetchSurveyList } from '../../../../redux/user/surveySlice';
 const UserDashboard = () => {
 
     const surveyColors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
     const offerList = useSelector(state => state.offer.offerList)
+    const surveyList = useSelector(state => state.survey.surveyList)
     const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -66,7 +68,11 @@ const UserDashboard = () => {
     
     useEffect(() => {
         dispatch(fetchOfferList ())
-    }, [offerList])
+    }, [])
+
+    useEffect(() => {
+        dispatch(fetchSurveyList())
+    }, [])
     return (
         <>
                 <div className='total-earning mb-6'>
@@ -177,7 +183,7 @@ const UserDashboard = () => {
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
-                        {offerList?.map((item, index)=> <SwiperSlide key={item?.id}>
+                        {surveyList?.map((item, index)=> <SwiperSlide key={item?.id}>
                 <div className='item' onClick={()=> handleClick(item?.id)}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
@@ -190,11 +196,11 @@ const UserDashboard = () => {
                                 <GiTakeMyMoney />
                             </div>
                             <div className='offer-content'>
-                                <p>{item?.offer}</p>
+                                <p className='survey_name'>LIVE SURVEY</p>
                                 <div className='text-left flex justify-between items-center'>
-                                <span>{item?.categories}</span>
+                                <span>{item?.loi} min</span>
                                 <p className='offer-price'>
-                                    ${item?.payout}
+                                    ${item?.cpi}
                                 </p>
                                 </div>
                                 
