@@ -1,8 +1,6 @@
 
 import './dashboard.css'
-import gameimg from '../../../assest/images/userdashboardimg/game1.jpg'
 import { IoPlay } from "react-icons/io5";
-import partnerimg from '../../../assest/images/userdashboardimg/partner1.png'
 import { IoStar } from "react-icons/io5";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoWallet } from "react-icons/io5";
@@ -17,7 +15,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import OfferModal from '../../../components/userDdashboard/OfferModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
@@ -25,6 +23,7 @@ import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/wallet
 import { fetchOfferDetail, fetchOfferList } from '../../../../redux/user/offerSlice';
 import { GiTakeMyMoney } from "react-icons/gi";
 import { fetchSurveyList } from '../../../../redux/user/surveySlice';
+import parnerData from '../../../../partnerData.json'
 const UserDashboard = () => {
 
     const surveyColors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
@@ -61,16 +60,8 @@ const UserDashboard = () => {
        dispatch(fetchTotalAmount(auth.id))
        console.log('Dispatched fetchTotalAmount action', totalAmount);
     },[])
-
-    const handleOfferClck = (id)=> {
-        dispatch(fetchOfferDetail(id))
-    }
-    
     useEffect(() => {
-        dispatch(fetchOfferList ())
-    }, [])
-
-    useEffect(() => {
+        dispatch(fetchOfferList())
         dispatch(fetchSurveyList())
     }, [])
     return (
@@ -184,13 +175,15 @@ const UserDashboard = () => {
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
                         {surveyList?.map((item, index)=> <SwiperSlide key={item?.id}>
-                <div className='item' onClick={()=> handleClick(item?.id)}>
+                <div className='item'>
+                            <Link to={`/survey/${item?.id}`}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />       
                                 </div>
                                 <p>Start Survey</p>
                             </div>
+                            </Link>
                             <div className='survey-img' style={{backgroundColor: surveyColors[index]}}>
                                 {/* <img src={item?.offer_image} alt='offerimg' /> */}
                                 <GiTakeMyMoney />
@@ -203,69 +196,27 @@ const UserDashboard = () => {
                                     ${item?.cpi}
                                 </p>
                                 </div>
-                                
                             </div>
                         </div>
                 </SwiperSlide>)}
                 </Swiper>
-                    
                 </div>
-
                 <div className='survey-partner-box md:mb-12 mb-6'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
                     <div className='spItem-wrapper'>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
+                        {parnerData?.partners.map((item)=> <div className='spItem flex justify-between items-center gap-4 flex-col'>
+                            <div className='flex flex-col items-center gap-2'>
+                                <img src={item?.image} alt='partnerimg'/>
+                                <p>{item?.name}</p>
                                 <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
                             </div>
                             <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button>
-                        </div>
+                        </div> )}
+                        
                     </div>
                 </div>
 
-                <div className='survey-partner-box md:mb-12 mb-6'>
+                {/* <div className='survey-partner-box md:mb-12 mb-6'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Survey Partners</h5>
                     <div className='spItem-wrapper'>
                         <div className='spItem flex justify-between items-center gap-4 flex-col'>
@@ -317,7 +268,7 @@ const UserDashboard = () => {
                             <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
                         </div>
                     </div>
-                </div>
+                </div> */}
             <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} id={offerId}/>
         </>
     )

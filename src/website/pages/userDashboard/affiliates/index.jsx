@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
 import referimg from '../../../assest/images/referalimg2.png'
 import { useEffect, useState } from 'react'
-import { generateReferralCode } from '../../../../redux/user/referralSlice'
-import { fetchTotalPoint } from '../../../../redux/user/walletSlice'
+import { fetchTopReferl, generateReferralCode } from '../../../../redux/user/referralSlice'
+import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice'
 import { IoCopy } from "react-icons/io5";
 import toast from 'react-hot-toast'
 
 const Affiliates = ()=> {
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
+    const totalReferal = useSelector((state)=> state?.referal?.totalRef)
     const totalPoint= useSelector((state)=> state?.wallet?.totalPoint)
+    const totalAmount= useSelector((state)=> state?.wallet?.totalAmount)
     const [referralCode, setReferralCode] = useState(false)
     const [tab, setTab] = useState('earning')
     const dispatch = useDispatch()
@@ -34,7 +36,9 @@ const Affiliates = ()=> {
 
     useEffect(()=> {
        generateCode()
-       dispatch(fetchTotalPoint(auth.id))
+       dispatch(fetchTopReferl(auth.id))
+        dispatch(fetchTotalPoint(auth.id))
+        dispatch(fetchTotalAmount(auth.id))
     },[])
     return (
         <>
@@ -44,25 +48,25 @@ const Affiliates = ()=> {
                         <h5 className='text-2xl text-white text-left pb-6 font-bold'>Affiliates</h5>
                             <div className="statics-box mb-6">
                                 <div className="item">
-                                    <h4>23</h4>
+                                    <h4>${totalAmount}</h4>
                                     <p>Total Earnings</p>
                                     <div className="saperater"></div>
                                 </div>
 
                                 <div className="item">
-                                    <h4>23</h4>
+                                    <h4>0</h4>
                                     <p>Completed Offers</p>
                                     <div className="saperater"></div>
                                 </div>
 
                                  <div className="item">
-                                    <h4>23</h4>
+                                    <h4>{totalReferal}</h4>
                                     <p>Users Referred</p>
                                     <div className="saperater"></div>
                                 </div>
 
                                  <div className="item">
-                                    <h4>23</h4>
+                                    <h4>0</h4>
                                     <p>Referred Earnings</p>
                                 </div>
 

@@ -18,6 +18,8 @@ import Affiliates from "../pages/userDashboard/affiliates"
 import DashboardHeader from "../components/userDdashboard/DashboardHeader"
 import UserSidebar from "../components/userDdashboard/UserSidebar"
 import FooterMenu from "../components/userDdashboard/FooterMenu"
+import AllSurvey from "../pages/userDashboard/surveys/AllSurvey"
+import SurveyIframe from "../pages/userDashboard/surveys/SurveyIframe"
 
 const Layout = () => {
     const location = useLocation()
@@ -64,6 +66,8 @@ const router = createBrowserRouter(
             <Route element={<Protected />}>
                 <Route path="dashboard" element={<UserDashboard/>}> </Route>
                 <Route path="alloffers" element={<AllOffers/>}> </Route>
+                <Route path="allsurveys" element={<AllSurvey/>}> </Route>
+                <Route path="survey/:id" element={<SurveyIframe />}> </Route>
                 <Route path="userprofile" element={<UserProfile/>}> </Route>
                 <Route path="cashout" element={<Cashout/>}> </Route>
                 <Route path="leaderboard" element={<LeaderBoard/>}> </Route>

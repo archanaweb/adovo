@@ -281,7 +281,7 @@ font-size: 9px !important;
 
 .items-wrapper .item img {
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     transition: transform 0.3s ease;
 }
@@ -293,7 +293,7 @@ font-size: 9px !important;
 }
 .offers-box .items-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 15px;
     grid-auto-rows: minmax(100px, auto);
 }
@@ -392,7 +392,7 @@ p.offer-price {
     color: #9ea7bb;
 }
 .spItem img {
-    width: 120px;
+    width: 125px;
 }
 .survey-partner-box {
     background: #111827;
@@ -458,7 +458,7 @@ p.offer-price {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    border: 1px solid #242e40;
+    /* border: 1px solid #242e40; */
 }
 .refer-user img{
     width: auto;
@@ -478,7 +478,7 @@ p.offer-price {
 }
 .refer-user input {
     background: transparent;
-    border: 1px solid #525252;
+    border: 1px solid #412555;
     padding: 6px 7px;
     border-radius: 4px;
     color: #a1a1a1;
@@ -526,8 +526,6 @@ p.offer-price {
     width: 60%;
 }
 .close-button {
-    float: right;
-    width: 1.5rem;
     line-height: 1.5rem;
     text-align: center;
     cursor: pointer;
@@ -626,15 +624,20 @@ p.offer-price {
     padding: 20px 0;
     display: flex;
     gap: 15px;
+    padding-top: 40px;
 }
 .tabs button {
     padding: 4px 10px;
     background: #3333;
     color: #ffffffa1;
+    transition: all .2s ease-in-out;
+}
+.tabs button:hover {
+    color: #d13d5e;
 }
 .tabs button.active {
     padding: 4px 10px;
-    background: #3333;
+    background: #ff557b30;
     color: #d13d5e;
 }
 .survey-box {

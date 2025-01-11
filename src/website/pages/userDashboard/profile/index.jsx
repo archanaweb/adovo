@@ -11,6 +11,7 @@ import toast from "react-hot-toast"
 import ChangeProfileImgModal from "../../../components/userDdashboard/ChangeProfileImgModal"
 
 const UserProfile = ()=> {
+    const [tab, setTab] = useState('earning')
     const [isEditable, setIsEditable] = useState(false)
     const auth = JSON.parse(localStorage.getItem('opinionUser'))
     const dispatch = useDispatch() 
@@ -38,10 +39,6 @@ const UserProfile = ()=> {
         form.append('lastName', formData?.lastName);
         form.append('email', formData?.email);
         form.append('education', formData?.education);
-        // form.append('userId ', auth.id);
-        // form.append('userId ', auth.id);
-        // form.append('userId ', auth.id);
-        // form.append('userId ', auth.id);
         const updateUser = await dispatch(updateUserDetails(
             {userId: auth.id, formData: form}
         ));
@@ -96,6 +93,15 @@ const UserProfile = ()=> {
                     </div>
                     </div>
                 </div>
+
+                <div className='tabs pt-4'>
+                                <button 
+                                    className={`tab ${tab === 'earning' ? 'active': ''}`}
+                                    onClick={()=> setTab('earning')}>Earnings</button>
+                                <button 
+                                    className={`tab ${tab === 'withdraw' ? 'active': ''}`}
+                                    onClick={()=> setTab('withdraw')}>Withdrawals</button>
+                            </div>
             </div>
          <ChangePasswordModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
          <UploadProfileModal isOpenModal={isOpenUploadModal} setIsOpenModal={setIsOpenUploadModal}/>

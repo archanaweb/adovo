@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { uploadProfileImage } from "../../../redux/user/userSlice";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { IoClipboard, IoCloseSharp } from "react-icons/io5";
 
 const UploadProfileModal = ({isOpenModal,setIsOpenModal}) => {
     const [img, setImg] = useState()
@@ -35,7 +36,7 @@ const UploadProfileModal = ({isOpenModal,setIsOpenModal}) => {
             <div className="chnagepass-modal modal-content">
             <div className='flex justify-between items-center border-b border-[#28354c] pb-3'>
                 <h5 className='text-2xl text-white'>Upload Profile Image</h5>
-                    <span className="close-button" onClick={haldleCloseModal}>×</span>
+                    <span className="close-button" onClick={haldleCloseModal}><IoClipboard /></span>
                 </div>
         <div className="w-full p-2">
           <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#" onSubmit={handlesubmit}>

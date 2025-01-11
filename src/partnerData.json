@@ -1,0 +1,54 @@
+ 
+{
+    "partners": [
+      {
+        "id": 1,
+        "name": "Opinion Universe",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/Opinion%20Universe%20Logo.png",
+        "rating": "$300"
+      },
+      {
+        "id": 2,
+        "name": "Lootably",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/lootably-black.png",
+        "rating": "$300"
+      },
+      {
+        "id": 3,
+        "name": "Adgate",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/adgatemedia.png",
+        "rating": "$300"
+      },
+      {
+        "id": 4,
+        "name": "Hang My Ads",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/hangmyads.png",
+        "rating": "$300"
+      },
+      {
+        "id": 5,
+        "name": "Notik",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/notik.png",
+        "rating": "$300"
+      },
+      {
+        "id": 6,
+        "name": "Adgem",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/adgem.png",
+        "rating": "$300"
+      },
+      {
+        "id": 7,
+        "name": "Kiwi-wall",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/kiwi-wall.png",
+        "rating": "$300"
+      },
+      {
+        "id": 8,
+        "name": "Pollfish",
+        "image": "https://opiniontrue.com/templates/53/img/offerwalls/pollfish.png",
+        "rating": "$300"
+      }
+    ]
+  }
+  

@@ -1,4 +1,4 @@
-
+import { IoCloseSharp } from "react-icons/io5";
 const ChangePasswordModal = ({isOpenModal,setIsOpenModal})=> {
     const auth = JSON.parse(localStorage.getItem('opinionUser'))
 
@@ -11,7 +11,7 @@ const ChangePasswordModal = ({isOpenModal,setIsOpenModal})=> {
             <div className="chnagepass-modal modal-content">
             <div className='flex justify-between items-center border-b border-[#28354c] pb-3'>
                 <h5 className='text-2xl text-white'>Change Password</h5>
-                    <span className="close-button" onClick={haldleCloseModal}>×</span>
+                    <span className="close-button" onClick={haldleCloseModal}><IoCloseSharp /></span>
                 </div>
         <div className="w-full p-2">
           <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
