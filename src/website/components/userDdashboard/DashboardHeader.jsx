@@ -7,6 +7,8 @@ import { fetchTotalAmount } from '../../../redux/user/walletSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchUserDetails } from '../../../redux/user/userSlice';
+import doller from '../../assest/images/dollar.png'
+import bell from '../../assest/images/bell.png'
 
 const DashboardHeader = ()=> {
     const [name, setName]  = useState('')
@@ -34,9 +36,11 @@ const DashboardHeader = ()=> {
         </div>
         <div className='header-right'>
             <div className='user-balance'>
-                <p>Balance:<span>${totalAmount}</span></p>
+                    <img src={doller} alt='coin'/>
+                    <p><span>${totalAmount}</span></p>
+                {/* <p>Balance:<span>${totalAmount}</span></p> */}
             </div>
-            <button className='iconbtn'><GoBellFill /></button>
+            <button className='iconbtn'><img src={bell} alt='bell' /></button>
             <Link to='/userprofile'>
             <div className='userProfile'>
                 {!userDetails?.image ? <p>{name ? name[0] : ''}</p> :
@@ -44,7 +48,7 @@ const DashboardHeader = ()=> {
                 <div className='md:block hidden'>
                 <div className='flex flex-col justify-start items-start'>
                     <h5>{userDetails?.firstName} {userDetails?.lastName}</h5>
-                    <span>User</span>
+                    {/* <span>User</span> */}
                     </div>
                 </div>
                 {/* <div className='dropdown'>

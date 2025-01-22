@@ -14,7 +14,7 @@ header.user-header {
     width: 100%;
     top: 0;
     box-shadow: 0 1px 25px #0f1522;
-    background: #151d2e;
+    background: #384152;
     z-index: 99;
 }
 .userProfile {
@@ -85,6 +85,14 @@ header.user-header {
     align-items: center;
     gap: 20px;
 }
+.header-right a{
+    background: #6C7C96;
+    padding: 12px 14px;
+    border-radius: 31px;
+    position: relative;
+    padding-left: 58px;
+    padding-right: 15px;
+}
 
 .header-right .iconbtn {
     border: 1px solid #646464;
@@ -124,11 +132,14 @@ header.user-header {
     align-items: center;
     padding: 2px;
     object-fit: cover;
+    position: absolute;
+    left: 7px;
+
 }
 
 .userProfile h5 {
     font-weight: 600;
-    color: #9ea7bb;
+    color: #fff;
     font-size: 17px;
 }
 
@@ -274,15 +285,18 @@ font-size: 9px !important;
     position: relative;
     z-index: 1;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
 }
 /* .items-wrapper .item:hover .offer-content{
     height: 100%;
 } */
 
 .items-wrapper .item img {
-    height: 100%;
     object-fit: contain;
-    width: 100%;
     transition: transform 0.3s ease;
 }
 .items-wrapper .item:hover img{
@@ -344,16 +358,19 @@ font-size: 9px !important;
 .items-wrapper .item:hover .offer-hover p{
     opacity: 1;
 }
+.offer-img {
+    overflow: hidden;
+    background: #384152;
+    width: 100px;
+    height: 100px;
+    border-radius: 14px;
+}
 .offer-content {
-    position: absolute;
-    bottom: 0;
-    background: #404040de;
     width: 100%;
     padding: 6px;
     color: #fff;
     transition: all .2s ease-in-out;
-    z-index: 3;
-    background-color: #222339cc;
+    text-align: left;
 }
 .offer-content p {
     font-weight: 500;
@@ -388,11 +405,13 @@ p.offer-price {
 }
 .spItem p {
     color: #d3d3d3;
-    font-size: 15px;
-    color: #9ea7bb;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
 }
 .spItem img {
     width: 125px;
+    padding-top: 20px;
 }
 .survey-partner-box {
     background: #111827;
@@ -406,14 +425,18 @@ p.offer-price {
     background: transparent;
     border: 1px solid #2b1f3a;
     cursor: pointer;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(106, 69, 60, 1) 0%, rgba(47, 51, 63, 1) 100%);
+    height: 205px;
 }
-.spItem:hover {
+/* .spItem:hover {
     background: #192036;
-}
+} */
 .spItem button{
     background: linear-gradient(86deg, rgb(12 20 69) -16.9%, rgb(71 30 84) 119.9%);
     transition: all .2s ease-in-out;
-    font-size: 14px;
+    font-size: 16px;
+    background: #FFC207;
+    border-radius: 12px;
 }
 .spItem:hover button {
     background: #d13d5e;
@@ -437,13 +460,27 @@ p.offer-price {
     color: #ffca71;
     color: #d13d5e;
 }
+.user-balance {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: #6C7C96;
+    padding: 6px 8px;
+    border-radius: 22px;
+    position: relative;
+    height: 50px;
+    padding-right: 15px;
+}
+.user-balance img {
+    width: 40px;
+}
 .user-balance p {
-    color: #24a947;
-    /* font-weight: 600; */
-    font-size: 18px;
-    border: 1px solid #646464;
-    padding: 3px 13px;
-    border-radius: 21px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+}
+.header-right .iconbtn img {
+    width: 26px;
 }
 
 .user-balance p span {
