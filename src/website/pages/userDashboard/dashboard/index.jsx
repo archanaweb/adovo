@@ -63,7 +63,8 @@ const UserDashboard = () => {
     useEffect(() => {
         dispatch(fetchOfferList())
         dispatch(fetchSurveyList())
-    }, [])
+    }, []);
+    let rootUrl = window.location.origin+"/src";
     return (
         <>
                 <div className='total-earning mb-6'>
@@ -207,7 +208,7 @@ const UserDashboard = () => {
                 <div className='survey-partner-box md:mb-12 mb-6'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
                     <div className='spItem-wrapper'>
-                            {parnerData?.partners.map((item)=> <div className='spItem flex justify-between items-center gap-4 flex-col'>
+                            {parnerData?.partners.map((item)=> <div className='spItem flex justify-between items-center gap-4 flex-col' key={item?.id}>
                                 <img src={item?.image} alt='partnerimg'/>
                                 <div className='flex flex-col items-center gap-2 w-full'>
                                 <p>{item?.name}</p>
