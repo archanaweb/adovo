@@ -238,7 +238,7 @@ header.user-header {
     text-align: center;
     font-size: 18px;
     background: transparent;
-    width: 130px !important;
+    width: 120px !important;
     /* Center slide text vertically */
     display: flex;
     justify-content: center;

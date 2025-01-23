@@ -64,7 +64,6 @@ const UserDashboard = () => {
         dispatch(fetchOfferList())
         dispatch(fetchSurveyList())
     }, []);
-    let rootUrl = window.location.origin+"/src";
     return (
         <>
                 <div className='total-earning mb-6'>
@@ -207,72 +206,33 @@ const UserDashboard = () => {
                 </div>
                 <div className='survey-partner-box md:mb-12 mb-6'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
-                    <div className='spItem-wrapper'>
-                            {parnerData?.partners.map((item)=> <div className='spItem flex justify-between items-center gap-4 flex-col' key={item?.id}>
+                <Swiper 
+                        breakpoints={{
+                            576: {
+                            width: 576,
+                            slidesPerView: 4,
+                            },
+                            768: {
+                            width: 768,
+                            slidesPerView: 4,
+                            },
+                        }}
+                    spaceBetween={10}
+                    slidesPerView={'auto'}
+                    navigation={true} modules={[Navigation]} className="partnerSwiper spItem-wrapper flex gap-4">
+                         {parnerData?.partners.map((item)=> <SwiperSlide key={item?.id}>
+                        <div className='item'>
+                       <div className='spItem flex justify-between items-center gap-4 flex-col' >
                                 <img src={item?.image} alt='partnerimg'/>
                                 <div className='flex flex-col items-center gap-2 w-full'>
                                 <p>{item?.name}</p>
                                 <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                                {/* <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Offer</button> */}
                             </div>
-                        </div> )}
-                        
-                    </div>
+                        </div>
+                            </div>
+                            </SwiperSlide> )}
+                    </Swiper>
                 </div>
-
-                {/* <div className='survey-partner-box md:mb-12 mb-6'>
-                <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Survey Partners</h5>
-                    <div className='spItem-wrapper'>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
-                        </div>
-                        <div className='spItem flex justify-between items-center gap-4 flex-col'>
-                            <div>
-                                <img src={partnerimg} alt='partnerimg'/>
-                                <p>Torox</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
-                            <button className='w-full bg-gray-500 text-white p-2 rounded-md'>View Surveys</button>
-                        </div>
-                    </div>
-                </div> */}
             <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} id={offerId}/>
         </>
     )
