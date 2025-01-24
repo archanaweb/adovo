@@ -7,6 +7,7 @@ import { IoWallet } from "react-icons/io5";
 import { MdFactCheck } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import referimg from '../../../assest/images/referalimg2.png'
+import { BsAndroid2 } from "react-icons/bs";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -144,6 +145,7 @@ const UserDashboard = () => {
                             <div className='offer-img'>
                             <img src={item?.offer_image} alt='offerimg' />
                             </div>
+                            <BsAndroid2 className='device-icon' />
                             <div className='offer-content'>
                                 <p>{item?.offer}</p>
                                 <span>{item?.categories}</span>
@@ -225,9 +227,9 @@ const UserDashboard = () => {
                        <div className='spItem flex justify-between items-center gap-4 flex-col' >
                                 <img src={item?.image} alt='partnerimg'/>
                                 <div className='flex flex-col items-center gap-2 w-full'>
-                                <p>{item?.name}</p>
-                                <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
-                            </div>
+                                    <p>{item?.name}</p>
+                                    <span className='flex justify-center items-center gap-1'><IoStar /><IoStar /><IoStar /><IoStar /><IoStar /></span>
+                                </div>
                         </div>
                             </div>
                             </SwiperSlide> )}
