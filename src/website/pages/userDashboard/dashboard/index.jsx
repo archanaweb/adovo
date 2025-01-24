@@ -25,6 +25,7 @@ import { fetchOfferDetail, fetchOfferList } from '../../../../redux/user/offerSl
 import { GiTakeMyMoney } from "react-icons/gi";
 import { fetchSurveyList } from '../../../../redux/user/surveySlice';
 import parnerData from '../../../../partnerData.json'
+import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 const UserDashboard = () => {
 
     const surveyColors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
@@ -67,7 +68,7 @@ const UserDashboard = () => {
     }, []);
     return (
         <>
-                <div className='total-earning mb-6'>
+                <div className='total-earning mb-6 md:p-6 p-4'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Earnings</h5>
                     <div className='flex gap-6 md:flex-row flex-col'>
                         <div className='earning-wrapper flex justify-between gap-4 flex-col md:w-1/2 w-full'>
@@ -118,7 +119,7 @@ const UserDashboard = () => {
                     </div>
                 </div>
               
-                <div className='offers-box md:mb-12 mb-6'>
+                <div className='offers-box md:mb-12 mb-6 md:p-6 p-4'>
                     <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Offers</h5>
                     <Swiper 
                         breakpoints={{
@@ -163,7 +164,7 @@ const UserDashboard = () => {
                     
                 </div>
 
-                <div className='survey-box md:mb-12 mb-6'>
+                <div className='survey-box md:mb-12 mb-6 md:p-6 p-4'>
                     <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Survey</h5>
                     <Swiper 
                         breakpoints={{
@@ -206,6 +207,7 @@ const UserDashboard = () => {
                 </SwiperSlide>)}
                 </Swiper>
                 </div>
+                <div className='md:p-6 p-4'>
                 <div className='survey-partner-box md:mb-12 mb-6'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
                 <Swiper 
@@ -235,6 +237,8 @@ const UserDashboard = () => {
                             </SwiperSlide> )}
                     </Swiper>
                 </div>
+                </div>
+                <FooterDashboard />
             <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} id={offerId}/>
         </>
     )

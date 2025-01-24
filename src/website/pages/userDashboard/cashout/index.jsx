@@ -38,7 +38,7 @@ const Cashout = ()=> {
         },[paymentMethod])
     return (
         <>
-            <div className="cashoutsec text-left">
+            <div className="cashoutsec text-left md:p-6 p-4">
                 <div className="flex gap-6 md:flex-row flex-col">
                     <div className="md:w-1/2 w-full">
                         <h5 className='text-2xl text-white text-left pb-6 font-bold'>Cashout</h5>

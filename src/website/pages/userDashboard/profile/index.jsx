@@ -61,7 +61,7 @@ const UserProfile = ()=> {
     },[])
     return (
         <>
-            <div className="profilesec">
+            <div className="profilesec md:p-6 p-4">
                 <div className="secTop md:flex justify-between items-center md:pb-6 pb-2"> 
                 <h5 className='text-2xl text-white text-left font-bold'>My Profile</h5>
                     <div className="flex justify-end gap-3 mb-2 mb:mb-0">

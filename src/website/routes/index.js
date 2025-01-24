@@ -43,7 +43,7 @@ const LayoutDashboard = () => {
            <DashboardHeader />
             <div className="main flex">
                 <UserSidebar />
-                <div className='dashboard-wrapper md:p-6 p-4'>
+                <div className='dashboard-wrapper'>
                     <Outlet />
             <FooterMenu />
                 </div>

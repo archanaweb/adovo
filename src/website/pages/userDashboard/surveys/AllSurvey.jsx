@@ -17,7 +17,7 @@ const AllSurvey = () => {
     }, [])
     return (
         <>
-        <div className='offers-box mb-12'>
+        <div className='offers-box mb-12 md:p-6 p-4'>
                     <h5 className='text-2xl text-white text-left pb-6 font-bold'>All Surveys</h5>
                    <div className="flex gap-4 items-wrapper flex-wrap">
                 {surveyList?.map((item, index)=> 

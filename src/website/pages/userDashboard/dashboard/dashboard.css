@@ -306,14 +306,14 @@ header.user-header {
 }
 
 .offers-box .swiper-button-prev, .offers-box .swiper-button-next  {
-    top: 24px !important;
+    top: 44px !important;
 }
 .offers-box .swiper-button-prev  {
     right: 55px !important;
     left: auto !important;
 }
 .survey-box .swiper-button-prev, .survey-box .swiper-button-next  {
-    top: 24px !important;
+    top: 44px !important;
 }
 .survey-box .swiper-button-prev  {
     right: 55px !important;
@@ -900,6 +900,16 @@ p.offer-price {
     padding: 5px;
     color: #f9f9f9;
     cursor: pointer;
+}
+
+.dashboard-footer {
+    padding: 20px;
+    background: #192336;
+    color: #fff;
+}
+.dashboard-footer p span {
+    color: #e89d09;
+    font-weight: 600;
 }
 
 @media (max-width: 1200px) {
