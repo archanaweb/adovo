@@ -8,6 +8,8 @@ import { MdFactCheck } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import referimg from '../../../assest/images/referalimg2.png'
 import { BsAndroid2 } from "react-icons/bs";
+import { FaApple } from "react-icons/fa";
+import { IoIosDesktop } from "react-icons/io";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -28,7 +30,7 @@ import parnerData from '../../../../partnerData.json'
 import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 const UserDashboard = () => {
 
-    const surveyColors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
+    const surveyColors = ['#FF6633', '#924c35', '#FF33FF', '#878748', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#4c894c', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
     const offerList = useSelector(state => state.offer.offerList)
     const surveyList = useSelector(state => state.survey.surveyList)
     const [offerId, setOfferId] = useState(null)
@@ -68,7 +70,7 @@ const UserDashboard = () => {
     }, []);
     return (
         <>
-                <div className='total-earning mb-6 md:p-6 p-4'>
+                <div className='total-earning md:p-6 p-4'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Earnings</h5>
                     <div className='flex gap-6 md:flex-row flex-col'>
                         <div className='earning-wrapper flex justify-between gap-4 flex-col md:w-1/2 w-full'>
@@ -99,7 +101,7 @@ const UserDashboard = () => {
                             <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                 <div className='icon'><FaUserFriends /></div>
                                 <div className='content text-gray-200 text-left'>
-                                    <h5 className='md:text-2xl text-xl font-bold text-white'>0</h5>
+                                    <h5 className='md:text-2xl text-xl font-bold text-white'>$0</h5>
                                     <p className='text-sm text-gray-300'>Referred earning</p>
                                 </div>
                             </div>
@@ -110,7 +112,8 @@ const UserDashboard = () => {
                                
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
                                 <div>
-                                    <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p>
+                                    {/* <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p> */}
+                                    <p className='text-gray-200'>Share your referral link to your friends, and get $0.10 in rewards.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
                                 <input value={`https://opiniontrue.com/${referralCode}`} readOnly />
@@ -119,7 +122,7 @@ const UserDashboard = () => {
                     </div>
                 </div>
               
-                <div className='offers-box md:mb-12 mb-6 md:p-6 p-4'>
+                <div className='offers-box md:p-6 p-4'>
                     <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Offers</h5>
                     <Swiper 
                         breakpoints={{
@@ -146,7 +149,11 @@ const UserDashboard = () => {
                             <div className='offer-img'>
                             <img src={item?.offer_image} alt='offerimg' />
                             </div>
-                            <BsAndroid2 className='device-icon' />
+                            <div className='device-icon'>
+                                <BsAndroid2 className='' />
+                                <FaApple className='' />
+                                <IoIosDesktop className='' />
+                            </div>
                             <div className='offer-content'>
                                 <p>{item?.offer}</p>
                                 <span>{item?.categories}</span>
@@ -154,9 +161,7 @@ const UserDashboard = () => {
                                     ${item?.payout}
                                 </p>
                                 <div className='text-left flex justify-between items-center'>
-                                
                                 </div>
-                                
                             </div>
                         </div>
                 </SwiperSlide>)}
@@ -164,7 +169,7 @@ const UserDashboard = () => {
                     
                 </div>
 
-                <div className='survey-box md:mb-12 mb-6 md:p-6 p-4'>
+                <div className='survey-box md:p-6 p-4'>
                     <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Survey</h5>
                     <Swiper 
                         breakpoints={{
@@ -195,10 +200,10 @@ const UserDashboard = () => {
                                 <GiTakeMyMoney />
                             </div>
                             <div className='offer-content'>
-                                <p className='survey_name'>LIVE SURVEY</p>
-                                <div className='text-left flex justify-between items-center'>
+                                <p className='survey_name'>Live Survey</p>
+                                <div className='text-left'>
                                 <span>{item?.loi} min</span>
-                                <p className='offer-price'>
+                                <p className='offer-price pt-2'>
                                     ${item?.cpi}
                                 </p>
                                 </div>
@@ -208,7 +213,7 @@ const UserDashboard = () => {
                 </Swiper>
                 </div>
                 <div className='md:p-6 p-4'>
-                <div className='survey-partner-box md:mb-12 mb-6'>
+                <div className='survey-partner-box'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
                 <Swiper 
                         breakpoints={{

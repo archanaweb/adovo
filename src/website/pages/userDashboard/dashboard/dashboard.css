@@ -314,6 +314,7 @@ header.user-header {
 }
 .survey-box .swiper-button-prev, .survey-box .swiper-button-next  {
     top: 44px !important;
+
 }
 .survey-box .swiper-button-prev  {
     right: 55px !important;
@@ -376,16 +377,21 @@ header.user-header {
 } */
 
 .items-wrapper .item .device-icon {
+    width: auto;
     position: absolute;
     top: 20px;
     right: 10px;
     color: #fff;
-    background-color: #0000008a;
-    width: 45px;
-    padding: 4px;
+    background-color: #0000008c;
+    padding: 4px 8px;
     border-radius: 12px;
     font-size: 25px;
+    display: flex;
+    gap: 3px;
+}
 
+.items-wrapper .item .device-icon svg {
+    font-size: 14px;
 }
 
 .items-wrapper .item img {
@@ -444,15 +450,15 @@ header.user-header {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #ffdbe3;
+    background: #FFE27C;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .offer-start-icon svg {
-    color: #d13d5e;
-    font-size: 22px;
+    color: #FA8804;
+    font-size: 20px;
 }
 
 .items-wrapper .item:hover .offer-hover {
@@ -490,7 +496,7 @@ header.user-header {
 }
 
 .offer-content p.survey_name {
-    color: #72ca39;
+    color: #99ff99;
 }
 
 .offer-content span {
@@ -505,6 +511,7 @@ p.offer-price {
     font-size: 17px;
     font-weight: 600;
     padding-top: 5px;
+    color: #fff;
 }
 
 .spItem-wrapper {
@@ -876,7 +883,7 @@ p.offer-price {
     align-items: center;
     margin: auto;
     border-radius: 8px;
-    margin-top: 18px;
+    margin-top: 10px;
 }
 
 .survey-img svg {
