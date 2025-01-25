@@ -20,6 +20,7 @@ import UserSidebar from "../components/userDdashboard/UserSidebar"
 import FooterMenu from "../components/userDdashboard/FooterMenu"
 import AllSurvey from "../pages/userDashboard/surveys/AllSurvey"
 import SurveyIframe from "../pages/userDashboard/surveys/SurveyIframe"
+import { ToggleUSDProvider } from "../../context/ToggleUSDContext"
 
 const Layout = () => {
     const location = useLocation()
@@ -40,6 +41,7 @@ const LayoutDashboard = () => {
     // const isExcluded = excludedPaths.includes(location.pathname);
     return (
         <>
+        <ToggleUSDProvider>
            <DashboardHeader />
             <div className="main flex">
                 <UserSidebar />
@@ -48,6 +50,7 @@ const LayoutDashboard = () => {
             <FooterMenu />
                 </div>
             </div>
+            </ToggleUSDProvider>
         </>
     );  
 }

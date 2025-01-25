@@ -4,8 +4,8 @@ import BaseUrl from '../../Api/BaseUrl';
 
 export const fetchOfferList = createAsyncThunk(
   'api/offerList',
-  async () => {
-    const response = await fetch(`${BaseUrl}api/offerList`);
+  async (pageno) => {
+    const response = await fetch(`${BaseUrl}api/offerList?page=${pageno}`);
     const responseData = await response.json();
     return responseData
   }

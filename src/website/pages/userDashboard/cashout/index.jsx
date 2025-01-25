@@ -54,6 +54,7 @@ const Cashout = ()=> {
                 </div>
                 
             </div>
+            <div className=' md:p-6 p-4'>
             <div className='withdraw-amount'>
                     <div className='text-left mt-4
                     '>
@@ -91,6 +92,7 @@ const Cashout = ()=> {
 
                     </div>
                     </div>
+                </div>
                 </div>
 
             <SubmitDocumentModal isOpenModal={isOpenDocumentModal} setIsOpenModal={setIsOpenDocumentModal}/>

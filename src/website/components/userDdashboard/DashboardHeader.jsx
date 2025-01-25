@@ -9,8 +9,10 @@ import { useEffect, useState } from 'react';
 import { fetchUserDetails } from '../../../redux/user/userSlice';
 import doller from '../../assest/images/dollar.png'
 import bell from '../../assest/images/bell.png'
+import { useToggleUSD } from '../../../context/ToggleUSDContext';
 
 const DashboardHeader = ()=> {
+    const {isUSDChecked} = useToggleUSD()
     const [name, setName]  = useState('')
     const dispatch = useDispatch()
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
@@ -36,7 +38,7 @@ const DashboardHeader = ()=> {
         <div className='header-right'>
             <div className='user-balance'>
                     <img src={doller} alt='coin'/>
-                    <p><span>${totalAmount}</span></p>
+                    <p><span>{isUSDChecked? `$${totalAmount}` : totalAmount*100 }</span></p>
                 {/* <p>Balance:<span>${totalAmount}</span></p> */}
             </div>
             <button className='iconbtn'><img src={bell} alt='bell' /></button>

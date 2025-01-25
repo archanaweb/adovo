@@ -28,7 +28,11 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { fetchSurveyList } from '../../../../redux/user/surveySlice';
 import parnerData from '../../../../partnerData.json'
 import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
+import { useToggleUSD } from '../../../../context/ToggleUSDContext.js';
 const UserDashboard = () => {
+    const {isUSDChecked, handleUDSChange} = useToggleUSD();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     const surveyColors = ['#FF6633', '#924c35', '#FF33FF', '#878748', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#4c894c', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
     const offerList = useSelector(state => state.offer.offerList)
@@ -36,7 +40,6 @@ const UserDashboard = () => {
     const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [isChecked, setIsChecked] = useState(true);
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
     const totalReferal = useSelector((state)=> state?.referal?.totalRef)
     const totalPoint= useSelector((state)=> state?.wallet?.totalPoint)
@@ -47,14 +50,19 @@ const UserDashboard = () => {
         setIsOpenModal(!isOpenModal)
         setOfferId(id)
     }
-    const handleCheckboxChange = (event) => {
-        setIsChecked(event.target.checked);
-      };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
         const resData = res.payload;
         if(resData?.responseCode === 200){
             setReferralCode(resData?.referralCode)
+        }
+    }
+
+    const fetchOffer = async (pageno) => {
+        const res = await dispatch(fetchOfferList(pageno))
+        const resData = res.payload;
+        if(resData?.responseCode === 200){
+            setTotalPages(resData?.totalPages) 
         }
     }
 
@@ -69,7 +77,7 @@ const UserDashboard = () => {
        console.log('Dispatched fetchTotalAmount action', totalAmount);
     },[])
     useEffect(() => {
-        dispatch(fetchOfferList())
+        fetchOffer(currentPage)
         dispatch(fetchSurveyList())
     }, []);
     return (
@@ -79,11 +87,11 @@ const UserDashboard = () => {
             <h5 className='md:text-xl text-xl text-white text-left md:font-medium font-medium'></h5>
             <div className='flex justify-end items-center gap-2 showUSD'>
             <p>Show USD</p>
-            <label className={`onoffbtn ${isChecked ? "active" : ""}`}>
+            <label className={`onoffbtn ${isUSDChecked ? "active" : ""}`}>
             <input 
                 type="checkbox"
-                checked={isChecked}
-                onChange={handleCheckboxChange}
+                checked={isUSDChecked}
+                onChange={handleUDSChange}
             />
          </label>
          </div>
@@ -97,7 +105,7 @@ const UserDashboard = () => {
                                 <div className='item flex justify-start items-center md:gap-4 gap-2'>
                                     <div className='icon'><IoWallet /></div>
                                     <div className='content text-gray-200 text-left'>
-                                        <h5 className='md:text-2xl text-xl font-bold text-white'>${totalAmount}</h5>
+                                        <h5 className='md:text-2xl text-xl font-bold text-white'>{isUSDChecked? `$${totalAmount}` : totalAmount*100 }</h5>
                                         <p className='text-sm text-gray-300'>Total Earnings</p>
                                     </div>
                                 </div>
@@ -132,7 +140,7 @@ const UserDashboard = () => {
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
                                 <div>
                                     {/* <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p> */}
-                                    <p className='text-gray-200'>Share your referral link to your friends, and get $0.10 in rewards.</p>
+                                    <p className='text-gray-200'>Share your referral link to your friends, and get {isUSDChecked? `$${totalAmount}` : totalAmount*100 + ` points` } in rewards.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
                                 <input value={`https://opiniontrue.com/${referralCode}`} readOnly />
@@ -142,7 +150,10 @@ const UserDashboard = () => {
                 </div>
               
                 <div className='offers-box md:p-6 p-4'>
-                    <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Offers</h5>
+                    <div className='sec-topHeading'>
+                    <h5 className='md:text-2xl text-xl text-white text-left md:font-bold font-medium'>Featured Offers</h5>
+                    <Link to='/alloffers' className='text-white text-sm font-medium'>View All</Link>
+                    </div>
                     <Swiper 
                         breakpoints={{
                             576: {
@@ -169,9 +180,9 @@ const UserDashboard = () => {
                             <img src={item?.offer_image} alt='offerimg' />
                             </div>
                             <div className='device-icon'>
-                                <BsAndroid2 className='' />
+                                {item?.devices === 'All' ? <> <BsAndroid2 className='' />
                                 <FaApple className='' />
-                                <IoIosDesktop className='' />
+                                <IoIosDesktop className='' /></> : item?.devices === 'Android' ? <BsAndroid2 className='' /> : item?.devices === 'iPhone|iPad' ? <FaApple className='' /> : <IoIosDesktop className='' />}
                             </div>
                             <div className='offer-content'>
                                 <p>{item?.offer}</p>
@@ -189,7 +200,10 @@ const UserDashboard = () => {
                 </div>
 
                 <div className='survey-box md:p-6 p-4'>
-                    <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Featured Survey</h5>
+                <div className='sec-topHeading'>
+                    <h5 className='md:text-2xl text-xl text-white text-left md:font-bold font-medium'>Featured Survey</h5>
+                    <Link to='/allsurveys' className='text-white text-sm font-medium'>View All</Link>
+                    </div>
                     <Swiper 
                         breakpoints={{
                             576: {
