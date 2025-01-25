@@ -1,3 +1,3 @@
 // config.js
-const BaseUrl = 'https://opiniontrue.xyz/';
+const BaseUrl = 'https://coinlooty.com/';
 export default BaseUrl; 

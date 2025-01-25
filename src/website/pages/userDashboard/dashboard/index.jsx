@@ -36,6 +36,7 @@ const UserDashboard = () => {
     const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [isChecked, setIsChecked] = useState(true);
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
     const totalReferal = useSelector((state)=> state?.referal?.totalRef)
     const totalPoint= useSelector((state)=> state?.wallet?.totalPoint)
@@ -46,6 +47,9 @@ const UserDashboard = () => {
         setIsOpenModal(!isOpenModal)
         setOfferId(id)
     }
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
+      };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
         const resData = res.payload;
@@ -70,7 +74,22 @@ const UserDashboard = () => {
     }, []);
     return (
         <>
-                <div className='total-earning md:p-6 p-4'>
+        <div className='md:p-4 p-2 '>
+            <div className='dashboard-top flex justify-between items-center pb-2'>
+            <h5 className='md:text-xl text-xl text-white text-left md:font-medium font-medium'></h5>
+            <div className='flex justify-end items-center gap-2 showUSD'>
+            <p>Show USD</p>
+            <label className={`onoffbtn ${isChecked ? "active" : ""}`}>
+            <input 
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+            />
+         </label>
+         </div>
+         </div>
+        </div>
+                <div className='total-earning md:p-4 p-2'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Earnings</h5>
                     <div className='flex gap-6 md:flex-row flex-col'>
                         <div className='earning-wrapper flex justify-between gap-4 flex-col md:w-1/2 w-full'>
@@ -187,14 +206,12 @@ const UserDashboard = () => {
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
                         {surveyList?.map((item, index)=> <SwiperSlide key={item?.id}>
                 <div className='item'>
-                            <Link to={`/survey/${item?.id}`}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
                                     <IoPlay />       
                                 </div>
                                 <p>Start Survey</p>
                             </div>
-                            </Link>
                             <div className='survey-img' style={{backgroundColor: surveyColors[index]}}>
                                 {/* <img src={item?.offer_image} alt='offerimg' /> */}
                                 <GiTakeMyMoney />
