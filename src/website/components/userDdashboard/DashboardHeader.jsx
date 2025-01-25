@@ -25,7 +25,6 @@ const DashboardHeader = ()=> {
         const nameCaptilize = userDetails?.firstName.toUpperCase()
         setName(nameCaptilize)
         },[userDetails])
-
     return (
         <>
         <header className="user-header bg-gray-900 md:py-2 p-2">

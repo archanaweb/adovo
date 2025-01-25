@@ -232,6 +232,14 @@ const UserDashboard = () => {
                          {parnerData?.partners.map((item)=> <SwiperSlide key={item?.id}>
                         <div className='item'>
                        <div className='spItem flex justify-between items-center gap-4 flex-col' >
+                       <Link to={`/survey/${item?.id}`}>
+                            <div className='offer-hover'>
+                                <div className='offer-start-icon'>
+                                    <IoPlay />       
+                                </div>
+                                <p>Start Offer</p>
+                            </div>
+                            </Link>
                                 <img src={item?.image} alt='partnerimg'/>
                                 <div className='flex flex-col items-center gap-2 w-full'>
                                     <p>{item?.name}</p>
