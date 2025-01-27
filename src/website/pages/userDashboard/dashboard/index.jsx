@@ -30,6 +30,11 @@ import parnerData from '../../../../partnerData.json'
 import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 import { useToggleUSD } from '../../../../context/ToggleUSDContext.js';
 const UserDashboard = () => {
+    const [checkedDevices, setCheckedDevices] = useState({
+        android: false,
+        ios: false,
+        desktop: false,
+      });
     const {isUSDChecked, handleUDSChange} = useToggleUSD();
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -50,6 +55,14 @@ const UserDashboard = () => {
         setIsOpenModal(!isOpenModal)
         setOfferId(id)
     }
+    const handleCheckboxChange = (e) => {
+        const { id, checked } = e.target;
+        setCheckedDevices((prevState) => ({
+          ...prevState,
+          [id]: checked,
+        }));
+        console.log('checkedDevicesvalue', e.target);
+      };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
         const resData = res.payload;
@@ -80,11 +93,47 @@ const UserDashboard = () => {
         fetchOffer(currentPage)
         dispatch(fetchSurveyList())
     }, []);
+    useEffect(() => {
+        console.log('checkedDevices', checkedDevices);
+    }, [checkedDevices]);
     return (
         <>
         <div className='md:p-4 p-2 '>
             <div className='dashboard-top flex justify-between items-center pb-2'>
-            <h5 className='md:text-xl text-xl text-white text-left md:font-medium font-medium'></h5>
+            <div>
+            <div className="setDevice flex gap-4 items-center">
+            <h5 className='md:text-xl text-xl text-white text-left md:font-medium font-medium'>Device</h5>
+                <form className='flex gap-4'>
+                    <div className="form-group">
+                    <input
+                        type="checkbox"
+                        id="android"
+                        checked={checkedDevices.android}
+                        onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="android">Android</label>
+                    </div>
+                    <div className="form-group">
+                    <input
+                        type="checkbox"
+                        id="ios"
+                        checked={checkedDevices.ios}
+                        onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="ios">iOS</label>
+                    </div>
+                    <div className="form-group">
+                    <input
+                        type="checkbox"
+                        id="desktop"
+                        checked={checkedDevices.desktop}
+                        onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor="desktop">Desktop</label>
+                    </div>
+                </form>
+                </div>
+            </div>
             <div className='flex justify-end items-center gap-2 showUSD'>
             <p>Show USD</p>
             <label className={`onoffbtn ${isUSDChecked ? "active" : ""}`}>
@@ -97,7 +146,7 @@ const UserDashboard = () => {
          </div>
          </div>
         </div>
-                <div className='total-earning md:p-4 p-2'>
+                <div className='total-earning md:p-4 p-3'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Earnings</h5>
                     <div className='flex gap-6 md:flex-row flex-col'>
                         <div className='earning-wrapper flex justify-between gap-4 flex-col md:w-1/2 w-full'>

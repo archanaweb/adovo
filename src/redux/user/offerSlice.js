@@ -10,6 +10,10 @@ export const fetchOfferList = createAsyncThunk(
     return responseData
   }
 )
+export const filterDeviceOfferList = (state, action) => {
+  const {device} = action.payload;
+  state.deviceFilterOfferList = state.offerList.filter((item)=> item?.devices === device)
+}
 export const fetchOfferDetail = createAsyncThunk(
   'admin/viewOffer',
   async (id) => {
@@ -40,6 +44,7 @@ const OfferSlice = createSlice({
   name: 'offer',
   initialState: {
     offerList : [],
+    deviceFilterOfferList: [],
     offerDetail: null,
     topRef: null,
     detail: null,
