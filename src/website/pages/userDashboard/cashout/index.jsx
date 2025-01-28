@@ -38,7 +38,7 @@ const Cashout = ()=> {
         },[paymentMethod])
     return (
         <>
-            <div className="cashoutsec text-left md:p-6 p-4">
+            <div className="cashoutsec text-left md:p-6 p-3">
                 <div className="flex gap-6 md:flex-row flex-col">
                     <div className="md:w-1/2 w-full">
                         <h5 className='text-2xl text-white text-left pb-6 font-bold'>Cashout</h5>
@@ -54,14 +54,13 @@ const Cashout = ()=> {
                 </div>
                 
             </div>
-            <div className=' md:p-6 p-4'>
+            <div className=' md:p-6 p-3'>
             <div className='withdraw-amount'>
-                    <div className='text-left mt-4
-                    '>
+                    <div className='text-left md:mt-4 mt-2'>
                         <p className="text-gray-400">If you haven't submitted your document yet, submit the document here for the varification:</p>
                         <button className="bg-[#24a947] text-white p-2 rounded px-4 mt-2" onClick={hableDocumentModal}>Submit Document</button>
                     </div>
-                    <div className="py-4 px-4 rounded shadow text-left mt-6 withdrw-bg">
+                    <div className="md:py-4 py-2 md:px-4 px-2 rounded shadow text-left md:mt-6 mt-2 withdrw-bg">
                         <h5 className="text-xl text-white text-left pb-4 font-bold">Withdraw Cash</h5>
                         <div className=" gap-4">
                             <div className="w-full mb-3">

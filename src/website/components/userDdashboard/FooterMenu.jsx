@@ -14,6 +14,7 @@ const FooterMenu = ()=> {
     const [isOpenSidebar, setIsOpenSidebar] = useState(false)
     const handleMenuClick = (menu) => {
         setActiveMenu(menu);
+        setIsOpenSidebar(false)
       };
       const navigate = useNavigate()
       const handleLogout = () => {
@@ -65,7 +66,7 @@ const FooterMenu = ()=> {
         <div className={!isOpenSidebar ? 'mobile-sidebar' : 'mobile-sidebar open'}>
             <div className="menu-items">
             <ul>
-                    <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></Link></li>
+                    <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><Link to='/allsurveys'><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></Link></li>
                     <li onClick={()=> handleMenuClick('leaderboard')} className={activeMenu === 'leaderboard' ? 'active' : ''}><Link to='/leaderboard'><button> <span className="menu-icon"><FaAward /></span>Leaderboard</button></Link></li>
                     <li onClick={()=> handleMenuClick('affiliates')} className={activeMenu === 'affiliates' ? 'active' : ''}><Link to='/affiliates'><button> <span className="menu-icon"><FaUsers /></span>Affiliates</button></Link></li>
                     <li onClick={handleLogout}><button><span className="menu-icon"><TbLogout /></span>Logout</button></li>

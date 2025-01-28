@@ -33,7 +33,7 @@ const AllOffers = () => {
     }, [])
     return (
         <>
-        <div className='offers-box mb-12 md:p-6 p-4 relative allOffersPage' >
+        <div className='offers-box md:mb-6 mb-2 md:p-6 p-4 relative allOffersPage' >
             <h5 className='text-2xl text-white text-left pb-6 font-bold'>All Offers</h5>
             <div className="flex gap-4 items-wrapper flex-wrap">
                 {/* {offerListLoading && <p className='text-white text-2xl'>Loading...</p>} */}

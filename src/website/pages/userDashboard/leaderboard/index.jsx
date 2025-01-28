@@ -16,7 +16,7 @@ const LeaderBoard = () => {
                 <div className="flex gap-6">
                     <div className="w-full">
                         <h5 className='text-2xl text-white text-left pb-6 font-bold'>Leaderboard</h5>
-                        <div className="px-4 sm:px-8">
+                        <div className="px-2 sm:px-8">
                                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                                     <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden leaderboard-table">
                                         <table className="min-w-full leading-normal">
