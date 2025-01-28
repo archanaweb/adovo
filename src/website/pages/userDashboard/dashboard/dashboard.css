@@ -1147,6 +1147,9 @@ p.offer-price {
 }
 
 @media (max-width: 768px) {
+    .total-earning {
+        display: none;
+    }
     .tabs {
         padding: 15px 0;
     }
