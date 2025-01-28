@@ -46,7 +46,7 @@ const Affiliates = ()=> {
                 <div className="flex gap-6">
                     <div className="w-full">
                         <h5 className='text-2xl text-white text-left pb-6 font-bold'>Affiliates</h5>
-                            <div className="statics-box mb-6">
+                            <div className="statics-box md:mb-6 mb-4">
                                 <div className="item">
                                     <h4>${totalAmount}</h4>
                                     <p>Total Earnings</p>
@@ -60,13 +60,13 @@ const Affiliates = ()=> {
                                 </div>
 
                                  <div className="item">
-                                    <h4>{totalReferal}</h4>
+                                    <h4>{totalReferal ? totalReferal : '0'}</h4>
                                     <p>Users Referred</p>
                                     <div className="saperater"></div>
                                 </div>
 
                                  <div className="item">
-                                    <h4>0</h4>
+                                    <h4>$0</h4>
                                     <p>Referred Earnings</p>
                                 </div>
 
@@ -78,7 +78,7 @@ const Affiliates = ()=> {
                                     <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
-                                <div className='flex gap-2 justify-start items-center mt-2'>
+                                <div className='flex gap-2 justify-start items-center mt-5'>
                                     <input value={referralCode} readOnly />
                                     <IoCopy onClick={handleCopyText} />
                                 </div>

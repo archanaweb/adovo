@@ -17,7 +17,7 @@ const LeaderBoard = () => {
                     <div className="w-full">
                         <h5 className='text-2xl text-white text-left pb-6 font-bold'>Leaderboard</h5>
                         <div className="px-2 sm:px-8">
-                                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto bg-[#111827]">
                                     <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden leaderboard-table">
                                         <table className="min-w-full leading-normal">
                                             <thead>
@@ -38,7 +38,7 @@ const LeaderBoard = () => {
                                             </thead>
                                             <tbody>
                                                 {earnedUser?.map((user, index)=> <tr>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
                                                         <div className="flex">
                                                             <div className="flex-shrink-0 w-5 h-5">
                                                                 <span>{index + 1}</span>
@@ -50,13 +50,13 @@ const LeaderBoard = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
                                                         <p className="text-gray-900 whitespace-no-wrap">${user?.totalAmount}</p>
                                                     </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
                                                         <p className="text-gray-900 whitespace-no-wrap">${user?.totalEarnings}</p>
                                                     </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
                                                         <p className="text-gray-900 whitespace-no-wrap">{user?.totalPoint}</p>
                                                     </td>
                                                 </tr> )}

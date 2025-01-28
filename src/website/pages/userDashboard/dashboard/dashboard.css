@@ -1082,6 +1082,30 @@ p.offer-price {
     transform: rotate(45deg);
   }
 @media (max-width: 1200px) {
+    .statics-box {
+        padding: 10px;
+        flex-wrap: wrap;
+    }
+    .statics-box .item {
+        padding: 10px;
+        width: 50%;
+    }
+    .statics-box .item h4 {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+    .statics-box .saperater {
+        position: absolute;
+        width: 1px;
+        height: 66%;
+        color: #cfd0d1;
+        top: 20%;
+        right: 14%;
+        background: #cfd0d114;
+    }
+    .statics-box {
+        padding: 10px;
+    }
     .dashboard-footer {
         padding: 15px;
     }
@@ -1123,6 +1147,9 @@ p.offer-price {
 }
 
 @media (max-width: 768px) {
+    .tabs {
+        padding: 15px 0;
+    }
     .withdraw-amount {
         padding: 10px;
         margin: 10px 0;
@@ -1176,7 +1203,7 @@ p.offer-price {
 
     .refer-user input {
         width: 95%;
-        margin-top: 25px;
+        margin-top: 0px;
     }
 
     .dashboard-wrapper {
