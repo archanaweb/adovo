@@ -1147,6 +1147,33 @@ p.offer-price {
 }
 
 @media (max-width: 768px) {
+    .spItem {
+        height: 175px;
+        gap: 10px !important;
+    }
+    .spItem img {
+        width: 100px;
+    }
+    .showUSD {
+        padding: 6px 8px;
+    }
+    .showUSD p {
+        font-size: 14px;
+    }
+    .onoffbtn {
+        width: 40px;
+        height: 20px;
+    }
+    .onoffbtn.active:after {
+        margin-left: -22px;
+    }
+    .onoffbtn:after {
+        height: 22px;
+        width: 22px;
+    }
+    .dashboard-footer p {
+        font-size: 14px;
+    }
     .total-earning {
         display: none;
     }
