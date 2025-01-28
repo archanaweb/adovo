@@ -1147,6 +1147,15 @@ p.offer-price {
 }
 
 @media (max-width: 768px) {
+    .footer-menu .menu-items li {
+        width: 65px;
+    }
+    .footer-menu .menu-items li a {
+        padding: 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .spItem {
         height: 175px;
         gap: 10px !important;
