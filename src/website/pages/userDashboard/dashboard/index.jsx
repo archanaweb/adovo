@@ -292,7 +292,7 @@ const UserDashboard = () => {
                 </SwiperSlide>)}
                 </Swiper>
                 </div>
-                <div className='md:p-6 p-4'>
+                <div className='md:p-6 p-4 offerWall'>
                 <div className='survey-partner-box'>
                 <h5 className='md:text-2xl text-xl text-white text-left md:pb-6 pb-4 md:font-bold font-medium'>Offer Partners</h5>
                 <Swiper 

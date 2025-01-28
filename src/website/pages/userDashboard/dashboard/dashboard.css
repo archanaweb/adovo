@@ -182,7 +182,7 @@ header.user-header {
     background: #192336;
     z-index: 9999;
     box-shadow: 0 1px 2px #333;
-    padding: 25px 20px;
+    padding: 25px 10px;
     transition: all .5s;
     transform: translateX(100%);
 }
@@ -197,17 +197,32 @@ header.user-header {
 }
 
 .menu-items {
-    padding-top: 20px;
+    /* padding-top: 20px; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
 }
 
 .menu-items ul li {
     text-align: left;
-    /* padding: 10px 11px; */
     background: transparent;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border-radius: 4px;
     transition: all .2s ease;
     cursor: pointer;
+}
+.logoutBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    gap: 8px;
+    padding: 10px;
+    opacity: .8;
+    background: #344b77;
+    border-radius: 7px;
+    width: 100%;
 }
 
 .menu-items ul li a {
@@ -355,11 +370,11 @@ header.user-header {
 
 
 .items-wrapper .item {
-    height: 202px;
+    height: 200px;
     overflow: hidden;
     width: 145px;
     width: 120px;
-    border: 1px solid #686868;
+    /* border: 1px solid #686868; */
     border-radius: 14px;
     position: relative;
     z-index: 1;
@@ -370,6 +385,7 @@ header.user-header {
     align-items: center;
     padding: 8px;
     position: relative;
+    background: #423e4c69;
 }
 
 /* .items-wrapper .item:hover .offer-content{
@@ -405,6 +421,7 @@ header.user-header {
 
 .offers-box {
     position: relative;
+    padding-right: 0;
 }
 
 .offers-box .items-wrapper {
@@ -479,7 +496,7 @@ header.user-header {
     overflow: hidden;
     background: #384152;
     width: 100%;
-    height: 100px;
+    height: 90px;
     border-radius: 14px;
     display: flex;
     justify-content: center;
@@ -515,9 +532,7 @@ header.user-header {
 }
 
 p.offer-price {
-    color: #ff5178;
-    color: #ffca71;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
     padding-top: 5px;
     color: #fff;
@@ -551,11 +566,7 @@ p.offer-price {
     object-fit: contain;
 }
 .survey-partner-box {
-    background: #111827;
-    padding: 20px 20px;
-    border-radius: 14px;
     position: relative;
-    background: #192336;
 }
 .survey-partner-box .swiper-slide {
     width: 145px !important;
@@ -876,6 +887,10 @@ p.offer-price {
 
 .survey-box {
     position: relative;
+    padding-right: 0;
+}
+.offerWall {
+    padding-right: 0;
 }
 
 .survey-box .items-wrapper {
@@ -1107,7 +1122,7 @@ p.offer-price {
         padding: 10px;
     }
     .dashboard-footer {
-        padding: 15px;
+        display: none;
     }
     .header-right {
         gap: 10px;
@@ -1130,15 +1145,9 @@ p.offer-price {
         width: 100%;
         margin-left: 0;
     }
-
-    .survey-partner-box {
-        padding: 15PX;
-    }
-
     .modal-content {
         width: 90%;
     }
-
     .modal-content img {
         width: 100%;
         height: 234px;
@@ -1147,8 +1156,18 @@ p.offer-price {
 }
 
 @media (max-width: 768px) {
+    .sidebar-logo {
+        padding-left: 10px;
+        padding-bottom: 12px;
+    }
+    .sidebar-logo img {
+        width: 130px;
+        height: auto;
+    }
     .footer-menu .menu-items li {
         width: 65px;
+        display: flex;
+        justify-content: center;
     }
     .footer-menu .menu-items li a {
         padding: 10px 10px;
@@ -1203,7 +1222,7 @@ p.offer-price {
         display: none !important;
     }
     .sec-topHeading a {
-        margin-right: 0;
+        margin-right: 10px;
     }
 
     .sidebar_opened .sidebar-backdrop {
@@ -1297,7 +1316,7 @@ p.offer-price {
 
     .items-wrapper .item {
         width: auto;
-        height: 187px;
+        height: 178px;
     }
 }
 

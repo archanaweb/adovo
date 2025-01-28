@@ -9,6 +9,7 @@ import { TbLogout } from "react-icons/tb";
 import { BsThreeDots } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import logo from '../../assest/images/logo.png';
 const FooterMenu = ()=> {
     const [activeMenu, setActiveMenu] = useState('earn')
     const [isOpenSidebar, setIsOpenSidebar] = useState(false)
@@ -46,7 +47,8 @@ const FooterMenu = ()=> {
                     <li onClick={()=> handleMenuClick('offers')} className={activeMenu === 'offers' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><MdVideogameAsset /></span>Offers</button></Link></li>
                     <li onClick={()=> handleMenuClick('cashout')} className={activeMenu === 'cashout' ? 'active' : ''}><Link to='/cashout'><button> <span className="menu-icon"><PiHandWithdrawFill /></span>Cashout</button></Link></li>
                     <li onClick={()=> handleMenuClick('rewards')} className={activeMenu === 'rewards' ? 'active' : ''}><Link to='/rewards'><button> <span className="menu-icon"><FaAward /></span>Rewards</button></Link></li>
-                    <li onClick={handleOpenSidebar} className=''><button> <span className="menu-icon"><BsThreeDots /></span>More</button></li>
+                    <li onClick={handleOpenSidebar} className=''>
+                    <button> <span className="menu-icon"><BsThreeDots /></span>More</button></li>
                 </ul>
             </div>
 
@@ -65,12 +67,19 @@ const FooterMenu = ()=> {
         </div>
         <div className={!isOpenSidebar ? 'mobile-sidebar' : 'mobile-sidebar open'}>
             <div className="menu-items">
+                <div>
+            <div className="sidebar-logo">
+            <Link to='/dashboard'><img src={logo} alt="Website Logo" width={150} /></Link>
+            </div>
             <ul>
                     <li onClick={()=> handleMenuClick('surveys')} className={activeMenu === 'surveys' ? 'active' : ''}><Link to='/allsurveys'><button> <span className="menu-icon"><IoDocumentText /></span>Surveys</button></Link></li>
                     <li onClick={()=> handleMenuClick('leaderboard')} className={activeMenu === 'leaderboard' ? 'active' : ''}><Link to='/leaderboard'><button> <span className="menu-icon"><FaAward /></span>Leaderboard</button></Link></li>
                     <li onClick={()=> handleMenuClick('affiliates')} className={activeMenu === 'affiliates' ? 'active' : ''}><Link to='/affiliates'><button> <span className="menu-icon"><FaUsers /></span>Affiliates</button></Link></li>
-                    <li onClick={handleLogout}><button><span className="menu-icon"><TbLogout /></span>Logout</button></li>
                 </ul>
+                </div>
+                <div>
+                <button onClick={handleLogout} className="logoutBtn"><span className="menu-icon"><TbLogout /></span>Logout</button>
+                </div>
                 </div>
             </div>
             <div className="sidebar-backdrop" onClick={handleCloseSidebar}></div>
