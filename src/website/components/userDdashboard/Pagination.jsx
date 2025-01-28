@@ -1,7 +1,7 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 const Pagination = ({ currentPage, setCurrentPage, fetchData }) => {
-    const totalPages = 10;
+    const totalPages = 3;
     const handlePageChange = (page) => {
         setCurrentPage(page);
         fetchData(page);

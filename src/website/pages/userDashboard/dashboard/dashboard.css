@@ -1072,16 +1072,18 @@ p.offer-price {
     content: '';
     display: block;
     position: absolute;
-    top: 6px;
+    top: 5px;
     left: 7px;
     width: 6px;
     height: 12px;
     border: solid #e89d09;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
-
   }
 @media (max-width: 1200px) {
+    .dashboard-footer {
+        padding: 15px;
+    }
     .header-right {
         gap: 10px;
     }
@@ -1223,7 +1225,7 @@ p.offer-price {
     }
 
     .items-wrapper .item {
-        width: 102px;
+        width: auto;
         height: 187px;
     }
 }
