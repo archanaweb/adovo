@@ -10,10 +10,7 @@ export const fetchOfferList = createAsyncThunk(
     return responseData
   }
 )
-export const filterDeviceOfferList = (state, action) => {
-  const {device} = action.payload;
-  state.deviceFilterOfferList = state.offerList.filter((item)=> item?.devices === device)
-}
+
 export const fetchOfferDetail = createAsyncThunk(
   'admin/viewOffer',
   async (id) => {
@@ -23,39 +20,29 @@ export const fetchOfferDetail = createAsyncThunk(
   }
 )
 
-// export const generateReferralCode = createAsyncThunk(
-//     'user/userGenrateRefrelCode',
-//     async ({userId, formData}) => {
-//       const response = await fetch(`${BaseUrl}user/userGenrateRefrelCode?userId=${userId}`, {
-//         method: "POST",
-//         headers: {
-//             'accept': 'application/json'
-//         },
-//         body:  new URLSearchParams(formData)
-//       });
-//       const responseData = await response.json();
-//       return responseData
-//     }
-//   )
-
 
 
 const OfferSlice = createSlice({
   name: 'offer',
   initialState: {
     offerList : [],
+    selectedDevice: 'all',
     deviceFilterOfferList: [],
     offerDetail: null,
     topRef: null,
     detail: null,
     loading : false,
     error : null,
-    uploadImg : null
+    uploadImg : null,
   },
 
   reducers: {
-    
-  },
+    setSelectedDevice: (state, action) => {
+      state.selectedDevice = action.payload;
+      // console.log('offerListdevice', state.age)
+
+    }
+},
 
   extraReducers: (builder) => {
 
@@ -66,6 +53,7 @@ const OfferSlice = createSlice({
         state.loading =  false;
         state.error = null;
         state.offerList =  action.payload?.responseResult
+        state.deviceFilterOfferList =  action.payload?.responseResult
     });
     builder.addCase(fetchOfferList.rejected, (state, action) => {
         state.error =  action.payload;
@@ -89,4 +77,5 @@ const OfferSlice = createSlice({
 
 // export const {} = offersSlice.actions
 
+export const { setSelectedDevice } = OfferSlice.actions;
 export default OfferSlice.reducer

@@ -10,6 +10,7 @@ import referimg from '../../../assest/images/referalimg2.png'
 import { BsAndroid2 } from "react-icons/bs";
 import { FaApple } from "react-icons/fa";
 import { IoIosDesktop } from "react-icons/io";
+import avatar from '../../../assest/images/user.png'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -23,13 +24,16 @@ import OfferModal from '../../../components/userDdashboard/OfferModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
 import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice';
-import { fetchOfferDetail, fetchOfferList } from '../../../../redux/user/offerSlice';
+import { fetchOfferDetail, fetchOfferList, setSelectedDevice } from '../../../../redux/user/offerSlice';
 import { GiTakeMyMoney } from "react-icons/gi";
 import { fetchSurveyList } from '../../../../redux/user/surveySlice';
 import parnerData from '../../../../partnerData.json'
 import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 import { useToggleUSD } from '../../../../context/ToggleUSDContext.js';
+import { fetchUserLiveMessages } from '../../../../redux/user/userSlice.js';
 const UserDashboard = () => {
+    const [offerData, setOfferData] = useState([])  
+    const selectedDevice = useSelector((state) => state.offer.selectedDevice);
     const [checkedDevices, setCheckedDevices] = useState({
         android: false,
         ios: false,
@@ -41,6 +45,8 @@ const UserDashboard = () => {
 
     const surveyColors = ['#FF6633', '#924c35', '#FF33FF', '#878748', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#4c894c', '#B34D4D', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
     const offerList = useSelector(state => state.offer.offerList)
+    const filteredOfferList = useSelector(state => state.offer.deviceFilterOfferList)
+    const liveMessages = useSelector(state => state.user.messageList)
     const surveyList = useSelector(state => state.survey.surveyList)
     const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
@@ -55,13 +61,21 @@ const UserDashboard = () => {
         setIsOpenModal(!isOpenModal)
         setOfferId(id)
     }
+    const handleFilterData = (device) => {
+        dispatch(setSelectedDevice(device));
+        const filteredData = offerList.filter((item) => item.devices === device);
+        console.log('filteredData', filteredData);
+        setOfferData(filteredData);
+        };
     const handleCheckboxChange = (e) => {
+        dispatch(setSelectedDevice(e.target.value));
         const { id, checked } = e.target;
         setCheckedDevices((prevState) => ({
           ...prevState,
           [id]: checked,
         }));
-        console.log('checkedDevicesvalue', e.target);
+        console.log('filteredOfferList', filteredOfferList);
+        handleFilterData(e.target.value);
       };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
@@ -76,6 +90,7 @@ const UserDashboard = () => {
         const resData = res.payload;
         if(resData?.responseCode === 200){
             setTotalPages(resData?.totalPages) 
+            setOfferData(resData?.responseResult)
         }
     }
 
@@ -90,15 +105,25 @@ const UserDashboard = () => {
        console.log('Dispatched fetchTotalAmount action', totalAmount);
     },[])
     useEffect(() => {
-        fetchOffer(currentPage)
+        fetchOffer(2)
         dispatch(fetchSurveyList())
+        dispatch(fetchUserLiveMessages())
     }, []);
-    useEffect(() => {
-        console.log('checkedDevices', checkedDevices);
-    }, [checkedDevices]);
     return (
         <>
+        <div className='liveMessage'>
+                <div className='liveMessageWrapper'>
+                    {liveMessages?.map((item, index)=> <div className='liveMessageItem' key={item?.userId}>
+                        <img src={avatar} alt='userImg' />
+                        <div className='liveMessageContent'>
+                            <p>{item?.userName}</p>
+                        </div>
+                    </div>)}
+                </div>
+            </div>
         <div className='md:p-4 p-2 '>
+            
+
             <div className='dashboard-top flex justify-between items-center pb-2'>
             <div>
             <div className="setDevice flex gap-4 items-center">
@@ -108,6 +133,7 @@ const UserDashboard = () => {
                     <input
                         type="checkbox"
                         id="android"
+                        value="Android"
                         checked={checkedDevices.android}
                         onChange={handleCheckboxChange}
                     />
@@ -117,6 +143,7 @@ const UserDashboard = () => {
                     <input
                         type="checkbox"
                         id="ios"
+                        value="ios"
                         checked={checkedDevices.ios}
                         onChange={handleCheckboxChange}
                     />
@@ -126,6 +153,7 @@ const UserDashboard = () => {
                     <input
                         type="checkbox"
                         id="desktop"
+                        value="desktop"
                         checked={checkedDevices.desktop}
                         onChange={handleCheckboxChange}
                     />
@@ -217,7 +245,7 @@ const UserDashboard = () => {
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
-                        {offerList?.map((item, index)=> <SwiperSlide key={item?.id}>
+                        {offerData?.map((item, index)=> <SwiperSlide key={item?.id}>
                 <div className='item' onClick={()=> handleClick(item?.id)}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>

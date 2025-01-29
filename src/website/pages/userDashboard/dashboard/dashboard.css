@@ -1096,6 +1096,37 @@ p.offer-price {
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }
+
+  .liveMessage .liveMessageWrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+}
+.liveMessage {
+    padding: 10px;
+    background: #120f27;
+}
+.liveMessage .liveMessageItem {
+    gap: 8px;
+    display: flex;
+    background: #1b1a2b;
+    padding: 4px 12px;
+    border-radius: 8px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liveMessage .liveMessageItem img {
+    width: 30px;
+    height: 30px;
+}
+
+.liveMessage .liveMessageItem p {
+    color: #fff;
+    font-size: 12px;
+    opacity: .6;
+}
 @media (max-width: 1200px) {
     .statics-box {
         padding: 10px;
