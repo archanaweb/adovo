@@ -32,6 +32,7 @@ import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 import { useToggleUSD } from '../../../../context/ToggleUSDContext.js';
 import { fetchUserLiveMessages } from '../../../../redux/user/userSlice.js';
 const UserDashboard = () => {
+    const deviceName = localStorage.getItem('selectedDevice') || 'All'
     const [offerData, setOfferData] = useState([])  
     const selectedDevice = useSelector((state) => state.offer.selectedDevice);
     const [checkedDevices, setCheckedDevices] = useState({
@@ -62,7 +63,6 @@ const UserDashboard = () => {
         setOfferId(id)
     }
     const handleFilterData = (device) => {
-        console.log('device', device);
         const filteredData = offerList.filter((item) => item.devices === device);
         console.log('filteredData', filteredData);
         if (device === "All") {
@@ -70,6 +70,7 @@ const UserDashboard = () => {
         } else {
             setOfferData(filteredData);
         }
+        localStorage.setItem('selectedDevice', device)
     };
     const handleCheckboxChange = (e) => {
         dispatch(setSelectedDevice(e.target.value));
@@ -82,7 +83,7 @@ const UserDashboard = () => {
           handleFilterData(e.target.value);
         } else {
             handleFilterData("All");
-            }
+        }  
       };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
@@ -96,9 +97,8 @@ const UserDashboard = () => {
         const res = await dispatch(fetchOfferList(pageno))
         const resData = res.payload;
         if(resData?.responseCode === 200){
-            setTotalPages(resData?.totalPages) 
-            // offerList.filter((item)=> item?.devices === 'All')
-            setOfferData(resData?.responseResult)
+            setTotalPages(resData?.totalPages)
+            handleFilterData(deviceName)
         }
     }
 
@@ -110,13 +110,14 @@ const UserDashboard = () => {
        dispatch(fetchTotalReferl(auth.id))
        dispatch(fetchTotalPoint(auth.id))
        dispatch(fetchTotalAmount(auth.id))
-       console.log('Dispatched fetchTotalAmount action', totalAmount);
     },[])
     useEffect(() => {
         fetchOffer(2)
         dispatch(fetchSurveyList())
         dispatch(fetchUserLiveMessages())
     }, []);
+    useEffect(() => {
+    }, [deviceName]);
     return (
         <>
         <div className='liveMessage'>
