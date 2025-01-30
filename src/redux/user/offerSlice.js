@@ -10,7 +10,6 @@ export const fetchOfferList = createAsyncThunk(
     return responseData
   }
 )
-
 export const fetchOfferDetail = createAsyncThunk(
   'admin/viewOffer',
   async (id) => {

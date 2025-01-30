@@ -62,11 +62,15 @@ const UserDashboard = () => {
         setOfferId(id)
     }
     const handleFilterData = (device) => {
-        dispatch(setSelectedDevice(device));
+        console.log('device', device);
         const filteredData = offerList.filter((item) => item.devices === device);
         console.log('filteredData', filteredData);
-        setOfferData(filteredData);
-        };
+        if (device === "All") {
+          setOfferData(offerList);
+        } else {
+            setOfferData(filteredData);
+        }
+    };
     const handleCheckboxChange = (e) => {
         dispatch(setSelectedDevice(e.target.value));
         const { id, checked } = e.target;
@@ -74,8 +78,11 @@ const UserDashboard = () => {
           ...prevState,
           [id]: checked,
         }));
-        console.log('filteredOfferList', filteredOfferList);
-        handleFilterData(e.target.value);
+        if (checked) {
+          handleFilterData(e.target.value);
+        } else {
+            handleFilterData("All");
+            }
       };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
@@ -90,6 +97,7 @@ const UserDashboard = () => {
         const resData = res.payload;
         if(resData?.responseCode === 200){
             setTotalPages(resData?.totalPages) 
+            // offerList.filter((item)=> item?.devices === 'All')
             setOfferData(resData?.responseResult)
         }
     }
@@ -122,8 +130,6 @@ const UserDashboard = () => {
                 </div>
             </div>
         <div className='md:p-4 p-2 '>
-            
-
             <div className='dashboard-top flex justify-between items-center pb-2'>
             <div>
             <div className="setDevice flex gap-4 items-center">
@@ -143,7 +149,7 @@ const UserDashboard = () => {
                     <input
                         type="checkbox"
                         id="ios"
-                        value="ios"
+                        value="iPhone|iPad"
                         checked={checkedDevices.ios}
                         onChange={handleCheckboxChange}
                     />
@@ -153,7 +159,7 @@ const UserDashboard = () => {
                     <input
                         type="checkbox"
                         id="desktop"
-                        value="desktop"
+                        value="ALL"
                         checked={checkedDevices.desktop}
                         onChange={handleCheckboxChange}
                     />

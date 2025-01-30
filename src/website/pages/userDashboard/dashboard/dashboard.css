@@ -195,6 +195,12 @@ header.user-header {
     width: calc(100% - 220px);
     margin-left: 220px;
 }
+.user-sidebar .menu-items {
+    padding-top: 20px !important;
+}
+.user-sidebar .menu-items li {
+    margin-bottom: 15px !important;
+}
 
 .menu-items {
     /* padding-top: 20px; */
@@ -1003,7 +1009,7 @@ p.offer-price {
     padding-bottom: 20px;
 }
 .sec-topHeading a {
-    margin-right: 77px;
+    margin-right: 10%;
     transition: all .2s ease-in-out;
     opacity: .9;
 }
