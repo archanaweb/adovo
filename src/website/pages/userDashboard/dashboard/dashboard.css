@@ -169,8 +169,9 @@ header.user-header {
     width: 220px;
     padding: 20px 10px;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     background-color: #1E293B;
+    overflow: auto;
 }
 
 .mobile-sidebar {
@@ -185,6 +186,10 @@ header.user-header {
     padding: 25px 10px;
     transition: all .5s;
     transform: translateX(100%);
+}
+
+.mobile-sidebar .menu-items {
+    height: 100%;
 }
 
 .sidebar_opened .mobile-sidebar.open {
@@ -203,11 +208,9 @@ header.user-header {
 }
 
 .menu-items {
-    /* padding-top: 20px; */
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 100%;
 }
 
 .menu-items ul li {
