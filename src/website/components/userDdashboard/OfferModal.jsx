@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { fetchOfferDetail } from '../../../redux/user/offerSlice';
 import { IoCloseSharp } from "react-icons/io5";
 const OfferModal = ({isOpenModal,setIsOpenModal, id})=> {
+    const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
     const offerDetail = useSelector(state => state.offer.offerDetail)
     const dispatch = useDispatch()
     const haldleCloseModal = (e)=> {
@@ -43,7 +44,7 @@ const OfferModal = ({isOpenModal,setIsOpenModal, id})=> {
                         <h5 className='text-sm text-white font-bold pb-2'>Description</h5>
                         <p className='text-[#c3c3c3]'>{offerDetail?.offer_desc}</p>
                     </div>
-                    <Link target="_blank" className='bg-[#d13d5e] p-4 text-center text-white flex gap-2 justify-center items-center rounded-md' to={offerDetail?.offer_url_easy}><IoPlay /> <span>Play & Earn ${offerDetail?.payout}</span></Link>
+                    <Link target="_blank" className='bg-[#d13d5e] p-4 text-center text-white flex gap-2 justify-center items-center rounded-md' to={`https://coinlooty.com/tracking/click?sid=${auth?.id}&o=${id}`}><IoPlay /> <span>Play & Earn ${offerDetail?.payout}</span></Link>
                 </div>
                 </div>
                 </div>
