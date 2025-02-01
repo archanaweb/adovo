@@ -39,12 +39,22 @@ export const uploadProfileImage = createAsyncThunk(
     }
   )
 
+  export const fetchUserLiveMessages = createAsyncThunk(
+    'api/inbox',
+    async () => {
+      const response = await fetch(`${BaseUrl}api/inbox`);
+      const responseData = await response.json();
+      return responseData
+    }
+  )
+
 
 
 const UserSlice = createSlice({
   name: 'user',
   initialState: {
     list : [],
+    messageList : [],
     detail: null,
     loading : false,
     error : null,
@@ -70,6 +80,20 @@ const UserSlice = createSlice({
         state.error =  action.payload;
         state.loading =  false;
       });
+
+      // fetch builder
+    builder.addCase(fetchUserLiveMessages.pending, (state, action) => {
+      state.loading =  true;
+    });
+  builder.addCase(fetchUserLiveMessages.fulfilled, (state, action) => {
+      state.loading =  false;
+      state.error = null;
+      state.messageList =  action.payload?.responseResult
+  });
+  builder.addCase(fetchUserLiveMessages.rejected, (state, action) => {
+      state.error =  action.payload;
+      state.loading =  false;
+    });
 
       builder.addCase(uploadProfileImage.pending, (state, action) => {
         state.loading =  true;

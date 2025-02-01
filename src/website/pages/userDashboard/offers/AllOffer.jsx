@@ -14,6 +14,7 @@ const AllOffers = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [isOpenModal, setIsOpenModal] = useState(false)
     const offerList = useSelector(state => state.offer.offerList)
+    const [filteredOffers, setFilteredOffers] = useState([]);
     const offerListLoading = useSelector(state => state.offer.loading)
     const [offerId, setOfferId] = useState(null)
     const dispatch = useDispatch()
@@ -27,6 +28,9 @@ const AllOffers = () => {
         if(resData?.responseCode === 200){
             setTotalPages(resData?.totalPages) 
         }
+        const newOffer = offerList.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
+        setFilteredOffers(newOffer)
+        console.log('newOffer',newOffer)
     }
     useEffect(() => {
         fetchOffer(currentPage)
@@ -37,8 +41,8 @@ const AllOffers = () => {
             <h5 className='text-2xl text-white text-left pb-6 font-bold'>All Offers</h5>
             <div className="flex gap-4 items-wrapper flex-wrap">
                 {/* {offerListLoading && <p className='text-white text-2xl'>Loading...</p>} */}
-        {offerListLoading ? <p>Loading...</p> : offerList?.map((item)=> 
-        <div className='item' onClick={()=> handleClick(item?.id)}>
+        {offerListLoading ? <p className='loading text-white'>Loading...</p> : filteredOffers?.map((item)=>
+        <div className='item' onClick={()=> handleClick(item?.id)} key={item?.id}>
         <div className='offer-hover'>
             <div className='offer-start-icon'>
                 <IoPlay />       
@@ -65,7 +69,7 @@ const AllOffers = () => {
     </div>
         ) }
             </div>
-            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} fetchData={fetchOffer}/>
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} fetchData={fetchOffer} totalPages={totalPages}/>
         </div>
         <OfferModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} id={offerId}/>
                 

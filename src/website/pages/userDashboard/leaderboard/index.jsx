@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchTopUserEarned } from "../../../../redux/user/walletSlice"
+import { use } from "react"
 
 const LeaderBoard = () => {
     const dispatch = useDispatch()
@@ -38,7 +39,7 @@ const LeaderBoard = () => {
                                             </thead>
                                             <tbody>
                                                 {earnedUser?.map((user, index)=> <tr>
-                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm" key={user?.id}>
                                                         <div className="flex">
                                                             <div className="flex-shrink-0 w-5 h-5">
                                                                 <span>{index + 1}</span>

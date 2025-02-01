@@ -14,15 +14,15 @@ const Header  = () => {
            <Link to='/'> <img src={logo} alt="Website Logo" width={200} /></Link>
         </div>
         <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
-        <ul className="nav-links flex gap-2">
-            <li className="text-gray-400 capitalize"><Link to="/">earn</Link></li>
-            <li className="text-gray-400 capitalize"><Link to="/">cashout</Link></li>
+        <ul className="nav-links flex md:gap-4 hidden md:flex">
+            <li className="text-gray-200 capitalize font-medium hover:text-gray-400"><Link to="/">earn</Link></li>
+            <li className="text-gray-200 capitalize font-medium hover:text-gray-400"><Link to="/">cashout</Link></li>
         </ul>
         </nav>
     </div>
         <div className="account flex md:gap-3 gap-2">
-        <Link to='/'> <button className="btn text-white bg-gray-700 p-2 rounded-full md:px-4 px-3 text-sm">Log in</button></Link>
-                <Link to='/signup'> <button className="btn text-white border rounded-full md:px-3 text-sm p-2">Sign up</button></Link>
+        <Link to='/'> <button className="btn text-white rounded-full md:px-4 px-3 signin">Sign In</button></Link>
+        <Link to='/signup'> <button className="btn text-white border rounded-full md:px-4 px-3 signup">Sign Up</button></Link>
         </div>
     {/* <div className="hamburger" onClick={toggleMenu}>
       <span>&#9776;</span>

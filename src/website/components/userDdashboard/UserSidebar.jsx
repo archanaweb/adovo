@@ -33,12 +33,7 @@ const UserSidebar = ()=> {
                     <li onClick={()=> handleMenuClick('rewards')} className={activeMenu === 'rewards' ? 'active' : ''}><Link to='/rewards'><button> <span className="menu-icon"><FaAward /></span>Rewards</button></Link></li>
                     <li onClick={()=> handleMenuClick('affiliates')} className={activeMenu === 'affiliates' ? 'active' : ''}><Link to='/affiliates'><button> <span className="menu-icon"><FaUsers /></span>Affiliates</button></Link></li>
                 </ul>
-            </div>
-
-            <div className="menu-items">
-                <ul>
-                    <li onClick={handleLogout}><button><span className="menu-icon"><TbLogout /></span>Logout</button></li>
-                </ul>
+                <button className="logoutBtn bg-[#2a3649]" onClick={handleLogout}><span className="menu-icon"><TbLogout /></span>Logout</button>
             </div>
 
         </div>

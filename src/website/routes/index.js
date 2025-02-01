@@ -21,6 +21,7 @@ import FooterMenu from "../components/userDdashboard/FooterMenu"
 import AllSurvey from "../pages/userDashboard/surveys/AllSurvey"
 import SurveyIframe from "../pages/userDashboard/surveys/SurveyIframe"
 import { ToggleUSDProvider } from "../../context/ToggleUSDContext"
+import HomeNew from "../pages/homenew"
 
 const Layout = () => {
     const location = useLocation()
@@ -63,6 +64,7 @@ const router = createBrowserRouter(
             <Route path="verifyotp" element={<VerifyOtp />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="forgotpassword" element={<ForgotPassword />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="resetpassword" element={<ResetPassword />} loader={async () => await isAuthenticated()}> </Route>
+            <Route path="homenew" element={<HomeNew />}> </Route>
             <Route path="*" element={<h1 className="text-3xl">Page not found</h1>} />
             </Route>
             <Route path="/" element={<LayoutDashboard />}>
