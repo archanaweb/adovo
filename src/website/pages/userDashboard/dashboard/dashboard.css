@@ -1083,7 +1083,6 @@ p.offer-price {
     margin-right: 7px;
     border-radius: 2px;
   }
-  
   .setDevice .form-group input:checked + label:after {
     content: '';
     display: block;
