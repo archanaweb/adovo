@@ -34,7 +34,6 @@ import { fetchUserLiveMessages } from '../../../../redux/user/userSlice.js';
 const UserDashboard = () => {
     const deviceName = localStorage.getItem('selectedDevice') || 'All'
     const [offerData, setOfferData] = useState([])  
-    const selectedDevice = useSelector((state) => state.offer.selectedDevice);
     const [checkedDevices, setCheckedDevices] = useState({
         android: false,
         ios: false,
@@ -64,9 +63,9 @@ const UserDashboard = () => {
     }
     const handleFilterData = (deviceName) => {
         const filterDeviceOffer = offerList.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
-        const filteredData = offerData.filter((item) => item.devices.toLowerCase().includes(deviceName.toLowerCase()));
+        const filteredData = filterDeviceOffer.filter((item) => item.devices.toLowerCase().includes(deviceName.toLowerCase()));
         if (checkedDevices.android || checkedDevices.ios || checkedDevices.desktop) {
-        setOfferData(filteredData);
+            setOfferData(filteredData);
         } else {
             setOfferData(filterDeviceOffer);
         }
@@ -119,6 +118,7 @@ const UserDashboard = () => {
        dispatch(fetchTotalAmount(auth.id))
     },[])
     useEffect(() => {
+        dispatch(fetchOfferList(currentPage))
         fetchOffer(currentPage)
         dispatch(fetchSurveyList())
         dispatch(fetchUserLiveMessages())

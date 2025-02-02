@@ -92,7 +92,7 @@ code {
 
 .how-it-works {
   background: #1E293B;
-  padding-bottom: 80px;
+  padding-bottom: 70px;
 }
 
 .sec-heading {
@@ -205,6 +205,11 @@ code {
     padding: 0px 40px;
     padding-bottom: 60px;
 }
+.ways-to-earn .d-flex span {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 217, 0, 1) 0%, rgba(255, 169, 0, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 .ways-items .item {
     border: 1px solid #40444e;
@@ -215,6 +220,7 @@ code {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .ways-items .item img {
@@ -276,7 +282,7 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f7f7f7;
+    background: transparent;
     border-radius: 20px;
 }
 
@@ -300,7 +306,9 @@ code {
 .choose-items .item h5 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #ffca71;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 217, 0, 1) 0%, rgba(255, 169, 0, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: 600;
 }
 
@@ -388,7 +396,7 @@ span.cashout-time {
 }
 .social-icons {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   gap: 12px;
 }
@@ -397,7 +405,7 @@ span.cashout-time {
 
 .social-icons svg {
   font-size: 25px;
-  color: #d13d5e;
+  color: #ffa800;
 }
 
 .social-icons li {

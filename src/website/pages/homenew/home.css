@@ -1,32 +1,65 @@
 .main-banner {
-    background-image: url(../../assest/images/newmainbg.png);
+    background-image: url(../../assest/images/main-banner.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
+    position: relative;
 }
+.main-banner .content {
+    z-index: 3;
+}
+
+.main-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1e293b;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+}
+.main-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    background: #1e293b;
+    z-index: 2;
+    filter: blur(25px);
+}
+
 .main-banner h1 span {
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 217, 0, 1) 0%, rgba(255, 169, 0, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .main-banner p {
     color: #f6f7f9;
 }
+
 .bannerOffers {
     padding: 0px 30px;
     padding-top: 45px;
     position: relative;
 }
+
 .bannerOffers .topOffer {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
 }
+
 .bannerOffers .item img {
     width: 140px;
     height: auto;
 }
+
 .bannerOffers .offerContent {
     text-align: left;
     display: flex;
@@ -34,12 +67,14 @@
     gap: 3px;
     padding-top: 7px;
 }
+
 .bannerForm button {
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 217, 0, 1) 0%, rgba(255, 169, 0, 1) 100%);
     color: #000;
     font-weight: 600;
     font-size: 18px;
 }
+
 .heading-shadow {
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(255 217 0 / 40%) 0%, rgb(255 169 0 / 40%) 100%);
@@ -48,9 +83,11 @@
     width: 40%;
     position: absolute;
 }
+
 .heading-shadow .relative {
     z-index: 1;
 }
+
 .sec-heading {
     text-align: center;
     padding-bottom: 32px;
@@ -59,22 +96,25 @@
     align-items: center;
     position: relative;
 }
+
 .reviews img {
     width: 140px;
 }
+
 .cashoutVia {
     background: #384152;
-    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
 }
+
 .cashout-items {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 100px;
 }
+
 .cashout-wrapper {
     background: #384152;
     border-radius: 30px;
@@ -84,23 +124,27 @@
     z-index: 1;
     position: relative;
 }
+
 .cashout-heading {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
+
 .cashoutAmount p.text {
     font-size: 20px;
     font-weight: 600;
     color: #fff;
     font-style: italic;
 }
+
 .cashoutAmount p.text span {
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 217, 0, 1) 0%, rgba(255, 169, 0, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .cashoutAmount .amount {
     font-size: 45px;
     font-weight: 700;
@@ -109,6 +153,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 span.live-circle {
     width: 30px;
     height: 30px;
@@ -116,14 +161,17 @@ span.live-circle {
     border-radius: 50%;
     border: 6px solid #4f6a50;
 }
+
 .bg-shadows {
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(255 217 0 / 40%) 0%, rgb(255 169 0 / 40%) 100%);
     filter: blur(60px);
     height: 175px;
 }
+
 .casoutSS {
     position: relative;
 }
+
 .testi-sec {
     display: flex;
     justify-content: center;
@@ -160,6 +208,7 @@ span.live-circle {
     color: #fff;
     text-align: left;
 }
+
 .language-en {
     border-radius: 25px;
     background: #525566;
@@ -170,21 +219,39 @@ span.live-circle {
     .cashout-items {
         gap: 35px;
     }
+
     .cashout-wrapper {
         padding: 15px;
         width: 98%;
     }
+
     .bannerOffers {
         padding: 0 10px;
         padding-top: 35px;
     }
+
     .bannerOffers .item img {
         width: 94px;
     }
+
     .bannerOffers .offerContent p {
         font-size: 12px;
     }
+
     .bannerOffers .offerContent p.price {
         font-size: 14px;
     }
+}
+
+@media (min-width: 1400px) {
+    .bannerOffers {
+        padding: 0 70px;
+    }
+    .bannerOffers .item img {
+        width: 154px;
+    }
+        .explore-btn {
+            padding-top: 30px;
+        }
+
 }

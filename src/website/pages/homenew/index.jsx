@@ -14,9 +14,16 @@ import icon1 from '../../assest/images/cashout/icon _Amazon_.png'
 import icon2 from '../../assest/images/cashout/icon _Bitcoin Cryptocurrency_.png'
 import icon3 from '../../assest/images/cashout/icon _Visa_.png'
 import icon4 from '../../assest/images/cashout/icon _apple logo_.png'
-import icon5 from '../../assest/images/cashout/icon _logo google playstore_.png'
+import icon5 from '../../assest/images/cashout/Google-Play 2.png'
 import cashoutImg from "../../assest/images/cashoutImg.png"
 import userImg from "../../assest/images/reviewUser.png"
+import Waystoearn from "../../components/Waystoearn";
+import Feature from "../../components/Features";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import { Autoplay } from 'swiper/modules';
 const HomeNew = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
@@ -45,7 +52,7 @@ const HomeNew = () => {
     return (
         <div className="bg-slate-800">
             <div className="main-banner">
-            <div className="container mx-auto md:flex items-center md:pb-14 md:pt-8 pb-8 pt-6 px-2">
+            <div className="container mx-auto md:flex items-center md:pb-14 md:pt-8 pb-8 pt-6 px-2 relative content">
             <div className="md:w-1/2 w-full">
                 <h1 className="md:text-4xl text-3xl font-bold text-white p-2 md:py-6 pb-4"><span className="text-[#d13d5e]">Earn Rewards </span> By <br/>Sharing Your Opinion &<br/> Exploring New Apps</h1>  
                 <p className="text-white text-sm md:text-lg pb-4">Earn money by testing apps, games and taking surveys. Earn up to <span className="text-white">$50.40 </span>per offer 494 available offers now. Get started today!</p>
@@ -95,7 +102,7 @@ const HomeNew = () => {
           type="text" 
           name="userName"
           placeholder="Username" 
-          className="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm  placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed bg-[#FFFEF8] border-gray-700 text-white mb-2" 
+          className="h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-white bg-gray-800 border-gray-700 text-white mb-2" 
           value={formData?.userName}
           onChange={(e) => setFormData({...formData, userName: [e.target.value]})}
         />
@@ -103,7 +110,7 @@ const HomeNew = () => {
           type="password" 
           name="password "
           placeholder="Password" 
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-[#252837] border-gray-700 text-white" 
+          className="h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-white disabled:opacity-50 bg-gray-800 border-gray-700 text-white" 
           value={formData?.password}
           onChange={(e) => setFormData({...formData, password: [e.target.value]})}
         />
@@ -120,7 +127,7 @@ const HomeNew = () => {
       <div className="my-4 text-center text-gray-300 text-sm flex justify-between items-center gap-2"><div className="to-right-line"></div><span>OR SIGN IN WITH</span><div className="to-left-line"></div></div>
       <div className="flex gap-2 justify-center">
         <div className="cursor-pointer">
-            <FcGoogle className="w-6 h-6 mr-2" />
+            <Link to='https://coinlooty.com/auth/google/callback' target="_blank"><FcGoogle className="w-6 h-6 mr-2" /></Link>
         </div>
         <div className="cursor-pointer">
         <FaFacebook className="w-6 h-6 mr-2 text-white" /> 
@@ -175,11 +182,11 @@ const HomeNew = () => {
             
             </div>
 
-            <div class="how-it-works py-5 md:pt-14 px-2">
-        <div class="container mx-auto">
+            <div class="how-it-works py-5 md:pt-6 px-2">
+        <div class="container mx-auto px-10">
         <div class="sec-heading">
-            <div className="heading-shadow"> 
-            </div>
+            {/* <div className="heading-shadow"> 
+            </div> */}
             <div className="relative">
                 <h5>Get paid now</h5>
                 <p><span>Easily done </span>in minutes!</p>
@@ -219,9 +226,12 @@ const HomeNew = () => {
         </div>
         </div>
             </div>
+
+            <Waystoearn />
+            <Feature />
                 <div className="casoutSS">
-                <div className="bg-shadows">
-                </div>
+                {/* <div className="bg-shadows">
+                </div> */}
                 <div className="cashoutVia py-5 md:px-4 px-2">
             <div class="container mx-auto">
                 
@@ -230,22 +240,118 @@ const HomeNew = () => {
                     <h5>Cashout via</h5>
                 </div>
             </div>
-            <div class="cashout-items">
-                <div class="items">
-                    <img src={icon1} alt="cashoutIcon"/>
-                </div>
-                <div class="items">
-                    <img src={icon2} alt="cashoutIcon"/>
-                </div>
-                <div class="items">
-                    <img src={icon3} alt="cashoutIcon"/>
-                </div>
-                <div class="items">
-                    <img src={icon4} alt="cashoutIcon"/>
-                </div>
-                <div class="items">
-                    <img src={icon5} alt="cashoutIcon"/>
-                </div>
+            <div class="">
+                <Swiper 
+                    autoplay={{
+                        delay:500,
+                    }}
+                     breakpoints={{
+                        640: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                            spaceBetween: 40,
+                        },
+                        1024: {
+                            slidesPerView: 10,
+                            spaceBetween: 50,
+                        },
+                    }}
+                    className="mySwiper cashout-items"
+                    modules={[Autoplay]}>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon1} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon2} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon3} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon4} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon5} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                <SwiperSlide>
+                        <div class="items">
+                            <img src={icon1} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon2} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon3} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon4} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon5} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon1} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon2} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon3} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                     <SwiperSlide>
+                        <div class="items">
+                            <img src={icon4} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon5} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon1} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon2} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div class="items">
+                            <img src={icon3} alt="cashoutIcon"/>
+                        </div>
+                    </SwiperSlide>
+                </Swiper>
 
             </div>
 
@@ -320,11 +426,11 @@ const HomeNew = () => {
         </div>
             </div>
 
-            <div class="userTestimonialSec py-5 md:pt-14 px-2">
-                <div class="container mx-auto">
+            <div class="userTestimonialSec py-5 md:pt-6 px-2">
+                <div class="container mx-auto px-10">
                 <div class="sec-heading">
-            <div className="heading-shadow"> 
-            </div>
+            {/* <div className="heading-shadow"> 
+            </div> */}
             <div className="relative">
                 <h5>User Testimonials</h5>
                 <p>What our members say about <span>Coin Looty </span></p>
