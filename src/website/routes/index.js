@@ -59,12 +59,12 @@ const router = createBrowserRouter(
     createRoutesFromElements(
        <>
         <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} loader={async () => await isAuthenticated()} /> 
+            <Route index element={<HomeNew />} loader={async () => await isAuthenticated()} /> 
             <Route path="signup" element={<Signup />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="verifyotp" element={<VerifyOtp />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="forgotpassword" element={<ForgotPassword />} loader={async () => await isAuthenticated()}> </Route>
             <Route path="resetpassword" element={<ResetPassword />} loader={async () => await isAuthenticated()}> </Route>
-            <Route path="homenew" element={<HomeNew />}> </Route>
+            <Route path="homeold" element={<Home />}> </Route>
             <Route path="*" element={<h1 className="text-3xl">Page not found</h1>} />
             </Route>
             <Route path="/" element={<LayoutDashboard />}>
