@@ -23,6 +23,16 @@ const HomeNew = () => {
       userName: ''
     })
 
+    const handleGooleLogin = async () => {
+      const res =  fetch("http://coinlooty.com/auth/google", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            // body: JSON.stringify({ token: res.credential }),
+          });
+          console.log('googleloginres',res)
+
+    }
+
     const handleSubmit = async (e) => {
       e.preventDefault()
       const response = await fetch(`${BaseUrl}user/login`, {
@@ -119,7 +129,7 @@ const HomeNew = () => {
       </div>
       <div className="my-4 text-center text-gray-300 text-sm flex justify-between items-center gap-2"><div className="to-right-line"></div><span>OR SIGN IN WITH</span><div className="to-left-line"></div></div>
       <div className="flex gap-2 justify-center">
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={handleGooleLogin}>
             <FcGoogle className="w-6 h-6 mr-2" />
         </div>
         <div className="cursor-pointer">
