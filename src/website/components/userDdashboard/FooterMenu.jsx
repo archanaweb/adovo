@@ -10,6 +10,8 @@ import { BsThreeDots } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import logo from '../../assest/images/logo.png';
+import doller from '../../assest/images/dollar.png'
+
 const FooterMenu = ()=> {
     const [activeMenu, setActiveMenu] = useState('earn')
     const [isOpenSidebar, setIsOpenSidebar] = useState(false)
@@ -40,15 +42,14 @@ const FooterMenu = ()=> {
 
     return (
         <>
-        <div className="footer-menu bg-gray-900 md:py-2 p-2">
+        <div className="footer-menu bg-gray-900">
             <div className="menu-items">
                 <ul>
-                    <li onClick={()=> handleMenuClick('earn')} className={activeMenu === 'earn' ? 'active' : ''}><Link to='/dashboard'><button><span className="menu-icon"><RiMoneyDollarCircleFill /></span>Earn</button></Link></li>
                     <li onClick={()=> handleMenuClick('offers')} className={activeMenu === 'offers' ? 'active' : ''}><Link to='/alloffers'><button> <span className="menu-icon"><MdVideogameAsset /></span>Offers</button></Link></li>
                     <li onClick={()=> handleMenuClick('cashout')} className={activeMenu === 'cashout' ? 'active' : ''}><Link to='/cashout'><button> <span className="menu-icon"><PiHandWithdrawFill /></span>Cashout</button></Link></li>
+                    <li onClick={()=> handleMenuClick('earn')} className={activeMenu === 'earn' ? 'active' : ''}><button> <img src={doller} alt="dollerImg" /></button><span className="dollar-bg"></span><p><Link to='/dashboard'>Earn</Link></p></li>
                     <li onClick={()=> handleMenuClick('rewards')} className={activeMenu === 'rewards' ? 'active' : ''}><Link to='/rewards'><button> <span className="menu-icon"><FaAward /></span>Rewards</button></Link></li>
-                    <li onClick={handleOpenSidebar} className=''>
-                    <button> <span className="menu-icon"><BsThreeDots /></span>More</button></li>
+                    <li onClick={handleOpenSidebar} className=''><button> <span className="menu-icon"><BsThreeDots /></span>More</button></li>
                 </ul>
             </div>
 

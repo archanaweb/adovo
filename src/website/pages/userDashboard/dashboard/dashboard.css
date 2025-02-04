@@ -14,7 +14,7 @@ header.user-header {
     position: fixed;
     width: 100%;
     top: 0;
-    box-shadow: 0 1px 25px #0f1522;
+    /* box-shadow: 0 1px 25px #0f1522; */
     background: #384152;
     z-index: 99;
 }
@@ -264,7 +264,7 @@ header.user-header {
 }
 
 .menu-items ul li button svg {
-    font-size: 21px;
+    font-size: 26px;
 }
 
 .footer-menu {
@@ -284,6 +284,9 @@ header.user-header {
 
 .footer-menu .menu-items li {
     margin-bottom: 0;
+}
+.footer-menu .menu-items li.active {
+    background: none !important;
 }
 
 .footer-menu .menu-items li a {
@@ -1092,7 +1095,6 @@ p.offer-price {
     margin-right: 7px;
     border-radius: 2px;
   }
-  
   .setDevice .form-group input:checked + label:after {
     content: '';
     display: block;
@@ -1114,14 +1116,14 @@ p.offer-price {
 }
 .liveMessage {
     padding: 10px;
-    background: #120f27;
+    background-color: #1c182b;
 }
 .liveMessage .liveMessageItem {
     gap: 8px;
     display: flex;
-    background: #1b1a2b;
+    background: #1e293b;
     padding: 4px 12px;
-    border-radius: 8px;
+    border-radius:22px;
     justify-content: space-between;
     align-items: center;
 }
@@ -1130,13 +1132,39 @@ p.offer-price {
     width: 30px;
     height: 30px;
 }
+.liveMessageContent {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
 
 .liveMessage .liveMessageItem p {
     color: #fff;
     font-size: 12px;
-    opacity: .6;
 }
+.liveMessage .liveMessageItem p.amount {
+   background-color: #384152;
+   padding: 2px;
+   border-radius: 12px;
+   font-size: 10px;
+    width: 44px;
+}
+.liveMessage .liveMessageItem span {
+    color: #ececec;
+    font-size: 10px;
+}
+@media (min-width: 1000px) {
+    .top-wrapper.mobileHeader {
+        display: none;
+    }
+}
+
 @media (max-width: 1200px) {
+    .liveMessage {
+        background-color: #384152;
+
+    }
     .statics-box {
         padding: 10px;
         flex-wrap: wrap;
@@ -1195,7 +1223,35 @@ p.offer-price {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+    header.user-header {
+        background-color: #111828;
+        padding: 10px 15px;
+    }
+    .top-wrapper.desktopHeader {
+        display: none !important;
+    }
+    .top-wrapper.mobileHeader .user-balance{
+        background-color: #384152;
+        
+    }
+    .top-wrapper.mobileHeader .user-balance p{
+        font-size: 19px;  
+    }
+    .top-wrapper.mobileHeader .user-balance p span{
+        margin-left: 0px; 
+    }
+    .top-wrapper.mobileHeader .showUSD{
+        height: 44px;
+        background: #384152;
+    border-radius: 22px;
+    }
+    .onoffbtn {
+        background-color: #988a2b;
+    }
+    .onoffbtn.active:after {
+        background-color: #ffa900;
+    }
     .sidebar-logo {
         padding-left: 10px;
         padding-bottom: 12px;
@@ -1208,13 +1264,30 @@ p.offer-price {
         width: 65px;
         display: flex;
         justify-content: center;
+        position: relative;
+    }
+    .footer-menu .menu-items li p {
+        padding-top: 28px;
     }
     .footer-menu .menu-items li a {
-        padding: 10px 10px;
+        padding: 6px 6px;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: #fff;
     }
+    .footer-menu .menu-items li button img {
+        position: absolute;
+        top: -28px;
+        width: 58px;
+        height: auto;
+        border: 6px solid #100e23;
+        border-radius: 50%;
+        object-fit: cover;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
     .spItem {
         height: 175px;
         gap: 10px !important;
@@ -1226,7 +1299,10 @@ p.offer-price {
         padding: 6px 8px;
     }
     .showUSD p {
-        font-size: 14px;
+        font-size: 12px;
+    }
+    .showUSD p span {
+        color: #ffa900;
     }
     .onoffbtn {
         width: 40px;

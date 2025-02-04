@@ -34,7 +34,6 @@ import { fetchUserLiveMessages } from '../../../../redux/user/userSlice.js';
 const UserDashboard = () => {
     const deviceName = localStorage.getItem('selectedDevice') || 'All'
     const [offerData, setOfferData] = useState([])  
-    const selectedDevice = useSelector((state) => state.offer.selectedDevice);
     const [checkedDevices, setCheckedDevices] = useState({
         android: false,
         ios: false,
@@ -62,28 +61,33 @@ const UserDashboard = () => {
         setIsOpenModal(!isOpenModal)
         setOfferId(id)
     }
-    const handleFilterData = (device) => {
-        const filteredData = offerList.filter((item) => item.devices === device);
-        console.log('filteredData', filteredData);
-        if (device === "All") {
-          setOfferData(offerList);
-        } else {
+    const handleFilterData = (deviceName) => {
+        const filterDeviceOffer = offerList.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
+        const filteredData = filterDeviceOffer.filter((item) => item.devices.toLowerCase().includes(deviceName.toLowerCase()));
+        if (checkedDevices.android || checkedDevices.ios || checkedDevices.desktop) {
             setOfferData(filteredData);
+        } else {
+            setOfferData(filterDeviceOffer);
         }
-        localStorage.setItem('selectedDevice', device)
     };
     const handleCheckboxChange = (e) => {
         dispatch(setSelectedDevice(e.target.value));
         const { id, checked } = e.target;
-        setCheckedDevices((prevState) => ({
-          ...prevState,
-          [id]: checked,
-        }));
-        if (checked) {
-          handleFilterData(e.target.value);
-        } else {
-            handleFilterData("All");
-        }  
+        setCheckedDevices((prevState) => {
+          const updatedState = { ...prevState, [id]: checked }
+          let selectedDevice = 'All';
+        if (updatedState.android && updatedState.ios) {
+            selectedDevice = 'Android|iPhone|iPad';
+        } else if (updatedState.android) {
+            selectedDevice = 'Android';
+        } else if (updatedState.ios) {
+            selectedDevice = 'iPhone|iPad';
+        }
+        localStorage.setItem('selectedDevice', selectedDevice);
+        handleFilterData(selectedDevice); 
+
+        return updatedState;
+        });
       };
     const generateCode = async()=> {
         const res = await dispatch(generateReferralCode({userId:auth.id, formData: {userId:auth.id}}))
@@ -95,10 +99,12 @@ const UserDashboard = () => {
 
     const fetchOffer = async (pageno) => {
         const res = await dispatch(fetchOfferList(pageno))
-        const resData = res.payload;
+        const resData = await res.payload;
         if(resData?.responseCode === 200){
             setTotalPages(resData?.totalPages)
-            handleFilterData(deviceName)
+            setOfferData(resData?.responseResult)
+            const filterOffer = offerList?.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
+            setOfferData(filterOffer)
         }
     }
 
@@ -112,12 +118,11 @@ const UserDashboard = () => {
        dispatch(fetchTotalAmount(auth.id))
     },[])
     useEffect(() => {
-        fetchOffer(2)
+        dispatch(fetchOfferList(currentPage))
+        fetchOffer(currentPage)
         dispatch(fetchSurveyList())
         dispatch(fetchUserLiveMessages())
     }, []);
-    useEffect(() => {
-    }, [deviceName]);
     return (
         <>
         <div className='liveMessage'>
@@ -125,12 +130,16 @@ const UserDashboard = () => {
                     {liveMessages?.map((item, index)=> <div className='liveMessageItem' key={item?.userId}>
                         <img src={avatar} alt='userImg' />
                         <div className='liveMessageContent'>
+                            <div className='flex justify-start items-start flex-col'>
                             <p>{item?.userName}</p>
+                            <span>Cashout</span>
+                            </div>
+                            <p className='amount'>{item?.message}</p>
                         </div>
                     </div>)}
                 </div>
             </div>
-        <div className='md:p-4 p-2 '>
+        <div className='md:p-4 p-2 md:block hidden'>
             <div className='dashboard-top flex justify-between items-center pb-2'>
             <div>
             <div className="setDevice flex gap-4 items-center">
@@ -169,7 +178,7 @@ const UserDashboard = () => {
                 </form>
                 </div>
             </div>
-            <div className='flex justify-end items-center gap-2 showUSD'>
+            <div className='md:flex justify-end items-center gap-2 showUSD hidden'>
             <p>Show USD</p>
             <label className={`onoffbtn ${isUSDChecked ? "active" : ""}`}>
             <input 

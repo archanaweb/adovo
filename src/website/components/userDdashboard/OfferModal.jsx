@@ -23,8 +23,8 @@ const OfferModal = ({isOpenModal,setIsOpenModal, id})=> {
             <div className='flex justify-between items-center border-b border-[#28354c] pb-3'>
                 <h5 className='text-xl text-white'>Start Offer</h5>
                 <span className="close-button" onClick={haldleCloseModal}><IoCloseSharp /></span>
-                </div>
-                <div className="pt-4">
+            </div>
+            <div className="pt-4">
                 <h5 className='offer-name text-2xl text-gray-100 font-bold text-left pb-2'>{offerDetail?.offer}</h5>
                 <div className='rounded-md border border-[#242e40] overflow-hidden offerDetailImg mb-2'>
                     <img className='offerImg' src={offerDetail?.offer_image} alt='offerimg' width={300} />
@@ -36,7 +36,7 @@ const OfferModal = ({isOpenModal,setIsOpenModal, id})=> {
                         <h5 className='text-sm text-white font-bold pb-2'>Rewards</h5>
                         <ul>
                             {offerDetail?.events?.map((item)=> 
-                                <li><p>{item?.event_name}</p><span className=''>${item?.payout}</span></li>
+                                <li key={item?.event_name}><p>{item?.event_name}</p><span className=''>${item?.payout}</span></li>
                             )}
                             </ul>
                     </div>
