@@ -708,3 +708,17 @@ span.cashout-time {
     margin-bottom: 0;
   }
 }
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    scale: 100%;
+  }
+
+  50% {
+    scale: 120%;
+  }
+
+  100% {
+    scale: 100%;
+  }
+}

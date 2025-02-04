@@ -5,6 +5,7 @@
     background-repeat: no-repeat;
     position: relative;
 }
+
 .main-banner .content {
     z-index: 3;
 }
@@ -20,15 +21,18 @@
     height: 100%;
     opacity: .9;
 }
+
 .main-banner::after {
     content: '';
     position: absolute;
     bottom: -30px;
     left: 0;
-    height: 50%;
+    height: 100%;
     width: 100%;
     background: #1e293b;
     z-index: 2;
+    -webkit-mask: linear-gradient(to bottom, transparent 0%, black 100%);
+    mask: linear-gradient(to bottom, transparent 0%, black 100%);
     filter: blur(25px);
 }
 
@@ -53,6 +57,7 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    animation: zoom-in-zoom-out 1s ease infinite;
 }
 
 .bannerOffers .item img {
@@ -246,12 +251,28 @@ span.live-circle {
 @media (min-width: 1400px) {
     .bannerOffers {
         padding: 0 70px;
+        padding-top: 25px;
     }
+
     .bannerOffers .item img {
         width: 154px;
     }
-        .explore-btn {
-            padding-top: 30px;
-        }
 
+    .explore-btn {
+        padding-top: 30px;
+    }
+
+}
+@keyframes zoom-in-zoom-out {
+    0% {
+        scale: 100%;
+    }
+
+    50% {
+        scale: 110%;
+    }
+
+    100% {
+        scale: 100%;
+    }
 }

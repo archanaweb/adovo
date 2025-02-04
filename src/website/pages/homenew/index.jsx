@@ -30,6 +30,17 @@ const HomeNew = () => {
       userName: ''
     })
 
+    const handleGoogleLogin = async(tokenResponse) => {
+        const response  = await fetch('https://coinlooty.com/auth/google/callback', {
+            method: 'GET',
+            headers: {
+                  Authorization: `Bearer ${tokenResponse?.token}`,
+            },
+        })
+        const data = await response.json()
+        console.log('loginData', data)
+    }
+
     const handleSubmit = async (e) => {
       e.preventDefault()
       const response = await fetch(`${BaseUrl}user/login`, {
@@ -127,7 +138,7 @@ const HomeNew = () => {
       <div className="my-4 text-center text-gray-300 text-sm flex justify-between items-center gap-2"><div className="to-right-line"></div><span>OR SIGN IN WITH</span><div className="to-left-line"></div></div>
       <div className="flex gap-2 justify-center">
         <div className="cursor-pointer">
-            <Link to='https://coinlooty.com/auth/google/callback' target="_blank"><FcGoogle className="w-6 h-6 mr-2" /></Link>
+            <button onClick={handleGoogleLogin}><FcGoogle className="w-6 h-6 mr-2" /></button>
         </div>
         <div className="cursor-pointer">
         <FaFacebook className="w-6 h-6 mr-2 text-white" /> 
@@ -139,46 +150,6 @@ const HomeNew = () => {
             </div>
             </div>
             </div>
-            {/* <div className="offer-demo">
-              <div className="container mx-auto flex md:flex-row flex-col p-4 items-center justify-between py-8 bg-slate-900 rounded-md xl:gap-14 lg:gap-4 gap-4">
-              <div className="md:w-1/3 w-full border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
-              <div className="offer-img">
-                <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
-                </div>
-                <div className="text-left">
-                  <h5 className="text-xl font-bold text-white">Netflix</h5>
-                  <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
-                  <div>
-                  <p className="text-xl font-bold text-white pb-2">$5.00</p>
-                  </div>
-                  </div>
-              </div>
-              <div className="md:w-1/3 w-full bg-[#192642] rounded-md p-4 flex justify-start items-center gap-5">
-              <div className="offer-img">
-              <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
-              </div>
-                <div className="text-left">
-                  <h5 className="text-xl font-bold text-white">Netflix</h5>
-                  <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
-                  <div>
-                  <p className="text-xl font-bold text-white pb-2">$5.00</p>
-                  </div>
-                  </div>
-              </div>
-              <div className="md:w-1/3 w-full border border-gray-700 rounded-md p-4 flex justify-start items-center gap-5">
-              <div className="offer-img">
-              <img src={netflix} alt="Netflix" className="object-cover rounded-md" width={100}/>
-              </div>
-                <div className="text-left">
-                  <h5 className="text-xl font-bold text-white">Netflix</h5>
-                  <p className="text-indigo-300 text-lg font-medium">start a free trial</p>
-                  <div>
-                  <p className="text-xl font-bold text-white pb-2">$5.00</p>
-                  </div>
-                  </div>
-              </div>
-              </div>
-            </div> */}
             
             </div>
 
