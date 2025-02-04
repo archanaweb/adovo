@@ -313,7 +313,7 @@ header.user-header {
     position: static !important;
 }
 
-.swiper-slide {
+.offers-box .swiper-slide, .survey-box .swiper-slide {
     width: 165px !important;
     text-align: center;
     font-size: 18px;
@@ -1426,7 +1426,7 @@ p.offer-price {
         padding-top: 60px;
     }
 
-    .swiper-slide {
+    .offers-box .swiper-slide, .survey-box .swiper-slide {
         width: 105px !important;
     }
 

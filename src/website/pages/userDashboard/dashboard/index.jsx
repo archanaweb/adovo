@@ -32,7 +32,7 @@ import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 import { useToggleUSD } from '../../../../context/ToggleUSDContext.js';
 import { fetchUserLiveMessages } from '../../../../redux/user/userSlice.js';
 const UserDashboard = () => {
-    const deviceName = localStorage.getItem('selectedDevice') || 'All'
+    const deviceName = localStorage.getItem('selectedDevice')
     const [offerData, setOfferData] = useState([])  
     const [checkedDevices, setCheckedDevices] = useState({
         android: false,
@@ -62,12 +62,12 @@ const UserDashboard = () => {
         setOfferId(id)
     }
     const handleFilterData = (deviceName) => {
-        const filterDeviceOffer = offerList.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
-        const filteredData = filterDeviceOffer.filter((item) => item.devices.toLowerCase().includes(deviceName.toLowerCase()));
+        // const filterDeviceOffer = offerList.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
+        const filteredData = offerList.filter((item) => item.devices.toLowerCase().includes(deviceName.toLowerCase()));
         if (checkedDevices.android || checkedDevices.ios || checkedDevices.desktop) {
             setOfferData(filteredData);
         } else {
-            setOfferData(filterDeviceOffer);
+            setOfferData(offerList);
         }
     };
     const handleCheckboxChange = (e) => {
@@ -102,9 +102,6 @@ const UserDashboard = () => {
         const resData = await res.payload;
         if(resData?.responseCode === 200){
             setTotalPages(resData?.totalPages)
-            setOfferData(resData?.responseResult)
-            const filterOffer = offerList?.filter((item)=> item?.offer_type.toLowerCase() !== 'survey');
-            setOfferData(filterOffer)
         }
     }
 
@@ -123,11 +120,41 @@ const UserDashboard = () => {
         dispatch(fetchSurveyList())
         dispatch(fetchUserLiveMessages())
     }, []);
+    useEffect(() => {
+        setOfferData(offerList)
+    }, [offerList]);
+    useEffect(() => {
+        if(checkedDevices.android){
+            handleFilterData('Android')
+        }else if(checkedDevices.ios){
+            handleFilterData('iPhone|iPad')
+        }else{
+            handleFilterData('All')
+        }
+    }, [checkedDevices]);
     return (
         <>
         <div className='liveMessage'>
                 <div className='liveMessageWrapper'>
-                    {liveMessages?.map((item, index)=> <div className='liveMessageItem' key={item?.userId}>
+                <Swiper
+                slidesPerView={2}
+                spaceBetween={10}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 3,
+                    spaceBetween: 10,
+                  },
+                  768: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                  },
+                  1024: {
+                    slidesPerView: 6,
+                    spaceBetween: 10,
+                  },
+                }} 
+                className="chatSwiper">
+                    {liveMessages?.map((item, index)=> <SwiperSlide key={item?.userId}><div className='liveMessageItem'>
                         <img src={avatar} alt='userImg' />
                         <div className='liveMessageContent'>
                             <div className='flex justify-start items-start flex-col'>
@@ -136,7 +163,8 @@ const UserDashboard = () => {
                             </div>
                             <p className='amount'>{item?.message}</p>
                         </div>
-                    </div>)}
+                    </div></SwiperSlide>)}
+                </Swiper>
                 </div>
             </div>
         <div className='md:p-4 p-2 md:block hidden'>
