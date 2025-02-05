@@ -30,16 +30,20 @@ const HomeNew = () => {
       userName: ''
     })
 
-    const handleGoogleLogin = async(tokenResponse) => {
-        const response  = await fetch('https://coinlooty.com/auth/google/callback', {
-            method: 'GET',
-            headers: {
-                  Authorization: `Bearer ${tokenResponse?.token}`,
-            },
-        })
-        const data = await response.json()
-        console.log('loginData', data)
-    }
+    const handleGoogleLogin = () => {
+        window.location.href = "https://coinlooty.com/auth/google/callback";
+      };
+
+    // const handleGoogleLogin = async(tokenResponse) => {
+    //     const response  = await fetch('https://coinlooty.com/auth/google/callback', {
+    //         method: 'GET',
+    //         headers: {
+    //               Authorization: `Bearer ${tokenResponse?.token}`,
+    //         },
+    //     })
+    //     const data = await response.json()
+    //     console.log('loginData', data)
+    // }
 
     const handleSubmit = async (e) => {
       e.preventDefault()
