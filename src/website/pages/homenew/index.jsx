@@ -7,7 +7,7 @@ import trustpilot from "../../assest/images/trustpilot.png"
 import BaseUrl from "../../../Api/BaseUrl";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './home.css'
 import cardImg from '../../assest/images/dungeon-hunter.jpg'
 import icon1 from '../../assest/images/cashout/icon _Amazon_.png'
@@ -15,6 +15,9 @@ import icon2 from '../../assest/images/cashout/icon _Bitcoin Cryptocurrency_.png
 import icon3 from '../../assest/images/cashout/icon _Visa_.png'
 import icon4 from '../../assest/images/cashout/icon _apple logo_.png'
 import icon5 from '../../assest/images/cashout/Google-Play 2.png'
+import chooseOfferimg from '../../assest/images/chooseOffer.png'
+import compOfferimg from '../../assest/images/compOfferimg.png'
+import earnAward from '../../assest/images/earnAward.png'
 import cashoutImg from "../../assest/images/cashoutImg.png"
 import userImg from "../../assest/images/reviewUser.png"
 import Waystoearn from "../../components/Waystoearn";
@@ -24,48 +27,77 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import { Autoplay } from 'swiper/modules';
+import { fetchUserLiveMessages } from "../../../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 const HomeNew = () => {
-    const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+    const liveMessages = useSelector(state => state.user.messageList)
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
-      userName: ''
-    })
+        userName: '',
+        password: ''
+    });
 
-    const handleGoogleLogin = () => {
-        window.location.href = "https://coinlooty.com/auth/google/callback";
-      };
+    const handleGoogleLogin = async () => {
+        try {
+            setIsLoading(true);
+            
+            // Initiate Google OAuth process
+            const response = await fetch(`${BaseUrl}auth/google/callback`, {
+                method: 'GET',
+                credentials: 'include', // Important for cookies/session
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
 
-    // const handleGoogleLogin = async(tokenResponse) => {
-    //     const response  = await fetch('https://coinlooty.com/auth/google/callback', {
-    //         method: 'GET',
-    //         headers: {
-    //               Authorization: `Bearer ${tokenResponse?.token}`,
-    //         },
-    //     })
-    //     const data = await response.json()
-    //     console.log('loginData', data)
-    // }
+            const data = await response.json();
+
+            if (data.authUrl) {
+                // Redirect to Google OAuth URL
+                window.location.href = data.authUrl;
+            } else {
+                toast.error('Unable to initiate Google login');
+                setIsLoading(false);
+            }
+        } catch (error) {
+            console.error('Google login error:', error);
+            toast.error('Login failed. Please try again.');
+            setIsLoading(false);
+        }
+    };
 
     const handleSubmit = async (e) => {
-      e.preventDefault()
-      const response = await fetch(`${BaseUrl}user/login`, {
-        method: 'POST',
-        headers: {
-            'accept': 'application/json'
-        },
-        body: new URLSearchParams(formData)
-    }
-  )
-  const resData = await response.json()
-  if(resData.responseCode === 200){
-    toast.success(resData.responseMessage)
-    localStorage.setItem("opinionUser", JSON.stringify(resData.userDetails))
-    navigate('/dashboard')
-  }else{
-    toast.error(resData.responseMessage)
-  }
-}
+        e.preventDefault();
+        try {
+            const response = await fetch(`${BaseUrl}user/login`, {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json'
+                },
+                body: new URLSearchParams(formData)
+            });
+            
+            const resData = await response.json();
+            
+            if (resData.responseCode === 200) {
+                toast.success(resData.responseMessage);
+                localStorage.setItem("opinionUser", JSON.stringify(resData.userDetails));
+                navigate('/dashboard');
+            } else {
+                toast.error(resData.responseMessage);
+            }
+        } catch (error) {
+            toast.error("An error occurred. Please try again.");
+        }
+    };
+
+     useEffect(() => {
+            dispatch(fetchUserLiveMessages())
+        }, []);
     return (
-        <div className="bg-slate-800">
+        <div className="bg-slate-800 landingBg">
             <div className="main-banner">
             <div className="container mx-auto md:flex items-center md:pb-14 md:pt-8 pb-8 pt-6 px-2 relative content">
             <div className="md:w-1/2 w-full">
@@ -174,7 +206,7 @@ const HomeNew = () => {
                     <p>Explore exciting tasks on our 'Earn' page! Discover top offers from leading companies showcasing their apps, surveys, and products.</p>
                 </div>
                 <div class="img">
-                    <img src={cardImg} alt='gameImg' />
+                    <img src={chooseOfferimg} alt='gameImg' />
                 </div>
             </div>
             <div class="items">
@@ -183,7 +215,7 @@ const HomeNew = () => {
                     <p>Our offers are straightforward and have already empowered thousands to earn money. Many can be completed in just a few minutes, making earning quick and convenient for you!</p>
                 </div>
                 <div class="img">
-                    <img src={cardImg} alt='gameImg' />
+                    <img src={compOfferimg} alt='gameImg' />
                 </div>
             </div>
             <div class="items">
@@ -192,7 +224,7 @@ const HomeNew = () => {
                     <p>After finishing each task, you'll be rewarded with coins, where 1000 coins translate to $1.00. Simply redeem your coins to access your free reward!</p>
                 </div>
                 <div class="img">
-                    <img src={cardImg} alt='gameImg' />
+                    <img src={earnAward} alt='gameImg' />
                 </div>
             </div>
         </div>
@@ -217,9 +249,6 @@ const HomeNew = () => {
             </div>
             <div class="">
                 <Swiper 
-                    autoplay={{
-                        delay:500,
-                    }}
                      breakpoints={{
                         640: {
                             slidesPerView: 4,
@@ -353,47 +382,15 @@ const HomeNew = () => {
                         <span className="live-circle"></span>
                         <h5 className="text-white font-medium text-2xl">Live CashOuts</h5>
                     </div>
-        <div className="flex justify-center items-center gap-3 flex-col">
-                        <div className="user-item">
+        <div className="flex justify-start items-center gap-3 flex-col liveCashoutmsg">
+                        {liveMessages?.map((item)=> <div className="user-item" key={item?.id}>
                             <div className="flex justify-start items-center md:gap-4 gap-2">
                                 <div className="user-icon">A</div>
-                                <p className="user-name">Bilal khan</p>
+                                <p className="user-name">{item?.userName}</p>
                             </div>
-                            <span className="earn-points">$2</span>
+                            <span className="earn-points">{item?.message}</span>
                             <span className="cashout-time"><img src={icon1} alt="cashoutIcon"/></span>
-                        </div>
-                        <div className="user-item">
-                            <div className="flex justify-start items-center md:gap-4 gap-2">
-                                <div className="user-icon">A</div>
-                                <p className="user-name">Bilal khan</p>
-                            </div>
-                            <span className="earn-points">$2</span>
-                            <span className="cashout-time"><img src={icon1} alt="cashoutIcon"/></span>
-                        </div>
-                        <div className="user-item">
-                            <div className="flex justify-start items-center md:gap-4 gap-2">
-                                <div className="user-icon">A</div>
-                                <p className="user-name">Bilal khan</p>
-                            </div>
-                            <span className="earn-points">$2</span>
-                            <span className="cashout-time"><img src={icon1} alt="cashoutIcon"/></span>
-                        </div>
-                        <div className="user-item">
-                            <div className="flex justify-start items-center md:gap-4 gap-2">
-                                <div className="user-icon">A</div>
-                                <p className="user-name">Bilal khan</p>
-                            </div>
-                            <span className="earn-points">$2</span>
-                            <span className="cashout-time"><img src={icon1} alt="cashoutIcon"/></span>
-                        </div>
-                        <div className="user-item">
-                            <div className="flex justify-start items-center md:gap-4 gap-2">
-                                <div className="user-icon">A</div>
-                                <p className="user-name">Bilal khan</p>
-                            </div>
-                            <span className="earn-points">$2</span>
-                            <span className="cashout-time"><img src={icon1} alt="cashoutIcon"/></span>
-                        </div>
+                        </div>)}
                         </div>
                         </div>
         </div>

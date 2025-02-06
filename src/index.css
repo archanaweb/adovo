@@ -103,7 +103,7 @@ code {
 }
 
 .how-it-works {
-  background: #1E293B;
+  /* background: #1E293B; */
   padding-bottom: 70px;
 }
 
@@ -141,12 +141,22 @@ code {
   border-radius: 12px;
   background: #384152;
   width: 100%;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .steps-sec .items .img {
   width: 100%;
-  position: relative;
-  margin-top: 20px;
+    position: relative;
+    margin-top: 20px;
+    height: 200px;
+    background: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .steps-sec .items .img img {
