@@ -263,8 +263,7 @@ const HomeNew = () => {
                             spaceBetween: 50,
                         },
                     }}
-                    className="mySwiper cashout-items"
-                    modules={[Autoplay]}>
+                    className="mySwiper cashout-items">
                     <SwiperSlide>
                         <div class="items">
                             <img src={icon1} alt="cashoutIcon"/>
