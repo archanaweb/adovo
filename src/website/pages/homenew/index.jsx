@@ -26,7 +26,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { fetchUserLiveMessages } from "../../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 const HomeNew = () => {
@@ -398,7 +398,7 @@ const HomeNew = () => {
             </div>
 
             <div class="userTestimonialSec py-5 md:pt-6 px-2">
-                <div class="container mx-auto px-10">
+                <div class="container mx-auto md:px-10 px-2">
                 <div class="sec-heading">
             {/* <div className="heading-shadow"> 
             </div> */}
@@ -408,7 +408,32 @@ const HomeNew = () => {
             </div>
             </div>
             <div class="testi-sec flex md:flex-row flex-col md:p-4 md:pt-4 pb-6 gap-2">
-            <div class="items">
+            <Swiper
+                pagination={true}
+                slidesPerView={2}
+                spaceBetween={ 10}
+                centeredSlides={true}
+                // pagination={{
+                // clickable: true,
+                // }}
+                breakpoints={{
+                    640: {
+                      slidesPerView: 2,
+                      spaceBetween: 10,
+                    },
+                    768: {
+                      slidesPerView: 3,
+                      spaceBetween: 20,
+                    },
+                    1024: {
+                      slidesPerView: 4,
+                      spaceBetween: 20,
+                    },
+                }}
+                modules={[Pagination]}
+                className="testiSwiper"
+      >
+            <SwiperSlide><div class="items">
                 <div class="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
@@ -419,8 +444,8 @@ const HomeNew = () => {
                 <div className="content">
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
-            </div>
-            <div class="items">
+            </div></SwiperSlide>
+            <SwiperSlide><div class="items">
                 <div class="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
@@ -431,8 +456,8 @@ const HomeNew = () => {
                 <div className="content">
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
-            </div>
-            <div class="items">
+            </div></SwiperSlide>
+            <SwiperSlide><div class="items">
                 <div class="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
@@ -443,7 +468,32 @@ const HomeNew = () => {
                 <div className="content">
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
-            </div>
+            </div></SwiperSlide>
+            <SwiperSlide><div class="items">
+                <div class="img">
+                    <img src={userImg} alt='gameImg' />
+                    <div className="aboutUser">
+                        <h5>Nitin Poddar </h5>
+                        <span>30|01|2025</span>
+                    </div>
+                </div>
+                <div className="content">
+                    <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
+                </div> 
+            </div></SwiperSlide>
+            <SwiperSlide><div class="items">
+                <div class="img">
+                    <img src={userImg} alt='gameImg' />
+                    <div className="aboutUser">
+                        <h5>Nitin Poddar </h5>
+                        <span>30|01|2025</span>
+                    </div>
+                </div>
+                <div className="content">
+                    <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
+                </div> 
+            </div></SwiperSlide>
+            </Swiper>
         </div>
 
                 </div>
