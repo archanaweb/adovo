@@ -29,7 +29,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(92deg,#091124 -16.9%,#1c0922 119.9%);
+    background: linear-gradient(92deg, #091124 -16.9%, #1c0922 119.9%);
     z-index: 2;
     -webkit-mask: linear-gradient(to bottom, transparent 0%, #091124 100%);
     mask: linear-gradient(to bottom, transparent 0%, #091124 100%);
@@ -120,6 +120,11 @@
     gap: 100px;
 }
 
+.cashout-items .items {
+    display: flex;
+    justify-content: center;
+}
+
 .cashout-wrapper {
     background: #384152;
     border-radius: 30px;
@@ -136,6 +141,7 @@
     align-items: center;
     gap: 10px;
 }
+
 .liveCashoutmsg {
     height: 415px;
     overflow: auto;
@@ -225,8 +231,9 @@ span.live-circle {
 }
 
 .landingBg {
-    background: linear-gradient(92deg,#091124 -16.9%,#1c0922 119.9%);
+    background: linear-gradient(92deg, #091124 -16.9%, #1c0922 119.9%);
 }
+
 @media (max-width: 768px) {
     .cashout-items {
         gap: 35px;
@@ -257,7 +264,7 @@ span.live-circle {
 
 @media (min-width: 1400px) {
     .bannerOffers {
-        padding: 0 70px;
+        padding: 0 35px;
         padding-top: 25px;
     }
 
@@ -270,6 +277,7 @@ span.live-circle {
     }
 
 }
+
 @keyframes zoom-in-zoom-out {
     0% {
         scale: 100%;

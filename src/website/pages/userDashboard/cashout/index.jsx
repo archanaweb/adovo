@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { fetchTotalAmount } from '../../../../redux/user/walletSlice'
 import { userWithdrawAmount } from '../../../../redux/user/withdrawSlice'
 import SubmitDocumentModal from '../../../components/userDdashboard/SubmitDocumentModal'
+import toast from 'react-hot-toast'
 
 const Cashout = ()=> {
     const dispatch = useDispatch()
@@ -27,7 +28,12 @@ const Cashout = ()=> {
 
     const handleSubmit = async() => {
         const response = await dispatch(userWithdrawAmount({...formData, userId: auth.id}))
-        console.log('withdraw response', response)
+        const resData = response.payload 
+        if(resData?.responseCode === 200){
+            toast.success(resData?.responseMesage);
+        }else {
+            toast.error(resData?.responseMessage || 'something went wrong')
+        }
     }
 
     useEffect(()=> {

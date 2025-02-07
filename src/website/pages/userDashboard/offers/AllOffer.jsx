@@ -42,7 +42,7 @@ const AllOffers = () => {
             <div className="flex gap-4 items-wrapper flex-wrap">
                 {/* {offerListLoading && <p className='text-white text-2xl'>Loading...</p>} */}
         {offerListLoading ? <p className='loading text-white'>Loading...</p> : filteredOffers?.map((item)=>
-        <div className='item' onClick={()=> handleClick(item?.id)} key={item?.id}>
+        <div className='item' onClick={()=> handleClick(item?.id)} key={item?._id}>
         <div className='offer-hover'>
             <div className='offer-start-icon'>
                 <IoPlay />       

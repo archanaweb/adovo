@@ -154,7 +154,7 @@ const UserDashboard = () => {
                   },
                 }} 
                 className="chatSwiper">
-                    {liveMessages?.map((item, index)=> <SwiperSlide key={item?.userId}><div className='liveMessageItem'>
+                    {liveMessages?.map((item, index)=> <SwiperSlide key={item?._id}><div className='liveMessageItem'>
                         <img src={avatar} alt='userImg' />
                         <div className='liveMessageContent'>
                             <div className='flex justify-start items-start flex-col'>
@@ -289,7 +289,7 @@ const UserDashboard = () => {
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
-                        {offerData?.map((item, index)=> <SwiperSlide key={item?.id}>
+                        {offerData?.map((item, index)=> <SwiperSlide key={item?._id}>
                 <div className='item' onClick={()=> handleClick(item?.id)}>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
@@ -339,7 +339,7 @@ const UserDashboard = () => {
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="mySwiper items-wrapper flex gap-4">
-                        {surveyList?.map((item, index)=> <SwiperSlide key={item?.id}>
+                        {surveyList?.map((item, index)=> <SwiperSlide key={item?._id}>
                 <div className='item'>
                             <div className='offer-hover'>
                                 <div className='offer-start-icon'>
