@@ -100,7 +100,7 @@ const HomeNew = () => {
         <div className="bg-slate-800 landingBg">
             <div className="main-banner">
             <div className="container mx-auto md:flex items-center md:pb-14 md:pt-8 pb-8 pt-6 px-2 relative content">
-            <div className="md:w-1/2 w-full">
+            <div className="lg:w-1/2 md:full w-full">
                 <h1 className="md:text-4xl text-3xl font-bold text-white p-2 md:py-6 pb-4"><span className="text-[#d13d5e]">Earn Rewards </span> By <br/>Sharing Your Opinion &<br/> Exploring New Apps</h1>  
                 <p className="text-white text-sm md:text-lg pb-4">Earn money by testing apps, games and taking surveys. Earn up to <span className="text-white">$50.40 </span>per offer 494 available offers now. Get started today!</p>
                 <div className="bannerOffers">
@@ -134,7 +134,7 @@ const HomeNew = () => {
                         </div>
             </div>
             </div>
-            <div className="md:w-1/2 w-full">
+            <div className="lg:w-1/2 md:full w-full">
             <div className="reviews">
                 <div className="reviewShadow">
               <img src={trustpilot} alt="reviewsIcon" />
@@ -155,7 +155,7 @@ const HomeNew = () => {
         />
         <input 
           type="password" 
-          name="password "
+          name="password " 
           placeholder="Password" 
           className="h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-white disabled:opacity-50 bg-gray-800 border-gray-700 text-white" 
           value={formData?.password}
@@ -190,7 +190,7 @@ const HomeNew = () => {
             </div>
 
             <div class="how-it-works py-5 md:pt-6 px-2">
-        <div class="container mx-auto px-10">
+        <div class="container mx-auto md:px-10 px-2">
         <div class="sec-heading">
             {/* <div className="heading-shadow"> 
             </div> */}
@@ -249,13 +249,15 @@ const HomeNew = () => {
             </div>
             <div class="">
                 <Swiper 
+                    slidesPerView={4}
+                    spaceBetween={10}
                      breakpoints={{
                         640: {
                             slidesPerView: 4,
                             spaceBetween: 20,
                         },
                         768: {
-                            slidesPerView: 4,
+                            slidesPerView: 6,
                             spaceBetween: 40,
                         },
                         1024: {
@@ -263,7 +265,7 @@ const HomeNew = () => {
                             spaceBetween: 50,
                         },
                     }}
-                    className="mySwiper cashout-items">
+                    className="cashoutSwiper cashout-items">
                     <SwiperSlide>
                         <div class="items">
                             <img src={icon1} alt="cashoutIcon"/>

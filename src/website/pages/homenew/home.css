@@ -119,6 +119,10 @@
     align-items: center;
     gap: 100px;
 }
+.cashout-items .items {
+    display: flex;
+    justify-content: center;
+}
 
 .cashout-wrapper {
     background: #384152;
