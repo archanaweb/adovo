@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './home.css'
-import cardImg from '../../assest/images/dungeon-hunter.jpg'
 import icon1 from '../../assest/images/cashout/icon _Amazon_.png'
 import icon2 from '../../assest/images/cashout/icon _Bitcoin Cryptocurrency_.png'
 import icon3 from '../../assest/images/cashout/icon _Visa_.png'
@@ -384,7 +383,7 @@ const HomeNew = () => {
                         <h5 className="text-white font-medium text-2xl">Live CashOuts</h5>
                     </div>
         <div className="flex justify-start items-center gap-3 flex-col liveCashoutmsg">
-                        {liveMessages?.map((item)=> <div className="user-item" key={item?.id}>
+                        {liveMessages?.map((item)=> <div className="user-item" key={item?._id}>
                             <div className="flex justify-start items-center md:gap-4 gap-2">
                                 <div className="user-icon">A</div>
                                 <p className="user-name">{item?.userName}</p>

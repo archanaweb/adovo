@@ -22,7 +22,7 @@ const AllSurvey = () => {
                    <div className="flex gap-4 items-wrapper flex-wrap">
                 {surveyList?.map((item, index)=> 
                  <div className='item' key={item?.id}>
-                                            <Link to={`/survey/${item?.id}`}><div className='offer-hover'>
+                                            <Link to={`/survey/${item?._id}`}><div className='offer-hover'>
                                                 <div className='offer-start-icon'>
                                                     <IoPlay />       
                                                 </div>
