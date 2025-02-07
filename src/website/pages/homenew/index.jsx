@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './home.css'
-import cardImg from '../../assest/images/dungeon-hunter.jpg'
 import icon1 from '../../assest/images/cashout/icon _Amazon_.png'
 import icon2 from '../../assest/images/cashout/icon _Bitcoin Cryptocurrency_.png'
 import icon3 from '../../assest/images/cashout/icon _Visa_.png'
