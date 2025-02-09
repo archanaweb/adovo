@@ -9,6 +9,7 @@ import { MdPhotoCameraBack } from "react-icons/md";
 import UploadProfileModal from "../../../components/userDdashboard/UploadProfileModal" 
 import toast from "react-hot-toast"
 import ChangeProfileImgModal from "../../../components/userDdashboard/ChangeProfileImgModal"
+import { fetchWithdrawRequestList } from "../../../../redux/user/withdrawSlice"
 
 const UserProfile = ()=> {
     const [tab, setTab] = useState('earning')
@@ -16,6 +17,7 @@ const UserProfile = ()=> {
     const auth = JSON.parse(localStorage.getItem('opinionUser'))
     const dispatch = useDispatch() 
     const userDetails = useSelector((state)=> state.user.detail)
+    const withdrawList = useSelector((state)=> state.withdraw?.WithdrawRequestList)
     const [formData, setFormData]  = useState({})
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [isOpenUploadModal, setIsOpenUploadModal] = useState(false)
@@ -58,6 +60,7 @@ const UserProfile = ()=> {
 
     useEffect(()=>{
         dispatch(fetchUserDetails(auth.id))
+        dispatch(fetchWithdrawRequestList(auth?.id))
     },[])
     return (
         <>
@@ -102,7 +105,62 @@ const UserProfile = ()=> {
                                     className={`tab ${tab === 'withdraw' ? 'active': ''}`}
                                     onClick={()=> setTab('withdraw')}>Withdrawals</button>
                             </div>
-            </div>
+                </div>
+                <div className="tabContent">
+                    {tab === 'withdraw' && <>
+
+                        {!withdrawList ? <><div className="mx-4"><p className="text-left text-white">Data not found</p></div></> : <div className="mx-4">
+                                <div className="overflow-x-auto bg-[#111827]">
+                                    <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden leaderboard-table">
+                                        <table className="min-w-full leading-normal">
+                                            <thead>
+                                                <tr>
+                                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                                    User
+                                                    </th>
+                                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                                        Amount
+                                                    </th>
+                                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                                       User name
+                                                    </th>
+                                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                                    Transaction ID
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {withdrawList?.map((user, index)=> <tr>
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm" key={user?._id}>
+                                                        <div className="flex">
+                                                            <div className="flex-shrink-0 w-5 h-5">
+                                                                <span>{user?.userId}</span>
+                                                            </div>
+                                                            <div className="ml-1">
+                                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                                   {user?.userName}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">${user?.amount}</p>
+                                                    </td>
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">{user?.status}</p>
+                                                    </td>
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">{user?.transactionId}</p>
+                                                    </td>
+                                                </tr> )}
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                        </div>}
+                    </>}
+                </div>
          <ChangePasswordModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>
          <UploadProfileModal isOpenModal={isOpenUploadModal} setIsOpenModal={setIsOpenUploadModal}/>
          <ChangeProfileImgModal isOpenModal={isOpenChangePicModal} setIsOpenModal={setIsOpenChangePicModal} userDetails={userDetails}/>

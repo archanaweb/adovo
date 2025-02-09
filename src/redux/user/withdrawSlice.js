@@ -76,7 +76,7 @@ const WithdrawSlice = createSlice({
     builder.addCase(fetchWithdrawRequestList.fulfilled, (state, action) => {
         state.loading =  false;
         state.error = null;
-        state.WithdrawRequestList =  action.payload?.referralCount
+        state.WithdrawRequestList =  action.payload?.responseResult
     });
     builder.addCase(fetchWithdrawRequestList.rejected, (state, action) => {
         state.error =  action.payload;
