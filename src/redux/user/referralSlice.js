@@ -19,6 +19,15 @@ export const fetchTopReferl = createAsyncThunk(
   }
 )
 
+export const fetchTotalReferEarning = createAsyncThunk(
+  'user/totalReferEarning',
+  async (userId) => {
+    const response = await fetch(`${BaseUrl}user/totalReferEarning?userId=${userId}`);
+    const responseData = await response.json();
+    return responseData
+  }
+)
+
 
 export const generateReferralCode = createAsyncThunk(
     'user/userGenrateRefrelCode',
@@ -43,6 +52,7 @@ const ReferralSlice = createSlice({
     referalCode : null,
     totalRef: null,
     topRef: null,
+    referEarnings: null,
     detail: null,
     loading : false,
     error : null,
@@ -77,6 +87,19 @@ const ReferralSlice = createSlice({
         state.topRef =  action.payload
     });
     builder.addCase(fetchTopReferl.rejected, (state, action) => {
+        state.error =  action.payload;
+        state.loading =  false;
+      });
+
+      builder.addCase(fetchTotalReferEarning.pending, (state, action) => {
+        state.loading =  true;
+      });
+    builder.addCase(fetchTotalReferEarning.fulfilled, (state, action) => {
+        state.loading =  false;
+        state.error = null;
+        state.referEarnings =  action.payload?.responseResult
+    });
+    builder.addCase(fetchTotalReferEarning.rejected, (state, action) => {
         state.error =  action.payload;
         state.loading =  false;
       });

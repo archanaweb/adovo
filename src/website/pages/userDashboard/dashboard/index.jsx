@@ -22,12 +22,12 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OfferModal from '../../../components/userDdashboard/OfferModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
-import { fetchTotalAmount, fetchTotalPoint } from '../../../../redux/user/walletSlice';
-import { fetchOfferDetail, fetchOfferList, setSelectedDevice } from '../../../../redux/user/offerSlice';
+import { fetchTotalReferEarning, fetchTotalReferl, generateReferralCode } from '../../../../redux/user/referralSlice';
+import { fetchTotalAmount, fetchTotalEarning, fetchTotalPoint } from '../../../../redux/user/walletSlice';
+import { fetchCompletedOffer, fetchOfferDetail, fetchOfferList, setSelectedDevice } from '../../../../redux/user/offerSlice';
 import { GiTakeMyMoney } from "react-icons/gi";
 import { fetchSurveyList } from '../../../../redux/user/surveySlice';
-import parnerData from '../../../../partnerData.json'
+import parnerData from './data.js'
 import FooterDashboard from '../../../components/userDdashboard/Footer.jsx';
 import { useToggleUSD } from '../../../../context/ToggleUSDContext.js';
 import { fetchUserLiveMessages } from '../../../../redux/user/userSlice.js';
@@ -53,8 +53,11 @@ const UserDashboard = () => {
     const navigate = useNavigate()
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
     const totalReferal = useSelector((state)=> state?.referal?.totalRef)
+    const totalReferaEarning = useSelector((state)=> state?.referal?.referEarnings)
     const totalPoint= useSelector((state)=> state?.wallet?.totalPoint)
     const totalAmount= useSelector((state)=> state?.wallet?.totalAmount)
+    const totalEarning= useSelector((state)=> state?.wallet?.totalEarning)
+    const totalCompletedOffer= useSelector((state)=> state?.offer?.completedOffer)
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [referralCode, setReferralCode] = useState(false)
     const handleClick = (id)=> {
@@ -85,7 +88,6 @@ const UserDashboard = () => {
         }
         localStorage.setItem('selectedDevice', selectedDevice);
         handleFilterData(selectedDevice); 
-
         return updatedState;
         });
       };
@@ -95,6 +97,10 @@ const UserDashboard = () => {
         if(resData?.responseCode === 200){
             setReferralCode(resData?.referralCode)
         }
+    }
+
+    const handlePartnerIframe = (url) => {
+        console.log(url)
     }
 
     const fetchOffer = async (pageno) => {
@@ -119,6 +125,10 @@ const UserDashboard = () => {
         fetchOffer(currentPage)
         dispatch(fetchSurveyList())
         dispatch(fetchUserLiveMessages())
+        dispatch(fetchCompletedOffer(auth.id))
+        dispatch(fetchTotalReferEarning(auth.id))
+        dispatch(fetchTotalEarning(auth.id))
+        console.log('partnerdatanew', parnerData)
     }, []);
     useEffect(() => {
         setOfferData(offerList)
@@ -226,14 +236,14 @@ const UserDashboard = () => {
                                 <div className='item flex justify-start items-center md:gap-4 gap-2'>
                                     <div className='icon'><IoWallet /></div>
                                     <div className='content text-gray-200 text-left'>
-                                        <h5 className='md:text-2xl text-xl font-bold text-white'>{isUSDChecked? `$${totalAmount}` : totalAmount*100 }</h5>
+                                        <h5 className='md:text-2xl text-xl font-bold text-white'>{isUSDChecked? `$${totalEarning}` : totalEarning*100 }</h5>
                                         <p className='text-sm text-gray-300'>Total Earnings</p>
                                     </div>
                                 </div>
                                 <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                     <div className='icon'><MdFactCheck /></div>
                                     <div className='content text-gray-200 text-left'>
-                                        <h5 className='md:text-2xl text-xl font-bold text-white'>0</h5>
+                                        <h5 className='md:text-2xl text-xl font-bold text-white'>{totalCompletedOffer ? totalCompletedOffer : `0`}</h5>
                                         <p className='text-sm text-gray-300'>Completed Offers</p>
                                     </div>
                                 </div>
@@ -249,7 +259,7 @@ const UserDashboard = () => {
                             <div className='item flex justify-start items-center  md:gap-4 gap-2'>
                                 <div className='icon'><FaUserFriends /></div>
                                 <div className='content text-gray-200 text-left'>
-                                    <h5 className='md:text-2xl text-xl font-bold text-white'>$0</h5>
+                                    <h5 className='md:text-2xl text-xl font-bold text-white'>{totalReferaEarning ? `$${totalReferaEarning}` : `$0`}</h5>
                                     <p className='text-sm text-gray-300'>Referred earning</p>
                                 </div>
                             </div>
@@ -264,7 +274,7 @@ const UserDashboard = () => {
                                     <p className='text-gray-200'>Share your referral link to your friends, and get {isUSDChecked? `$${totalAmount}` : totalAmount*100 + ` points` } in rewards.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
-                                <input value={`https://opiniontrue.com/${referralCode}`} readOnly />
+                                <input value={`https://coinlooty.com/${referralCode}`} readOnly />
                             </div>
                         </div>
                     </div>
@@ -381,7 +391,7 @@ const UserDashboard = () => {
                     spaceBetween={10}
                     slidesPerView={'auto'}
                     navigation={true} modules={[Navigation]} className="partnerSwiper spItem-wrapper flex gap-4">
-                         {parnerData?.partners.map((item)=> <SwiperSlide key={item?.id}>
+                         {parnerData?.partners.map((item, index)=> <SwiperSlide key={item?.id}>
                         <div className='item'>
                        <div className='spItem flex justify-between items-center gap-4 flex-col' >
                        <Link to={`/survey/${item?.id}`}>

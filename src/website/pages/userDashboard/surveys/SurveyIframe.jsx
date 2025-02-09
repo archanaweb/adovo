@@ -1,10 +1,27 @@
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import partnersData from '../dashboard/data'
+
 const SurveyIframe = ({}) => {
+    const [iframeURL, setIframeURL] = useState('')
+
+    const {id} = useParams()
     const auth  =  JSON.parse(localStorage.getItem('opinionUser'))
+
+    useEffect(() => {
+        const partnerIframe = partnersData?.partners?.find((item)=> item.id == id)
+        if(partnerIframe){
+            setIframeURL(partnerIframe?.iframeUrl)
+        }
+    }, [iframeURL])
+    useEffect(()=> {
+        console.log('iframeURL', iframeURL)
+    },[iframeURL])
     
     return (
         <div className="md:p-6 p-4">
         <div id="iframe-container" style={{ marginTop: "20px" }}>
-            <iframe title="OpinionUniverse Offer Wall" allow="clipboard-write" src={`https://opinionuniverse.com/offerwall.php?pubid=3&sid=${auth.id}&app_id=ID_6794b8bce87212.96962909&apikey=[apikey]`} width="100%" height="1000px" style={{border:"0", padding:"0", scrolling:"auto", margin:"0"}}></iframe>
+            <iframe title="OpinionUniverse Offer Wall" allow="clipboard-write" src={iframeURL} width="100%" height="1000px" style={{border:"0", padding:"0", scrolling:"auto", margin:"0"}}></iframe>
         </div>
         </div>
     );

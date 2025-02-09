@@ -18,6 +18,14 @@ export const fetchOfferDetail = createAsyncThunk(
     return responseData
   }
 )
+export const fetchCompletedOffer = createAsyncThunk(
+  'user/totalCompleteOffer',
+  async (id) => {
+    const response = await fetch(`${BaseUrl}user/totalCompleteOffer?userId=${id}`);
+    const responseData = await response.json();
+    return responseData
+  }
+)
 
 
 
@@ -29,6 +37,7 @@ const OfferSlice = createSlice({
     deviceFilterOfferList: [],
     offerDetail: null,
     topRef: null,
+    completedOffer: null,
     detail: null,
     loading : false,
     error : null,
@@ -58,6 +67,8 @@ const OfferSlice = createSlice({
         state.error =  action.payload;
         state.loading =  false;
       });
+
+
       builder.addCase(fetchOfferDetail.pending, (state, action) => {
         state.loading =  true;
       });
@@ -67,6 +78,20 @@ const OfferSlice = createSlice({
         state.offerDetail =  action.payload?.responseResult
     });
     builder.addCase(fetchOfferDetail.rejected, (state, action) => {
+        state.error =  action.payload;
+        state.loading =  false;
+      });
+
+
+      builder.addCase(fetchCompletedOffer.pending, (state, action) => {
+        state.loading =  true;
+      });
+    builder.addCase(fetchCompletedOffer.fulfilled, (state, action) => {
+        state.loading =  false;
+        state.error = null;
+        state.completedOffer =  action.payload?.responseResult
+    });
+    builder.addCase(fetchCompletedOffer.rejected, (state, action) => {
         state.error =  action.payload;
         state.loading =  false;
       });
