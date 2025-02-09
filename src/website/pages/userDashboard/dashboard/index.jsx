@@ -128,7 +128,6 @@ const UserDashboard = () => {
         dispatch(fetchCompletedOffer(auth.id))
         dispatch(fetchTotalReferEarning(auth.id))
         dispatch(fetchTotalEarning(auth.id))
-        console.log('partnerdatanew', parnerData)
     }, []);
     useEffect(() => {
         setOfferData(offerList)
@@ -271,7 +270,7 @@ const UserDashboard = () => {
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
                                 <div>
                                     {/* <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p> */}
-                                    <p className='text-gray-200'>Share your referral link to your friends, and get {isUSDChecked? `$${totalAmount}` : totalAmount*100 + ` points` } in rewards.</p>
+                                    <p className='text-gray-200'>Share your referral link to your friends, and get 10% of their lifetime in rewards.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
                                 <input value={`https://coinlooty.com/${referralCode}`} readOnly />
