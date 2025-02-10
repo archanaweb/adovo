@@ -179,7 +179,7 @@ const HomeNew = () => {
         <FaFacebook className="w-6 h-6 mr-2 text-white" /> 
         </div>
       </div>
-      <div className="pt-2 account-btn">
+      <div className="pt-2 account-btn"> 
         <p>Don't have an acount yet? <Link to='/signup'>Register Now</Link></p>
       </div>
             </div>

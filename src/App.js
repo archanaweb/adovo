@@ -7,9 +7,8 @@ function App() {
   return (
     <div className="App">
       <Toaster />
-       <Index />
+      <Index />
     </div>
-    
   );
 }
 

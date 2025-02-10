@@ -30,7 +30,7 @@ const Affiliates = ()=> {
         const resData = res.payload;
         if(resData?.responseCode === 200){
             const code = resData?.referralCode
-            setReferralCode(`https://opiniontrue.com/${code}`)
+            setReferralCode(`https://api.coinlooty.com/${code}`)
         }
     }
 

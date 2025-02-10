@@ -6,7 +6,7 @@ const partnersData = {
       {
         "id": 1,
         "name": "Opinion Universe",
-        "image": "/offerwall/adgatemedia.png",
+        "image": "https://opinionuniverse.com/s_assets/img/opinionuniverse_logo.png",
         "rating": "$300",
         "iframeUrl": `https://opinionuniverse.com/offerwall.php?pubid=3&sid=${auth?.id}&app_id=ID_666aaea5254cd1.79214671&apikey=[apikey]`
       },

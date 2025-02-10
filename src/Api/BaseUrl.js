@@ -1,3 +1,3 @@
 // config.js
-const BaseUrl = 'https://coinlooty.com/';
+const BaseUrl = "https://api.coinlooty.com/";
 export default BaseUrl; 

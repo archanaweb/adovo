@@ -266,14 +266,13 @@ const UserDashboard = () => {
                         </div>
                         <div className='md:w-1/2 w-full'>
                             <div className='refer-user bg-white rounded-md p-4 text-left'>
-                               
                                 <h5 className='text-xl text-gray-100'>Your referral link</h5>
                                 <div>
                                     {/* <p className='text-gray-200'>Share your referral link to your friends, and get {totalPoint} points.</p> */}
                                     <p className='text-gray-200'>Share your referral link to your friends, and get 10% of their lifetime in rewards.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
-                                <Link to={`/subuser/signup/${referralCode}`} className='cursor-pointer' target='_blank'><input className='cursor-pointer' value={`https://coinlooty.com/${referralCode}`} readOnly /></Link>
+                                <Link to={`/subuser/signup/${referralCode}`} className='cursor-pointer' target='_blank'><input className='cursor-pointer' value={`https://api.coinlooty.com/${referralCode}`} readOnly /></Link>
                             </div>
                         </div>
                     </div>
