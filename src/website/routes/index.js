@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider, useLocation, Routes } from "react-router-dom"
 import Home from "../pages/home"
 import Signup from "../pages/signup"
 import VerifyOtp from "../pages/varifyOtp"
@@ -59,7 +59,6 @@ const LayoutDashboard = () => {
 const router = createBrowserRouter(
     createRoutesFromElements(
        <>
-       <Router>
             <Route path="/" element={<Layout />}>
                 <Route index element={<HomeNew />} loader={async () => await isAuthenticated()} /> 
                 <Route path="signup" element={<Signup />} loader={async () => await isAuthenticated()}> </Route>
@@ -83,8 +82,6 @@ const router = createBrowserRouter(
                     <Route path="affiliates" element={<Affiliates/>}> </Route>
                 </Route>
             </Route>
-        </Router>
-        
         </>
     )
 )
