@@ -23,6 +23,7 @@ import SurveyIframe from "../pages/userDashboard/surveys/SurveyIframe"
 import { ToggleUSDProvider } from "../../context/ToggleUSDContext"
 import HomeNew from "../pages/homenew"
 import SubUserSignup from "../pages/subUserSignup"
+import ReferToFriend from "../pages/refer"
 
 const Layout = () => {
     const location = useLocation()
@@ -63,6 +64,7 @@ const router = createBrowserRouter(
                 <Route index element={<HomeNew />} loader={async () => await isAuthenticated()} /> 
                 <Route path="signup" element={<Signup />} loader={async () => await isAuthenticated()}> </Route>
                 <Route path="subuser/signup/:id" element={<SubUserSignup />}> </Route>
+                <Route path="ref/:id" element={<ReferToFriend />}> </Route>
                 <Route path="verifyotp" element={<VerifyOtp />} loader={async () => await isAuthenticated()}> </Route>
                 <Route path="forgotpassword" element={<ForgotPassword />} loader={async () => await isAuthenticated()}> </Route>
                 <Route path="resetpassword" element={<ResetPassword />} loader={async () => await isAuthenticated()}> </Route>
@@ -82,6 +84,7 @@ const router = createBrowserRouter(
                     <Route path="affiliates" element={<Affiliates/>}> </Route>
                 </Route>
             </Route>
+        
         </>
     )
 )

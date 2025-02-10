@@ -272,7 +272,7 @@ const UserDashboard = () => {
                                     <p className='text-gray-200'>Share your referral link to your friends, and get 10% of their lifetime in rewards.</p>
                                     <img src={referimg} alt='referimg' />
                                 </div>
-                                <Link to={`/subuser/signup/${referralCode}`} className='cursor-pointer' target='_blank'><input className='cursor-pointer' value={`https://api.coinlooty.com/${referralCode}`} readOnly /></Link>
+                                <Link to={`/subuser/signup/${referralCode}`} className='cursor-pointer' target='_blank'><input className='cursor-pointer' value={`https://coinlooty.com/ref/${referralCode}`} readOnly /></Link>
                             </div>
                         </div>
                     </div>
