@@ -21,7 +21,7 @@ const AllSurvey = () => {
                     <h5 className='text-2xl text-white text-left pb-6 font-bold'>All Surveys</h5>
                    <div className="flex gap-4 items-wrapper flex-wrap">
                 {surveyList?.map((item, index)=> 
-                 <div className='item' key={item?.id}>
+                 <div className='item' key={item?._id}>
                                             <Link to={`/survey/${item?._id}`}><div className='offer-hover'>
                                                 <div className='offer-start-icon'>
                                                     <IoPlay />       

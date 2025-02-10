@@ -15,12 +15,12 @@ const SurveyIframe = ({}) => {
         }
     }, [iframeURL])
     useEffect(()=> {
-        console.log('iframeURL', iframeURL)
-    },[iframeURL])
+         window.scrollTo({ top: 0, behavior: "smooth" });
+    },[])
     
     return (
-        <div className="md:p-6 p-4">
-        <div id="iframe-container" style={{ marginTop: "20px" }}>
+        <div className="md:p-6 p-4">  
+        <div id="iframe-container">
             <iframe title="OpinionUniverse Offer Wall" allow="clipboard-write" src={iframeURL} width="100%" height="1000px" style={{border:"0", padding:"0", scrolling:"auto", margin:"0"}}></iframe>
         </div>
         </div>

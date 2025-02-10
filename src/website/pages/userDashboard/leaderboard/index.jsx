@@ -38,8 +38,8 @@ const LeaderBoard = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {earnedUser?.map((user, index)=> <tr>
-                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm" key={user?.userId}>
+                                                {earnedUser?.map((user, index)=> <tr key={user?.userId}>
+                                                    <td className="md:px-5 md:py-5 px-3 py-3 border-b border-gray-200 bg-white text-sm">
                                                         <div className="flex">
                                                             <div className="flex-shrink-0 w-5 h-5">
                                                                 <span>{index + 1}</span>

@@ -32,7 +32,10 @@ header.user-header {
     color: rgb(168, 170, 201);
     background: rgb(37, 37, 57);
 }
-
+.secTop button.saveBtn {
+    background-color: #347e34 !important;
+    color: #efefef;
+}
 .user-prof {
     width: 350px;
 }

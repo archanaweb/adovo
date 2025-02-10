@@ -167,7 +167,7 @@ const HomeNew = () => {
       </form>
       <div className="flex justify-between items-center pt-1">
         <div className="flex justify-start items-center gap-1"> <input type="checkbox" id="rembPass" name="rembPass" />
-          <label for="rembPass" className="text-gray-400">Remember me</label></div>
+          <label htmlFor="rembPass" className="text-gray-400">Remember me</label></div>
         <Link to='/forgotpassword' className="text-gray-400">Forgot password?</Link>
       </div>
       <div className="my-4 text-center text-gray-300 text-sm flex justify-between items-center gap-2"><div className="to-right-line"></div><span>OR SIGN IN WITH</span><div className="to-left-line"></div></div>
@@ -188,9 +188,9 @@ const HomeNew = () => {
             
             </div>
 
-            <div class="how-it-works py-5 md:pt-6 px-2">
-        <div class="container mx-auto px-10">
-        <div class="sec-heading">
+            <div className="how-it-works py-5 md:pt-6 px-2">
+        <div className="container mx-auto px-10">
+        <div className="sec-heading">
             {/* <div className="heading-shadow"> 
             </div> */}
             <div className="relative">
@@ -198,36 +198,36 @@ const HomeNew = () => {
                 <p><span>Easily done </span>in minutes!</p>
                 </div>
         </div>
-        <div class="steps-sec">
-            <div class="items">
+        <div className="steps-sec">
+            <div className="items">
                 <div>
                     <h5>1. Select an offer</h5>
                     <p>Explore exciting tasks on our 'Earn' page! Discover top offers from leading companies showcasing their apps, surveys, and products.</p>
                 </div>
-                <div class="img">
+                <div className="img">
                     <img src={chooseOfferimg} alt='gameImg' />
                 </div>
             </div>
-            <div class="items">
+            <div className="items">
                 <div>
                     <h5>2. Complete the offer</h5>
                     <p>Our offers are straightforward and have already empowered thousands to earn money. Many can be completed in just a few minutes, making earning quick and convenient for you!</p>
                 </div>
-                <div class="img">
+                <div className="img">
                     <img src={compOfferimg} alt='gameImg' />
                 </div>
             </div>
-            <div class="items">
+            <div className="items">
                 <div>
                     <h5>3. Get paid</h5>
                     <p>After finishing each task, you'll be rewarded with coins, where 1000 coins translate to $1.00. Simply redeem your coins to access your free reward!</p>
                 </div>
-                <div class="img">
+                <div className="img">
                     <img src={earnAward} alt='gameImg' />
                 </div>
             </div>
         </div>
-        <div class="explore-btn">
+        <div className="explore-btn">
             <button>Start earning now</button>
         </div>
         </div>
@@ -239,14 +239,14 @@ const HomeNew = () => {
                 {/* <div className="bg-shadows">
                 </div> */}
                 <div className="cashoutVia py-5 md:px-4 px-2">
-            <div class="container mx-auto">
+            <div className="container mx-auto">
                 
-            <div class="sec-heading">
+            <div className="sec-heading">
                 <div className="relative">
                     <h5>Cashout via</h5>
                 </div>
             </div>
-            <div class="">
+            <div className="">
                 <Swiper 
                      breakpoints={{
                         640: {
@@ -264,92 +264,92 @@ const HomeNew = () => {
                     }}
                     className="mySwiper cashout-items">
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon1} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon2} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon3} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon4} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon5} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                 <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon1} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon2} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon3} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon4} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon5} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon1} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon2} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon3} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                      <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon4} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon5} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon1} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon2} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div class="items">
+                        <div className="items">
                             <img src={icon3} alt="cashoutIcon"/>
                         </div>
                     </SwiperSlide>
@@ -362,9 +362,9 @@ const HomeNew = () => {
                 </div>
             
 
-            <div class="cashoutSec py-5 md:pt-14 px-2">
-        <div class="container mx-auto">
-        <div class="cashout-wrapper">
+            <div className="cashoutSec py-5 md:pt-14 px-2">
+        <div className="container mx-auto">
+        <div className="cashout-wrapper">
         <div className="flex md:flex-row flex-col md:p-4 md:pt-4 pb-6 gap-2">
                     <div className="md:w-1/2 w-full">
                     <div className="flex justify-center items-center cashout-img flex-col">
@@ -381,7 +381,7 @@ const HomeNew = () => {
                         <h5 className="text-white font-medium text-2xl">Live CashOuts</h5>
                     </div>
         <div className="flex justify-start items-center gap-3 flex-col liveCashoutmsg">
-                        {liveMessages?.map((item)=> <div className="user-item" key={item?.id}>
+                        {liveMessages?.map((item)=> <div className="user-item" key={item?._id}>
                             <div className="flex justify-start items-center md:gap-4 gap-2">
                                 <div className="user-icon">A</div>
                                 <p className="user-name">{item?.userName}</p>
@@ -396,9 +396,9 @@ const HomeNew = () => {
         </div>
             </div>
 
-            <div class="userTestimonialSec py-5 md:pt-6 px-2">
-                <div class="container mx-auto md:px-10 px-2">
-                <div class="sec-heading">
+            <div className="userTestimonialSec py-5 md:pt-6 px-2">
+                <div className="container mx-auto md:px-10 px-2">
+                <div className="sec-heading">
             {/* <div className="heading-shadow"> 
             </div> */}
             <div className="relative">
@@ -406,7 +406,7 @@ const HomeNew = () => {
                 <p>What our members say about <span>Coin Looty </span></p>
             </div>
             </div>
-            <div class="testi-sec flex md:flex-row flex-col md:p-4 md:pt-4 pb-6 gap-2">
+            <div className="testi-sec flex md:flex-row flex-col md:p-4 md:pt-4 pb-6 gap-2">
             <Swiper
                 pagination={true}
                 slidesPerView={2}
@@ -432,8 +432,8 @@ const HomeNew = () => {
                 modules={[Pagination]}
                 className="testiSwiper"
       >
-            <SwiperSlide><div class="items">
-                <div class="img">
+            <SwiperSlide><div className="items">
+                <div className="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
                         <h5>Nitin Poddar </h5>
@@ -444,8 +444,8 @@ const HomeNew = () => {
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
             </div></SwiperSlide>
-            <SwiperSlide><div class="items">
-                <div class="img">
+            <SwiperSlide><div className="items">
+                <div className="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
                         <h5>Nitin Poddar </h5>
@@ -456,8 +456,8 @@ const HomeNew = () => {
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
             </div></SwiperSlide>
-            <SwiperSlide><div class="items">
-                <div class="img">
+            <SwiperSlide><div className="items">
+                <div className="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
                         <h5>Nitin Poddar </h5>
@@ -468,8 +468,8 @@ const HomeNew = () => {
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
             </div></SwiperSlide>
-            <SwiperSlide><div class="items">
-                <div class="img">
+            <SwiperSlide><div className="items">
+                <div className="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
                         <h5>Nitin Poddar </h5>
@@ -480,8 +480,8 @@ const HomeNew = () => {
                     <p>"I really enjoy this site I earn quite a bit of money it has alot of offerwalls and surveys its definitely top 5 sites."</p>
                 </div> 
             </div></SwiperSlide>
-            <SwiperSlide><div class="items">
-                <div class="img">
+            <SwiperSlide><div className="items">
+                <div className="img">
                     <img src={userImg} alt='gameImg' />
                     <div className="aboutUser">
                         <h5>Nitin Poddar </h5>

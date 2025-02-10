@@ -16,15 +16,15 @@ const ChangePasswordModal = ({isOpenModal,setIsOpenModal})=> {
         <div className="w-full p-2">
           <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="#">
               <div className='text-left'>
-                  <label for="password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">Password</label>
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">Password</label>
                   <input type="password" name="password" id="password" className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required="" />
               </div>
               <div className='text-left'>
-                  <label for="password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">New Password</label>
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">New Password</label>
                   <input type="password" name="newPassword" id="newPassword" placeholder="••••••••" className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
               </div>
               <div className='text-left'>
-                  <label for="confirm-password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">Confirm password</label>
+                  <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-300 dark:text-gray-200">Confirm password</label>
                   <input type="confirm-password" name="confirm_password" id="confirm_password" placeholder="••••••••" className="bg-transparent border border-gray-300 text-gray-300 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
               </div>
               <div className="forgetPass flex justify-center pt-4">

@@ -4,15 +4,15 @@ const Howitwork = ()=> {
 
     return (
         <>
-        <div class="how-it-works py-5 md:pt-14 px-2">
-        <div class="container mx-auto">
-        <div class="sec-heading">
+        <div className="how-it-works py-5 md:pt-14 px-2">
+        <div className="container mx-auto">
+        <div className="sec-heading">
             <h5>How to earn within minutes?</h5>
             <p>Follow these steps</p>
         </div>
-        <div class="steps-sec">
-            <div class="items">
-                <div class="img">
+        <div className="steps-sec">
+            <div className="items">
+                <div className="img">
                     <img src={cardImg} alt='gameImg' />
                     <span>01</span>
                 </div>
@@ -22,8 +22,8 @@ const Howitwork = ()=> {
                     surveys, and products.</p>
                 </div>
             </div>
-            <div class="items">
-                <div class="img">
+            <div className="items">
+                <div className="img">
                     <img src={cardImg} alt='gameImg' />
                     <span>02</span>
                 </div>
@@ -33,8 +33,8 @@ const Howitwork = ()=> {
                     to complete.</p>
                 </div>
             </div>
-            <div class="items">
-                <div class="img">
+            <div className="items">
+                <div className="img">
                     <img src={cardImg} alt='gameImg' />
                     <span>03</span>
                 </div>
@@ -45,7 +45,7 @@ const Howitwork = ()=> {
                 </div>
             </div>
         </div>
-        <div class="explore-btn">
+        <div className="explore-btn">
             <button>Start earning now</button>
         </div>
         </div>
